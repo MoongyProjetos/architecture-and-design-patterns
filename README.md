@@ -11,11 +11,16 @@ Com uma abordagem prática, o curso capacita os participantes a projetar sistema
 
 ## ✅ Pré-requisitos
 
-- Proficiência em pelo menos uma linguagem de programação (Java, C++, Python etc.)
+- Proficiência em pelo menos uma linguagem de programação (.NET C#, Java, C++, Python etc.)
 - Conhecimento básico de programação orientada a objetos
 - Familiaridade com conceitos de desenvolvimento de software
 
 ## 📦 Conteúdo Programático
+
+## Fontes de informação
+
+ [Martin Fowler](https://martinfowler.com/architecture/#:~:text=When%20people%20in%20the%20software,martinfowler.com%20about%20software%20architecture)
+ [Source Making](https://sourcemaking.com/design_patterns)
 
 ### 🏗️ Introdução à Arquitetura de Software
 - Conceitos fundamentais de arquitetura
