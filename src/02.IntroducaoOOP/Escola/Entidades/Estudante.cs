@@ -2,11 +2,16 @@
 /// <summary>
 /// Estudante estende/herda de pessoa
 /// </summary>
-public class Estudante : Pessoa
+public class Estudante : Pessoa, ICalculo
 {
     #region Propriedades
     public int NumeroEstudante;
     public float NotaMedia;
+
+    public decimal CalcularJurosMensalidade()
+    {
+        throw new NotImplementedException();
+    }
 
     #endregion Propriedades
 

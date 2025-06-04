@@ -1,6 +1,6 @@
 using System.Diagnostics.Contracts;
 
-public class Pessoa
+public class Pessoa : IEstacionamento
 {
     #region Propriedades
     public string? Nome;
