@@ -1,4 +1,40 @@
+# Estilos e Padrões Arquiteturais
+
+## MeuSeguro.Com
+
+### 🏛 História e Evolução
+
+A seguradora **MeuSeguro.Com** é a maior companhia de seguros de Web, com uma história que remonta a 2020. Atualmente, é líder de mercado na Europa nos ramos de Vida e Não Vida, com uma quota de mercado aproximada de 31,1%. 
+
+A companhia foi fundada em 2020, originando-se da SeguroDosOutros.com. Ao longo dos anos, passou por diversas fusões, consolidando-se como um dos maiores grupos seguradores da web. Em 2024, a **MeuSeguro.Com** foi adquirida pelo conglomerado brasileiro Zuquinha International, o que possibilitou a expansão da empresa a novos mercados.
+
+
+### 🌍 Presença Internacional
+
+A **MeuSeguro.Com** está presente em diversos países, incluindo Espanha, França, Luxemburgo, Cabo Verde, Angola, Moçambique e Macau. Em Moçambique, adquiriu a Seguradora Internacional Moçambique (SIM), operando sob a marca Ímpar.
+
+### 💼 Produtos e Serviços
+
+A empresa oferece uma ampla gama de produtos, incluindo seguros de automóvel, saúde, casa, vida, viagem, poupança e seguros para animais de estimação. Além disso, disponibiliza serviços digitais como o MyMeuSeguro, Medicina Online e MeuSeguro Drive.
+
+### 🐕 Marca e Simbolismo
+
+O nome "**MeuSeguro.Com**" reflete o compromisso da empresa com seus clientes.
+
+
+![alt text](image-1.png)
+
+
+### 🌱 Responsabilidade Social
+
+A **MeuSeguro.Com** destaca-se pelo seu compromisso com a responsabilidade social e sustentabilidade. Através da iniciativa "WeCare", apoia causas sociais e ambientais, promovendo o desenvolvimento sustentável e a inclusão.
+
+
+
+
+
 ## 🏛️ ***Princípios de boa arquitetura de software**
+
 
 ### 🔹 **1. Coesão**
 
