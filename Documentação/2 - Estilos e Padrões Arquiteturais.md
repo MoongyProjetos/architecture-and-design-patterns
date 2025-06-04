@@ -22,14 +22,13 @@ A empresa oferece uma ampla gama de produtos, incluindo seguros de automóvel, s
 O nome "**MeuSeguro.Com**" reflete o compromisso da empresa com seus clientes.
 
 
-![alt text](image-1.png)
-
-
 ### 🌱 Responsabilidade Social
 
 A **MeuSeguro.Com** destaca-se pelo seu compromisso com a responsabilidade social e sustentabilidade. Através da iniciativa "WeCare", apoia causas sociais e ambientais, promovendo o desenvolvimento sustentável e a inclusão.
 
 
+
+![alt text](image-1.png)
 
 
 
