@@ -153,3 +153,34 @@ public class DiscountCalculator {
   * Por que usar SOLID?
   * Quando usar SRP?
   * Quando aplicar OCP?
+
+
+
+### 7. Implementação Prática
+
+```bash
+dotnet new console -n Seguradora.UI	
+dotnet new classlib -n Seguradora.Logica
+dotnet new classlib -n Seguradora.Modelo
+
+dotnet new solution -n Seguradora
+
+dotnet sln add Seguradora.UI
+dotnet sln add Seguradora.Logica
+dotnet sln add Seguradora.Modelo
+
+
+dotnet add Seguradora.Logica reference Seguradora.Modelo
+
+dotnet add Seguradora.UI reference Seguradora.Modelo
+dotnet add Seguradora.UI reference Seguradora.Logica
+
+dotnet build
+
+dotnet run
+```
+
+
+![alt text](image-3.png)
+
+>Estrutura base da aplicação
