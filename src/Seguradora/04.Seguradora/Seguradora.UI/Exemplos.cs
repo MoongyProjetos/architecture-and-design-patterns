@@ -31,4 +31,29 @@ public static class Exemplos
         Console.WriteLine($"Taxa Seguro Auto (config3): {config3.SeguroAutoTaxa}");
         Console.WriteLine($"API Key Serviço Externo (config3): {config3.ApiKeyServicoExterno}");
     }
+
+
+    /// <summary>
+    /// Exemplo de uso do Factory Method para criar um seguro.
+    /// Reparem na simplicidade que é derivar entre os tipos diferentes de seguro.
+    /// </summary>
+    public static void ExemploUsoFactoryMethod()
+    {
+        Console.WriteLine("Exemplo de uso do Factory Method:");
+
+        SeguroCreator criador;
+
+        criador = new SeguroVidaCreator();
+        Console.WriteLine(criador.ProcessarApolice());
+
+        criador = new SeguroAutomovelCreator();
+        Console.WriteLine(criador.ProcessarApolice());
+
+        criador = new SeguroResidencialCreator();
+        Console.WriteLine(criador.ProcessarApolice());
+        
+        criador = new SeguroPetCreator();
+        Console.WriteLine(criador.ProcessarApolice());
+    }
+
 }

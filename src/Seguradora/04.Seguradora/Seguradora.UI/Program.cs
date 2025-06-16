@@ -31,5 +31,4 @@ Console.WriteLine("Press any key to exit...");
 
 
 
-SeguroCreator criador; 
-
+Exemplos.ExemploUsoFactoryMethod();
