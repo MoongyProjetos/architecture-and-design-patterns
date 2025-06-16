@@ -2,6 +2,8 @@
 using Seguradora.Logica;
 using Seguradora.Modelo;
 
+
+
 Console.WriteLine("Hello, World!");
 
 var cliente = new Cliente();
@@ -32,3 +34,7 @@ Console.WriteLine("Press any key to exit...");
 
 
 Exemplos.ExemploUsoFactoryMethod();
+
+
+Exemplos.ExemploUsoAbstractFactory();
+

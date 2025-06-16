@@ -4,6 +4,12 @@ using Seguradora.Modelo;
 using Seguradora.Logica.FactoryMethod.Creators;
 using Seguradora.Logica.FactoryMethod.Seguros;
 
+using Seguradora.Logica.AbstractFactory.Services;
+using Seguradora.Logica.AbstractFactory.Interfaces;
+using Seguradora.Logica.AbstractFactory.PessoaFisica;
+using Seguradora.Logica.AbstractFactory.PessoaJuridica;
+using Seguradora.Logica.AbstractFactory.ConcreteFactory;
+
 public static class Exemplos
 {
     /// <summary>
@@ -54,9 +60,27 @@ public static class Exemplos
 
         criador = new SeguroResidencialCreator();
         Console.WriteLine(criador.ProcessarApolice());
-        
+
         criador = new SeguroPetCreator();
         Console.WriteLine(criador.ProcessarApolice());
+    }
+
+
+    /// <summary>
+    /// Exemplo de uso do Abstract Factory para criar seguros.
+    /// Reparem na simplicidade que é derivar entre os tipos diferentes de seguro.
+    /// </summary>
+    public static void ExemploUsoAbstractFactory()
+    {
+        Console.WriteLine("Exemplo de uso do Abstract Factory com Seguro:");
+
+        ISeguroFactory factory = new SeguroPessoaFisicaFactory();
+        var servico = new ServicoSeguro(factory);
+        servico.Processar();
+
+        factory = new SeguroPessoaJuridicaFactory();
+        servico = new ServicoSeguro(factory);
+        servico.Processar();
     }
 
 }
