@@ -1,3 +1,4 @@
+namespace Seguradora.Logica.Services;
 public class CalculadoraPremioSeguro
 {
     public decimal CalcularSeguroAuto(decimal valorVeiculo)

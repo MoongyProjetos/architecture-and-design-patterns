@@ -28,3 +28,8 @@ gerenciadorApolice.CriarNovoSeguro();
 
 Exemplos.ExemploUsoSingleton();
 Console.WriteLine("Press any key to exit...");
+
+
+
+SeguroCreator criador; 
+
