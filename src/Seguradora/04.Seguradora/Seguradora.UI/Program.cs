@@ -24,3 +24,7 @@ var gerenciadorApolice = new GerenciadorApolice(repository, apolice);
 
 
 gerenciadorApolice.CriarNovoSeguro();
+
+
+Exemplos.ExemploUsoSingleton();
+Console.WriteLine("Press any key to exit...");
