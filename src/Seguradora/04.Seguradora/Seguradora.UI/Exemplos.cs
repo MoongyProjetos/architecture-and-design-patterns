@@ -82,5 +82,4 @@ public static class Exemplos
         servico = new ServicoSeguro(factory);
         servico.Processar();
     }
-
 }
