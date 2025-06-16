@@ -23,38 +23,14 @@ Compreender os principais padrões de projeto criacionais: Singleton, Factory Me
 * Gerenciador de configuração
 * Log de aplicação
 
-**Estrutura UML:**
-
-```
-+------------------+
-|    Singleton     |
-+------------------+
-| - instance       |
-+------------------+
-| + getInstance()  |
-+------------------+
-```
+**Estrutura UML (MermaidJS):**
 
 ```mermaid
 classDiagram
-    class AbstractFactory {
-        +CreateProductA() : AbstractProductA
-        +CreateProductB() : AbstractProductB
+    class Singleton {
+        - instance : Singleton
+        + getInstance() : Singleton
     }
-    class ConcreteFactory1 {
-        +CreateProductA() : AbstractProductA
-        +CreateProductB() : AbstractProductB
-    }
-    class AbstractProductA
-    class AbstractProductB
-    class ConcreteProductA1
-    class ConcreteProductB1
-
-    AbstractFactory <|-- ConcreteFactory1
-    AbstractFactory --> AbstractProductA
-    AbstractFactory --> AbstractProductB
-    AbstractProductA <|-- ConcreteProductA1
-    AbstractProductB <|-- ConcreteProductB1
 ```
 
 **Imagem exemplo:** Um console de logging com um único arquivo sendo escrito.
@@ -83,21 +59,20 @@ public class Logger {
 
 * Quando a classe não sabe de antemão quais subclasses precisarão ser criadas
 
-**Estrutura UML:**
+**Estrutura UML (MermaidJS):**
 
-```
-+-------------------+       +-----------------+
-| Creator           |<>---->| Product         |
-+-------------------+       +-----------------+
-| + FactoryMethod() |       |                 |
-+-------------------+       +-----------------+
-        ^
-        |
-+-------------------+
-| ConcreteCreator    |
-+-------------------+
-| + FactoryMethod()  |
-+-------------------+
+```mermaid
+classDiagram
+    class Product
+    class Creator {
+        +FactoryMethod() : Product
+    }
+    class ConcreteCreator {
+        +FactoryMethod() : Product
+    }
+
+    Creator <|-- ConcreteCreator
+    Creator --> Product
 ```
 
 **Imagem exemplo:** Criador de documentos (PDF, Word, Excel).
@@ -135,23 +110,28 @@ public class PdfApplication : Application {
 * Sistemas que precisam ser independentes de como seus objetos são criados
 * Famílias de produtos relacionados (ex: UI Windows/Linux/Mac)
 
-**Estrutura UML:**
+**Estrutura UML (MermaidJS):**
 
-```
-+---------------------------+      +----------------+
-| AbstractFactory           |<>--->| AbstractProduct |
-+---------------------------+      +----------------+
-| + CreateProductA()        |
-| + CreateProductB()        |
-+---------------------------+
-         ^                             ^
-         |                             |
-+----------------------+   +-----------------------+
-| ConcreteFactory1      |   | ConcreteProductA1     |
-+----------------------+   +-----------------------+
-| + CreateProductA()    |   |                       |
-| + CreateProductB()    |   +-----------------------+
-+----------------------+
+```mermaid
+classDiagram
+    class AbstractFactory {
+        +CreateProductA() : AbstractProductA
+        +CreateProductB() : AbstractProductB
+    }
+    class ConcreteFactory1 {
+        +CreateProductA() : AbstractProductA
+        +CreateProductB() : AbstractProductB
+    }
+    class AbstractProductA
+    class AbstractProductB
+    class ConcreteProductA1
+    class ConcreteProductB1
+
+    AbstractFactory <|-- ConcreteFactory1
+    AbstractFactory --> AbstractProductA
+    AbstractFactory --> AbstractProductB
+    AbstractProductA <|-- ConcreteProductA1
+    AbstractProductB <|-- ConcreteProductB1
 ```
 
 **Imagem exemplo:** Um conjunto de widgets para diferentes SOs (BotãoWindows, BotãoMac).
@@ -197,4 +177,3 @@ public class MacFactory : GUIFactory {
 
 * Quando usar cada padrão
 * Vantagens e desvantagens
-
