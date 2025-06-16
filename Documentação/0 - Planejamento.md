@@ -1,6 +1,6 @@
 ## 📆 Planejamento das Sessões – 30h / 15 Encontros (2h cada)
 
-### 🔹 **Sessão 1 – Introdução ao Curso e Arquitetura de Software**
+### 🔹 **Sessão 1 – Introdução ao Curso e Arquitetura de Software** 
 
 * Apresentação do curso, objetivos e metodologia
 * O que é Arquitetura de Software
@@ -17,21 +17,16 @@
 
 ---
 
-### 🔹 **Sessão 3 – Princípios de Design: Visão Geral**
+### 🔹 **Sessão 3 – Princípios de Design: Visão Geral** 
 
 * Introdução aos princípios SOLID
 * SRP – Single Responsibility Principle
 * OCP – Open/Closed Principle
-* Exemplos práticos em código
-
----
-
-### 🔹 **Sessão 4 – Princípios SOLID (continuação)**
-
 * LSP – Liskov Substitution Principle
 * ISP – Interface Segregation Principle
 * DIP – Dependency Inversion Principle
-* Aplicações reais e refatoração orientada a princípios
+
+* Exemplos práticos em código
 
 ---
 
