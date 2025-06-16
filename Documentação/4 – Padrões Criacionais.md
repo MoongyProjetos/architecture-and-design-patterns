@@ -190,7 +190,7 @@ Vamos usar um exemplo prático e didático de uma aplicação de **seguradora**,
 
 ---
 
-### 🎯 **Contexto**
+##### 🎯 **Contexto**
 
 Imagine uma aplicação de uma seguradora que precisa acessar uma **instância centralizada de configuração do sistema**, contendo, por exemplo:
 
@@ -221,7 +221,7 @@ classDiagram
 ```
 ---
 
-### 📝 O que esse diagrama mostra:
+##### 📝 O que esse diagrama mostra:
 
 * `SystemConfiguration` é a **classe Singleton**.
 * Tem membros privados e um construtor privado.
@@ -230,7 +230,7 @@ classDiagram
 
 ---
 
-### 💡 **Exemplo em C# com .NET 9**
+##### 💡 **Exemplo em C# com .NET 9**
 
 ```csharp
 public sealed class SystemConfiguration
@@ -258,7 +258,7 @@ public sealed class SystemConfiguration
 
 ---
 
-### 🛠 **Uso em um serviço da seguradora**
+##### 🛠 **Uso em um serviço da seguradora**
 
 ```csharp
 public class CalculadoraPremioSeguro
@@ -279,12 +279,13 @@ public class CalculadoraPremioSeguro
 
 ---
 
-### ✅ **Benefícios do Singleton nesse cenário**
+##### ✅ **Benefícios do Singleton nesse cenário**
 
 * ✅ Instância única para evitar múltiplos carregamentos da mesma informação.
 * ✅ Mais performance e menor uso de memória.
 * ✅ Fácil de manter e expandir.
 
+---
 
 #### 5.2 - Factory Method
 
@@ -296,9 +297,66 @@ Vamos usar um **exemplo prático** de aplicação do padrão **Factory Method** 
 
 A ideia é que, em vez de instanciar diretamente objetos de cada tipo de seguro, usamos o **Factory Method** para delegar essa responsabilidade para subclasses específicas, promovendo **extensibilidade** e **baixo acoplamento**.
 
+```mermaid
+classDiagram
+    direction LR
+
+    class ISeguro {
+        +EmitirApolice() string
+    }
+
+    class SeguroVida {
+        +EmitirApolice() string
+    }
+
+    class SeguroAutomovel {
+        +EmitirApolice() string
+    }
+
+    class SeguroResidencial {
+        +EmitirApolice() string
+    }
+
+    class SeguroCreator {
+        +CriarSeguro() ISeguro
+        +ProcessarApolice() string
+    }
+
+    class SeguroVidaCreator {
+        +CriarSeguro() ISeguro
+    }
+
+    class SeguroAutomovelCreator {
+        +CriarSeguro() ISeguro
+    }
+
+    class SeguroResidencialCreator {
+        +CriarSeguro() ISeguro
+    }
+
+    ISeguro <|.. SeguroVida
+    ISeguro <|.. SeguroAutomovel
+    ISeguro <|.. SeguroResidencial
+
+    SeguroCreator <|-- SeguroVidaCreator
+    SeguroCreator <|-- SeguroAutomovelCreator
+    SeguroCreator <|-- SeguroResidencialCreator
+
+    SeguroCreator --> ISeguro : cria
+```
 ---
 
-### 🔧 Estrutura do Padrão Factory Method
+Esse diagrama mostra:
+
+* A interface `ISeguro` como contrato para os produtos.
+* Três implementações: `SeguroVida`, `SeguroAutomovel`, `SeguroResidencial`.
+* A classe base `SeguroCreator` que define o método `CriarSeguro()`.
+* Três fábricas concretas que herdam de `SeguroCreator`.
+
+
+---
+
+##### 🔧 Estrutura do Padrão Factory Method
 
 * **Produto (Product)**: `ISeguro`
 * **Produtos Concretos (Concrete Products)**: `SeguroVida`, `SeguroAutomovel`, `SeguroResidencial`
@@ -307,7 +365,7 @@ A ideia é que, em vez de instanciar diretamente objetos de cada tipo de seguro,
 
 ---
 
-### ✅ Interface do Produto
+##### ✅ Interface do Produto
 
 ```csharp
 public interface ISeguro
@@ -318,7 +376,7 @@ public interface ISeguro
 
 ---
 
-### ✅ Implementações Concretas
+##### ✅ Implementações Concretas
 
 ```csharp
 public class SeguroVida : ISeguro
@@ -339,7 +397,7 @@ public class SeguroResidencial : ISeguro
 
 ---
 
-### 🏭 Fábrica Abstrata (Creator)
+##### 🏭 Fábrica Abstrata (Creator)
 
 ```csharp
 public abstract class SeguroCreator
@@ -356,7 +414,7 @@ public abstract class SeguroCreator
 
 ---
 
-### 🏭 Fábricas Concretas
+##### 🏭 Fábricas Concretas
 
 ```csharp
 public class SeguroVidaCreator : SeguroCreator
@@ -377,7 +435,7 @@ public class SeguroResidencialCreator : SeguroCreator
 
 ---
 
-### 📦 Uso na Aplicação
+##### 📦 Uso na Aplicação
 
 ```csharp
 public class Programa
@@ -400,7 +458,7 @@ public class Programa
 
 ---
 
-### 🧠 Benefícios no contexto da seguradora
+##### 🧠 Benefícios no contexto da seguradora
 
 * Fácil adicionar novos tipos de seguro sem alterar código existente.
 * Encapsula a lógica de criação dos seguros.
@@ -488,6 +546,49 @@ classDiagram
     ServicoSeguro --> ISeguroFactory
 
 ```
+
+
+
+###### Elementos principais do diagrama:
+
+1. **Interfaces de fábrica e produtos abstratos:**
+
+* `ISeguroFactory`: Interface que declara os métodos para criar os produtos (`CriarApolice()` e `CriarRelatorio()`).
+* `IApolice`: Interface para o produto "Apólice".
+* `IRelatorioCobertura`: Interface para o produto "Relatório de cobertura".
+
+2. **Fábricas concretas (implementações de `ISeguroFactory`):**
+
+* `SeguroPessoaFisicaFactory`: Cria produtos concretos para pessoa física.
+* `SeguroPessoaJuridicaFactory`: Cria produtos concretos para pessoa jurídica.
+
+3. **Produtos concretos:**
+
+* `ApolicePessoaFisica` e `ApolicePessoaJuridica`: implementam `IApolice`.
+* `RelatorioPessoaFisica` e `RelatorioPessoaJuridica`: implementam `IRelatorioCobertura`.
+
+4. **Cliente que consome a fábrica e produtos:**
+
+* `ServicoSeguro`: Classe que depende das interfaces abstratas para operar, ou seja, usa a fábrica para criar os produtos e depois utiliza eles (emitir apólice e gerar relatório).
+
+---
+
+###### Relacionamentos mostrados:
+
+* As fábricas concretas herdam/implementam `ISeguroFactory`.
+* Os produtos concretos herdam/implementam suas respectivas interfaces (`IApolice` ou `IRelatorioCobertura`).
+* A classe `ServicoSeguro` depende da interface da fábrica (`ISeguroFactory`) para criar os produtos abstratos e depois trabalha com os produtos através das interfaces abstratas.
+
+---
+
+###### Por que isso importa?
+
+Esse diagrama deixa claro que:
+
+* O cliente **não sabe nem precisa saber** das classes concretas que está usando.
+* A criação dos objetos é **desacoplada** da sua utilização.
+* É fácil adicionar novos tipos/famílias de seguros, basta criar novas fábricas e produtos concretos, sem mudar o cliente.
+
 
 ##### 🎯 **Objetivo do Abstract Factory:**
 
