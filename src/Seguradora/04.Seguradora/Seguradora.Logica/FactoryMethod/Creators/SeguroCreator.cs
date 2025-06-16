@@ -1,3 +1,7 @@
+using Seguradora.Logica.FactoryMethod.Seguros;
+
+namespace Seguradora.Logica.FactoryMethod.Creators;
+
 public abstract class SeguroCreator
 {
   public abstract ISeguro CriarSeguro();

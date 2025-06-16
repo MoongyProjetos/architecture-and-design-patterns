@@ -1,3 +1,4 @@
+namespace Seguradora.Logica.FactoryMethod.Seguros;
 public class SeguroVida : ISeguro
 {
     public string EmitirApolice()

@@ -1,3 +1,4 @@
+namespace Seguradora.Logica.FactoryMethod.Seguros;
 class SeguroResidencial : ISeguro
 {
     public string EmitirApolice()

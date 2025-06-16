@@ -1,6 +1,9 @@
 using Seguradora.Logica;
 using Seguradora.Logica.Services;
 using Seguradora.Modelo;
+using Seguradora.Logica.FactoryMethod.Creators;
+using Seguradora.Logica.FactoryMethod.Seguros;
+
 public static class Exemplos
 {
     /// <summary>
