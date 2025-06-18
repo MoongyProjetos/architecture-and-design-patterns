@@ -462,6 +462,8 @@ O padrão **Object Pool**, é menos famoso que os outros padrões criacionais, m
 
 O **Object Pool** (ou **pool de objetos**) é um padrão criacional que **mantém um conjunto de objetos prontos para uso**, reaproveitando instâncias em vez de criar e destruir objetos repetidamente.
 
+![alt text](image-6.png)
+
 ---
 
 ### 💡 **Para que serve?**
