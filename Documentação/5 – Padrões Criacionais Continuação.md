@@ -273,7 +273,6 @@ Permitir construir **objetos Apolice** passo a passo com diferentes combinaçõe
 
 ##### ✅ Exemplo em C#:
 
-![alt text](image-5.png)
 
 ```csharp
 // Produto final
@@ -588,3 +587,41 @@ classDiagram
 
     CotadorPool --> Cotador : cria e reaproveita
 ```
+
+
+O **Object Pool** é um padrão de criação que **mantém um conjunto de objetos prontos para uso**, evitando o custo de criação e destruição repetida de instâncias (muito útil para objetos "caros", como conexões de banco, threads ou conexões de rede).
+
+![alt text](image-5.png)
+
+Essa imagem mostra a estrutura de funcionamento de uma **pilha (stack)** com operações básicas de `push` (inserção) e `pop` (remoção). No contexto de **design patterns**, mais especificamente do padrão **Object Pool**, ela pode ser usada para **ilustrar como objetos são gerenciados de forma reutilizável**.
+
+---
+
+### Relação com a imagem:
+
+Vamos mapear a imagem com o comportamento do **Object Pool**:
+
+1. **Empty Stack = Pool vazio**
+
+   * No início, não há objetos no pool.
+
+2. **Push 1, 2, 3 = Objetos sendo adicionados ao pool**
+
+   * O método `release()` (ou `returnObject()`) está sendo chamado: um objeto que terminou seu uso volta ao pool.
+   * Cada `push` representa o retorno de um objeto para o pool, ficando disponível para ser reutilizado.
+
+3. **Pop = Objeto sendo retirado do pool para uso**
+
+   * A operação `pop()` representa o método `get()` do Object Pool: um objeto é retirado da pilha para uso pelo sistema.
+   * Repare que o último objeto inserido (3) é o primeiro a ser reutilizado – isso representa uma **política LIFO (Last In, First Out)**, que pode ser usada em pools mais simples.
+
+---
+
+### Conclusão
+
+Essa imagem, embora represente uma **estrutura de dados stack**, serve bem como uma **analogia para o funcionamento básico de um Object Pool**, mostrando que:
+
+* Objetos **não são destruídos**, mas **armazenados para reutilização**.
+* Operações de `push` representam **devolver objetos ao pool**.
+* Operações de `pop` representam **obter objetos do pool**.
+* Isso ajuda a **otimizar o desempenho**, especialmente em sistemas com alta demanda de instanciamento de objetos.
