@@ -41,7 +41,7 @@
 | **Abstract Factory** | Cria **famílias de objetos relacionados** sem depender de suas classes concretas. Útil para cenários com múltiplas variantes de produtos.                                                                     |
 | **Builder**          | Separa a construção de um objeto complexo da sua representação, permitindo a criação de diferentes representações **com o mesmo processo de construção**. Ideal para objetos com muitos parâmetros opcionais. |
 | **Prototype**        | Cria novos objetos copiando um **protótipo existente**. Útil quando a criação via `new` é cara e o objeto pode ser copiado de forma eficiente.                                                                |
-
+| **ObjectPool**        | Cria uma pilha de objetos e faz o aproveitamento de memória, sempre liberando um espaço para o próximo e evitando assim o uso exagerado de memória.                                                                |
 
 #### Diferenças entre o Factory Method e o Abstract Factory
 
