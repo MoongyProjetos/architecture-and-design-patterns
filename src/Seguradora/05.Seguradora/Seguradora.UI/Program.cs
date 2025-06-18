@@ -5,6 +5,7 @@ using Seguradora.Modelo;
 using Seguradora.Logica.Builder;
 
 
+
 Console.WriteLine("Hello, World!");
 
 const string separador = "#####################################################################################";
@@ -62,3 +63,15 @@ System.Console.WriteLine(separador);
 
 Exemplos.ExemploUsoPrototype();
 System.Console.WriteLine(separador);
+
+
+Exemplos.ExemploUsoObjectPoolLiberandoPool();
+System.Console.WriteLine(separador);
+
+
+Exemplos.ExemploUsoObjectPoolSemLiberarPool();
+System.Console.WriteLine(separador);
+
+
+
+

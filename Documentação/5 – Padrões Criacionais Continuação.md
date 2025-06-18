@@ -273,6 +273,8 @@ Permitir construir **objetos Apolice** passo a passo com diferentes combinaçõe
 
 ##### ✅ Exemplo em C#:
 
+![alt text](image-5.png)
+
 ```csharp
 // Produto final
 class ApolicePersonalizada {

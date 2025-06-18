@@ -11,6 +11,7 @@ using Seguradora.Logica.AbstractFactory.PessoaJuridica;
 using Seguradora.Logica.AbstractFactory.ConcreteFactory;
 using Seguradora.Logica.Builder;
 using Seguradora.Logica.Prototype;
+using Seguradora.Logica.ObjectPool;
 
 public static class Exemplos
 {
@@ -130,5 +131,67 @@ public static class Exemplos
         System.Console.WriteLine($"Apolice Original: {apoliceOriginal.Tipo}, {apoliceOriginal.Cobertura}, {apoliceOriginal.ValorMensal}, {apoliceOriginal.Id}");
         System.Console.WriteLine($"Apolice Clone: {apoliceClone.Tipo}, {apoliceClone.Cobertura}, {apoliceClone.ValorMensal}, {apoliceClone.Id}");
         System.Console.WriteLine($"Apolice Clone Simples: {apoliceCloneSimples.Tipo}, {apoliceCloneSimples.Cobertura}, {apoliceCloneSimples.ValorMensal}, {apoliceCloneSimples.Id}");
+    }
+
+    /// <summary>
+    ///  Exemplo de uso do Object Pool para gerenciar instâncias de Cotador.
+    /// O Object Pool é útil para reutilizar objetos caros de serem criados, como conexões
+    /// </summary>
+    public static void ExemploUsoObjectPoolLiberandoPool()
+    {
+        var pool = new CotadorPool(2);
+
+        try
+        {
+            var cotador1 = pool.ObterCotador();
+            cotador1.RealizarCotacao("123.456.789-00");
+            pool.DevolverCotador(cotador1); //Devolvendo para o pool sempre funciona
+            System.Console.WriteLine(cotador1.Id);
+
+            var cotador2 = pool.ObterCotador();
+            cotador2.RealizarCotacao("111.222.333-44");
+            pool.DevolverCotador(cotador2);
+            System.Console.WriteLine(cotador2.Id);
+
+            var cotador3 = pool.ObterCotador();
+            cotador3.RealizarCotacao("111.222.333-44");
+            pool.DevolverCotador(cotador3);
+            System.Console.WriteLine(cotador3.Id);
+
+            var cotador4 = pool.ObterCotador();
+            cotador4.RealizarCotacao("111.222.333-44");
+            pool.DevolverCotador(cotador4);
+            System.Console.WriteLine(cotador4.Id);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    public static void ExemploUsoObjectPoolSemLiberarPool()
+    {
+        var pool2 = new CotadorPool(2);
+        try
+        {
+            var cotador21 = pool2.ObterCotador();
+            cotador21.RealizarCotacao("123.456.789-00");
+            // pool.DevolverCotador(cotador1); //Deixei de devolver, vou ter erro no terceiro
+            System.Console.WriteLine(cotador21.Id);
+
+            var cotador22 = pool2.ObterCotador();
+            cotador22.RealizarCotacao("111.222.333-44");
+            // pool.DevolverCotador(cotador2); //Deixei de devolver, vou ter erro no terceiro
+            System.Console.WriteLine(cotador22.Id);
+
+            var cotador23 = pool2.ObterCotador();
+            cotador23.RealizarCotacao("111.222.333-44");
+            System.Console.WriteLine(cotador23.Id);
+        }
+        catch (Exception ex)
+        {
+            //Aqui vai dar o erro, porque não temos mais "espaço" disponível no Pool
+            Console.WriteLine(ex.Message);
+        }
     }
 }

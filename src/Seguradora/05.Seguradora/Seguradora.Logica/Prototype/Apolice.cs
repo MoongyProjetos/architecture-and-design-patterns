@@ -3,8 +3,8 @@ namespace Seguradora.Logica.Prototype;
 public class Apolice : IApolicePrototype
 {
     public Guid Id { get; set; }
-    public string Tipo { get; set; }
-    public string Cobertura { get; set; }
+    public string? Tipo { get; set; }
+    public string? Cobertura { get; set; }
     public decimal ValorMensal { get; set; }
 
     public Apolice Clone()
