@@ -4,6 +4,7 @@ using Seguradora.Modelo;
 
 using Seguradora.Logica.Builder;
 
+
 Console.WriteLine("Hello, World!");
 
 const string separador = "#####################################################################################";
@@ -44,16 +45,7 @@ System.Console.WriteLine(separador);
 
 
 
-// Exemplos.ExemploUsoBuilder();
-
-var geradorApolice = new GeradorApolice();
-var apoliceSimples = geradorApolice.CriarSimples(new ApoliceAutoBuilder());
-System.Console.WriteLine(apoliceSimples);
-
-System.Console.WriteLine(separador);
-
-var apoliceCompleta = geradorApolice.CriarCompleta(new ApoliceAutoBuilder());
-System.Console.WriteLine(apoliceCompleta);
+Exemplos.ExemploUsoBuilder();
 System.Console.WriteLine(separador);
 
 
@@ -65,3 +57,8 @@ var clienteExemplo = new ClienteExemplo
 };
 
 System.Console.WriteLine(clienteExemplo);
+System.Console.WriteLine(separador);
+
+
+Exemplos.ExemploUsoPrototype();
+System.Console.WriteLine(separador);

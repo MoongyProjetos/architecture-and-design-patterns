@@ -9,6 +9,8 @@ using Seguradora.Logica.AbstractFactory.Interfaces;
 using Seguradora.Logica.AbstractFactory.PessoaFisica;
 using Seguradora.Logica.AbstractFactory.PessoaJuridica;
 using Seguradora.Logica.AbstractFactory.ConcreteFactory;
+using Seguradora.Logica.Builder;
+using Seguradora.Logica.Prototype;
 
 public static class Exemplos
 {
@@ -81,5 +83,52 @@ public static class Exemplos
         factory = new SeguroPessoaJuridicaFactory();
         servico = new ServicoSeguro(factory);
         servico.Processar();
+    }
+
+
+    /// <summary>
+    ///  Exemplo de uso do Builder para criar uma apólice.
+    /// O Builder permite construir objetos complexos passo a passo.
+    /// </summary>
+    public static void ExemploUsoBuilder()
+    {
+        Console.WriteLine("Exemplo de uso do Builder:");
+
+        // Aqui você pode implementar o exemplo de uso do Builder
+        // Exemplo: var apolice = new ApoliceBuilder().ComTipo("Auto").ComCobertura("Total").Build();
+        // Console.WriteLine(apolice);
+
+        var geradorApolice = new GeradorApolice();
+        var apoliceSimples = geradorApolice.CriarSimples(new ApoliceAutoBuilder());
+        System.Console.WriteLine(apoliceSimples);
+
+        var apoliceCompleta = geradorApolice.CriarCompleta(new ApoliceAutoBuilder());
+        System.Console.WriteLine(apoliceCompleta);
+    }
+
+    public static void ExemploUsoPrototype()
+    {
+        Console.WriteLine("Exemplo de uso do Prototype:");
+
+        // Aqui você pode implementar o exemplo de uso do Prototype
+        // Exemplo: var apolice = new Apolice().Clone();
+        // Console.WriteLine(apolice);
+
+        var apoliceOriginal = new Seguradora.Logica.Prototype.Apolice
+        {
+            Id = Guid.NewGuid(),
+            Tipo = "Auto",
+            Cobertura = "Total",
+            ValorMensal = 150.00m
+        };
+
+
+        var apoliceClone = apoliceOriginal.Clone();
+
+        var apoliceCloneSimples = apoliceOriginal.SimpleClone(); // Usando o método SimpleClone
+
+        System.Console.WriteLine($"Apolice Original: {apoliceOriginal.Tipo}, {apoliceOriginal.Cobertura}, {apoliceOriginal.ValorMensal}, {apoliceOriginal.Id}");
+        System.Console.WriteLine($"Apolice Clone: {apoliceClone.Tipo}, {apoliceClone.Cobertura}, {apoliceClone.ValorMensal}, {apoliceClone.Id}");
+        System.Console.WriteLine($"Apolice Clone Simples: {apoliceCloneSimples.Tipo}, {apoliceCloneSimples.Cobertura}, {apoliceCloneSimples.ValorMensal}, {apoliceCloneSimples.Id}");
     }
 }
