@@ -208,7 +208,7 @@ classDiagram
 
     IPrototype <|.. Person
 ```
-
+ -
 ### 💡 Vantagens:
 
 * Reduz custo de criação de objetos complexos.
