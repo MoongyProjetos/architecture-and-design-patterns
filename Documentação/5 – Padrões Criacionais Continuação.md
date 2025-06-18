@@ -446,3 +446,143 @@ classDiagram
 ### 7. Referências:
 
 * https://sourcemaking.com/design_patterns/creational_patterns
+
+
+
+### 8. Bônus - Object Pool
+
+O padrão **Object Pool**, é menos famoso que os outros padrões criacionais, mas **muito útil em contextos de alto desempenho** — inclusive pode ser relevante numa seguradora com sistemas que fazem muitas chamadas externas ou processam grandes volumes de dados.
+
+---
+
+## 🏊‍♂️ **Padrão Criacional: Object Pool**
+
+### 🧠 **O que é?**
+
+O **Object Pool** (ou **pool de objetos**) é um padrão criacional que **mantém um conjunto de objetos prontos para uso**, reaproveitando instâncias em vez de criar e destruir objetos repetidamente.
+
+---
+
+### 💡 **Para que serve?**
+
+* Evita **criação/destruição frequente** de objetos caros (por exemplo, conexões de banco, chamadas a APIs externas, ou processadores de XMLs complexos).
+* Controla o número máximo de instâncias vivas (importante para recursos limitados).
+* Garante **melhor desempenho e menor uso de memória**.
+
+---
+
+### 🏦 **Exemplo em contexto de seguradora:**
+
+Imagine um serviço de cotação que consulta um sistema legado, e a criação de cada cliente para envio consome muita memória.
+
+Você pode manter um pool de **"cotadores"** reaproveitáveis:
+
+---
+
+### ✅ Exemplo em C#:
+
+```csharp
+class Cotador {
+    public void RealizarCotacao(string cpf) {
+        Console.WriteLine($"Cotações em execução para: {cpf}");
+        // Simula processamento pesado
+        Thread.Sleep(1000);
+    }
+}
+
+class CotadorPool {
+    private readonly Stack<Cotador> _disponiveis = new();
+    private readonly int _maximo;
+    private int _emUso = 0;
+
+    public CotadorPool(int maximo) => _maximo = maximo;
+
+    public Cotador GetCotador() {
+        if (_disponiveis.Count > 0) {
+            _emUso++;
+            return _disponiveis.Pop();
+        }
+        if (_emUso < _maximo) {
+            _emUso++;
+            return new Cotador();
+        }
+        throw new InvalidOperationException("Nenhum cotador disponível no pool.");
+    }
+
+    public void DevolverCotador(Cotador cotador) {
+        _disponiveis.Push(cotador);
+        _emUso--;
+    }
+}
+```
+
+---
+
+### 🌀 Uso:
+
+```csharp
+var pool = new CotadorPool(2);
+
+try {
+    var cotador1 = pool.GetCotador();
+    cotador1.RealizarCotacao("123.456.789-00");
+    pool.DevolverCotador(cotador1);
+
+    var cotador2 = pool.GetCotador();
+    cotador2.RealizarCotacao("111.222.333-44");
+    pool.DevolverCotador(cotador2);
+}
+catch (Exception ex) {
+    Console.WriteLine(ex.Message);
+}
+```
+
+---
+
+## ✅ **Vantagens**
+
+| ✅ Benefícios                              |
+| ----------------------------------------- |
+| Reduz o custo de criação de objetos caros |
+| Controla número de instâncias ativas      |
+| Melhora desempenho e uso de memória       |
+
+---
+
+## ⚠️ **Desvantagens**
+
+| ⚠️ Cuidados                                      |
+| ------------------------------------------------ |
+| Complexidade de gerenciamento do pool            |
+| Concorrência (thread safety pode ser necessária) |
+| Não é útil para objetos leves                    |
+
+---
+
+## 📊 Quando usar na seguradora?
+
+| Situação                               | Use Object Pool? |
+| -------------------------------------- | ---------------- |
+| Cotadores que acessam sistemas legados | ✅ Sim            |
+| Parsers de grandes XMLs de propostas   | ✅ Sim            |
+| Objetos simples (ex: DTOs)             | ❌ Não            |
+| Conexões com APIs externas limitadas   | ✅ Sim            |
+
+---
+
+```mermaid
+classDiagram
+    class Cotador {
+        +RealizarCotacao(string cpf)
+    }
+
+    class CotadorPool {
+        - Stack~Cotador~ disponiveis
+        - int maximo
+        - int emUso
+        +GetCotador() Cotador
+        +DevolverCotador(Cotador)
+    }
+
+    CotadorPool --> Cotador : cria e reaproveita
+```
