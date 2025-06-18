@@ -246,8 +246,203 @@ classDiagram
 
 ## 📚 **5. Encerramento e Dúvidas (10 min)**
 
+* Quando usar cada padrão
+* Vantagens e desvantagens
+
 ### ✔️ Recapitulando:
 
 * Padrões criacionais reduzem o acoplamento da lógica de negócio com o modo de instanciar objetos.
 * **Builder** é ideal para construções complexas e flexíveis.
 * **Prototype** brilha em situações onde copiar objetos é mais eficiente do que construí-los do zero.
+
+
+
+### 6. Adpatando os exemplos ao caso de uso da Seguradora
+
+#### 🏗️ **Builder – Montagem personalizada de Apólice**
+
+##### 📘 Cenário:
+
+A seguradora oferece **apólices personalizadas**, onde o cliente pode escolher coberturas adicionais (assistência 24h, cobertura internacional, proteção para terceiros, etc).
+
+---
+
+##### 🎯 Objetivo:
+
+Permitir construir **objetos Apolice** passo a passo com diferentes combinações de coberturas.
+
+##### ✅ Exemplo em C#:
+
+```csharp
+// Produto final
+class ApolicePersonalizada {
+    public string Tipo { get; set; }
+    public bool Assistencia24h { get; set; }
+    public bool CoberturaInternacional { get; set; }
+    public bool ProtecaoTerceiros { get; set; }
+
+    public override string ToString() {
+        return $"{Tipo}: " +
+               $"Assistência 24h: {Assistencia24h}, " +
+               $"Internacional: {CoberturaInternacional}, " +
+               $"Proteção a terceiros: {ProtecaoTerceiros}";
+    }
+}
+
+// Builder
+interface IApoliceBuilder {
+    void DefinirTipo(string tipo);
+    void AdicionarAssistencia24h();
+    void AdicionarCoberturaInternacional();
+    void AdicionarProtecaoTerceiros();
+    ApolicePersonalizada Construir();
+}
+
+// Implementação concreta
+class ApoliceAutoBuilder : IApoliceBuilder {
+    private ApolicePersonalizada _apolice = new ApolicePersonalizada();
+
+    public void DefinirTipo(string tipo) => _apolice.Tipo = tipo;
+    public void AdicionarAssistencia24h() => _apolice.Assistencia24h = true;
+    public void AdicionarCoberturaInternacional() => _apolice.CoberturaInternacional = true;
+    public void AdicionarProtecaoTerceiros() => _apolice.ProtecaoTerceiros = true;
+
+    public ApolicePersonalizada Construir() => _apolice;
+}
+
+// Diretor
+class GeradorApolice {
+    public ApolicePersonalizada CriarSimples(IApoliceBuilder builder) {
+        builder.DefinirTipo("Auto Simples");
+        builder.AdicionarAssistencia24h();
+        return builder.Construir();
+    }
+
+    public ApolicePersonalizada CriarCompleta(IApoliceBuilder builder) {
+        builder.DefinirTipo("Auto Completa");
+        builder.AdicionarAssistencia24h();
+        builder.AdicionarCoberturaInternacional();
+        builder.AdicionarProtecaoTerceiros();
+        return builder.Construir();
+    }
+}
+```
+
+```mermaid
+classDiagram
+    class ApolicePersonalizada {
+        - string Tipo
+        - bool Assistencia24h
+        - bool CoberturaInternacional
+        - bool ProtecaoTerceiros
+        + ToString()
+    }
+
+    class IApoliceBuilder {
+        <<interface>>
+        + DefinirTipo(string tipo)
+        + AdicionarAssistencia24h()
+        + AdicionarCoberturaInternacional()
+        + AdicionarProtecaoTerceiros()
+        + Construir() ApolicePersonalizada
+    }
+
+    class ApoliceAutoBuilder {
+        - ApolicePersonalizada _apolice
+        + DefinirTipo(string tipo)
+        + AdicionarAssistencia24h()
+        + AdicionarCoberturaInternacional()
+        + AdicionarProtecaoTerceiros()
+        + Construir() ApolicePersonalizada
+    }
+
+    class GeradorApolice {
+        + CriarSimples(IApoliceBuilder) ApolicePersonalizada
+        + CriarCompleta(IApoliceBuilder) ApolicePersonalizada
+    }
+
+    IApoliceBuilder <|.. ApoliceAutoBuilder
+    ApoliceAutoBuilder --> ApolicePersonalizada
+    GeradorApolice --> IApoliceBuilder
+``` 
+
+---
+
+#### 🧬 **Prototype – Clonagem de Apólice padrão (Template)**
+
+##### 📘 Cenário:
+
+Clientes da seguradora escolhem uma **apólice padrão como base**, e depois fazem pequenas customizações.
+
+---
+
+##### 🎯 Objetivo:
+
+Evitar reconstruir apólices complexas do zero — clone e personalize.
+
+##### ✅ Exemplo em C#:
+
+```csharp
+// Interface Prototype
+interface IApolicePrototype {
+    Apolice Clone();
+}
+
+// Classe concreta
+class Apolice : IApolicePrototype {
+    public string Tipo { get; set; }
+    public string Cobertura { get; set; }
+    public decimal ValorMensal { get; set; }
+
+    public Apolice Clone() => (Apolice)this.MemberwiseClone();
+}
+```
+
+##### 🧪 Uso prático:
+
+```csharp
+// Criando uma apólice padrão
+var padraoVida = new Apolice {
+    Tipo = "Vida Standard",
+    Cobertura = "Hospitalar + Funeral",
+    ValorMensal = 150.00m
+};
+
+// Clonando para personalização
+var apoliceJoao = padraoVida.Clone();
+apoliceJoao.ValorMensal = 170.00m; // customização leve
+
+Console.WriteLine($"Apólice João: {apoliceJoao.Tipo}, {apoliceJoao.Cobertura}, {apoliceJoao.ValorMensal}");
+```
+
+```mermaid
+
+```
+classDiagram
+    class IApolicePrototype {
+        <<interface>>
+        + Clone() Apolice
+    }
+
+    class Apolice {
+        - string Tipo
+        - string Cobertura
+        - decimal ValorMensal
+        + Clone() Apolice
+    }
+
+    IApolicePrototype <|.. Apolice
+---
+
+#### 🧠 Quando usar na seguradora?
+
+| Padrão        | Quando usar                                                                         |
+| ------------- | ----------------------------------------------------------------------------------- |
+| **Builder**   | Quando o cliente **monta passo a passo** uma apólice com várias opções flexíveis    |
+| **Prototype** | Quando você tem apólices padrão (templates) e quer **clonar e adaptar** rapidamente |
+
+
+
+### 7. Referências:
+
+* https://sourcemaking.com/design_patterns/creational_patterns
