@@ -31,6 +31,46 @@
 
 * Singleton, Factory Method, Abstract Factory, Builder, Prototype
 
+
+### Revisão:
+
+| Padrão               | Descrição rápida                                                                                                                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Singleton**        | Garante que uma classe tenha **apenas uma instância** e fornece um ponto de acesso global. Ideal para coisas como conexão com banco ou configuração global.                                                   |
+| **Factory Method**   | Define uma **interface para criar um objeto**, mas deixa que as subclasses decidam **qual classe instanciar**. Promove o **desacoplamento** entre cliente e a criação do objeto.                              |
+| **Abstract Factory** | Cria **famílias de objetos relacionados** sem depender de suas classes concretas. Útil para cenários com múltiplas variantes de produtos.                                                                     |
+| **Builder**          | Separa a construção de um objeto complexo da sua representação, permitindo a criação de diferentes representações **com o mesmo processo de construção**. Ideal para objetos com muitos parâmetros opcionais. |
+| **Prototype**        | Cria novos objetos copiando um **protótipo existente**. Útil quando a criação via `new` é cara e o objeto pode ser copiado de forma eficiente.                                                                |
+
+
+#### Diferenças entre o Factory Method e o Abstract Factory
+
+| Característica           | **Factory Method**                               | **Abstract Factory**                                            |
+| ------------------------ | ------------------------------------------------ | --------------------------------------------------------------- |
+| **Propósito**            | Criar objetos de uma mesma família, um por vez   | Criar **famílias de objetos relacionados** entre si             |
+| **Padrão base**          | Herança (classes derivadas definem a criação)    | Composição (fábricas concretas retornam famílias de produtos)   |
+| **Criação de objetos**   | Um único produto por vez                         | Múltiplos produtos relacionados                                 |
+| **Escalabilidade**       | Mais simples, menos flexível                     | Mais flexível para famílias inteiras de produtos                |
+| **Exemplo clássico**     | Criar um botão (WindowsButton, LinuxButton)      | Criar UI inteira (Botão, Menu, Janela para Windows, Linux, etc) |
+| **Número de interfaces** | Interface única para o produto                   | Múltiplas interfaces (uma para cada tipo de produto)            |
+| **Complexidade**         | Média                                            | Alta                                                            |
+| **Quando usar**          | Quando subclasses decidem qual objeto instanciar | Quando produtos **precisam funcionar juntos** (consistência)    |
+
+
+
+---
+
+## 📊 Comparativo aplicado à seguradora
+
+| Característica                  | **Factory Method**                     | **Abstract Factory**                                            |
+| ------------------------------- | -------------------------------------- | --------------------------------------------------------------- |
+| **Exemplo aplicado**            | Criar apólice individual: Auto ou Vida | Criar conjunto completo de apólices (Auto + Vida) para PF ou PJ |
+| **Escopo de criação**           | Um tipo de apólice por vez             | Conjunto de produtos relacionados                               |
+| **Flexibilidade de combinação** | Limitada – uma apólice por fábrica     | Alta – combinação de múltiplos produtos em família              |
+| **Consistência entre produtos** | Não garantida                          | Garantida (ex: todos produtos compatíveis com PF ou PJ)         |
+
+
+
 ---
 
 ## 🏗️ **2. Padrão Builder (35 min)**
