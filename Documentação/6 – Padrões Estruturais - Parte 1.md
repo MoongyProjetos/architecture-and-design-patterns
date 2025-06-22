@@ -147,6 +147,43 @@ public class Circle : Shape {
 }
 ```
 
+```mermaid
+classDiagram
+    class IRenderer {
+        +Render(string shape)
+    }
+
+    class VectorRenderer {
+        +Render(string shape)
+    }
+
+    class RasterRenderer {
+        +Render(string shape)
+    }
+
+    class Shape {
+        #IRenderer renderer
+        +Draw()
+    }
+
+    class Circle {
+        +Draw()
+    }
+
+    IRenderer <|.. VectorRenderer
+    IRenderer <|.. RasterRenderer
+    Shape <|-- Circle
+    Shape --> IRenderer : uses
+```
+
+### 💡 Explicação:
+
+* `IRenderer` é a **implementação** (interface).
+* `VectorRenderer` e `RasterRenderer` são implementações concretas.
+* `Shape` é a **abstração**.
+* `Circle` é uma abstração refinada que depende da composição de `IRenderer`.
+
+
 ### 💬 Discussão:
 
 * Quando usar Bridge em vez de herança?
