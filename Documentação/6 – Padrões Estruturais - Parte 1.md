@@ -42,6 +42,63 @@ Padrões estruturais lidam com a **composição de classes e objetos**, ajudando
 
 ---
 
+| Padrão           | Descrição rápida                                                                                                                                                        |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🧩 **Adapter**   | Permite que interfaces incompatíveis trabalhem juntas, adaptando uma interface para outra esperada pelo cliente.                                                        |
+| 🌉 **Bridge**    | Desacopla uma abstração da sua implementação, permitindo que ambas possam variar independentemente.                                                                     |
+| 🌲 **Composite** | Compõe objetos em estruturas de árvore para representar hierarquias parte-todo, permitindo que clientes tratem objetos individuais e composições de forma uniforme.     |
+| 🎭 **Decorator** | Adiciona responsabilidades adicionais a um objeto dinamicamente, sem alterar sua estrutura original.                                                                    |
+| 🚪 **Facade**    | Fornece uma interface simplificada para um conjunto complexo de interfaces em um subsistema, facilitando o uso do sistema.                                              |
+| 🪶 **Flyweight** | Usa compartilhamento para suportar grandes quantidades de objetos com eficiência, reduzindo uso de memória ao compartilhar estados comuns.                              |
+| 🛡️ **Proxy**    | Fornece um substituto ou representante de outro objeto para controlar o acesso a ele, podendo adicionar funcionalidades extras como controle de acesso ou lazy loading. |
+
+
+
+---
+
+### 🧩 **Adapter** – "O Tradutor entre Sistemas"
+
+Imagine que sua seguradora acabou de comprar uma empresa menor que tem um **sistema antigo de apólices**. Esse sistema fala um "idioma diferente" do sistema moderno que você já usa.
+
+💬 O que acontece?
+Os dois sistemas **não se entendem**. Um pede "CPF do cliente", o outro responde "Identificador Pessoal". Um quer XML, o outro fala JSON.
+
+✅ Como o Adapter ajuda?
+Ele é como um **intérprete** que fica no meio dos dois sistemas. Quando o sistema novo pede uma apólice, o Adapter traduz o pedido para o formato do sistema antigo, pega a resposta e **tradu-la de volta** para o novo.
+
+📌 Exemplo simples:
+O seu sistema moderno diz: “Quero os dados da apólice do João.”
+O Adapter responde: “Claro, vou perguntar para o sistema antigo e devolver para você do jeitinho que entende.”
+
+---
+
+### 🌉 **Bridge** – "Escolha o Relatório e o Formato Separadamente"
+
+Na seguradora, você tem **vários tipos de relatórios**, como:
+
+* Relatório de **sinistro de carro**
+* Relatório de **sinistro de casa**
+* Relatório de **sinistro de saúde**
+
+E você pode querer **exportar** esses relatórios em **formatos diferentes**:
+
+* PDF para enviar ao cliente
+* CSV para análises internas
+* XML para órgãos reguladores
+
+💬 O problema:
+Se você tivesse que fazer **um sistema diferente para cada combinação** (carro + PDF, carro + CSV, casa + PDF...), teria que criar um **monte de código duplicado**.
+
+✅ Como o Bridge ajuda?
+Ele permite que você **separe o tipo do relatório** do **formato de exportação**.
+Você pode combinar qualquer tipo com qualquer formato **sem misturar os códigos**.
+
+📌 Exemplo simples:
+Pense numa **cafeteira** com cápsulas. Você escolhe **o sabor** (relatório) e **o copo** (formato). A cafeteira (Bridge) combina os dois e entrega o café.
+
+
+---
+
 ## 🔌 Parte 2: Adapter (25 min)
 
 ### 🎯 Intenção:
@@ -568,3 +625,285 @@ Esse exemplo mostra a **separação dos dados** em `PersonData`, protegendo os a
 ## 📎 Materiais de Apoio 
 
 https://sourcemaking.com/design_patterns/private_class_data 
+
+
+## Seguradora 
+
+Aqui estão exemplos dos padrões estruturais **Adapter**, **Bridge**, **Composite** e **Private Class Data**, **adaptados para um contexto de seguradora**, com explicações e sugestões de uso real.
+
+---
+
+## 🧩 1. Adapter – Integração com sistema legado de apólices
+
+### 🧠 Contexto:
+
+A seguradora possui um sistema legado (`LegacyPolicyService`) que retorna os dados da apólice num formato antigo, mas o sistema moderno espera uma interface comum chamada `IPolicyService`.
+
+### 🧱 Exemplo:
+
+```csharp
+// Interface moderna usada no novo sistema
+public interface IPolicyService {
+    PolicyDetails GetPolicy(string policyId);
+}
+
+// Sistema legado (interface diferente)
+public class LegacyPolicyService {
+    public string GetPolicyData(string id) {
+        // retorna JSON string com dados da apólice
+        return "{ \"policyNumber\": \"ABC123\" }";
+    }
+}
+
+// Adapter
+public class LegacyPolicyAdapter : IPolicyService {
+    private readonly LegacyPolicyService _legacyService;
+
+    public LegacyPolicyAdapter(LegacyPolicyService legacyService) {
+        _legacyService = legacyService;
+    }
+
+    public PolicyDetails GetPolicy(string policyId) {
+        var json = _legacyService.GetPolicyData(policyId);
+        return JsonSerializer.Deserialize<PolicyDetails>(json);
+    }
+}
+```
+
+
+```mermaid
+classDiagram
+    class IPolicyService {
+        +GetPolicy(string policyId) PolicyDetails
+    }
+
+    class LegacyPolicyService {
+        +GetPolicyData(string id) string
+    }
+
+    class LegacyPolicyAdapter {
+        -LegacyPolicyService _legacyService
+        +LegacyPolicyAdapter(LegacyPolicyService legacyService)
+        +GetPolicy(string policyId) PolicyDetails
+    }
+
+    IPolicyService <|.. LegacyPolicyAdapter
+    LegacyPolicyAdapter --> LegacyPolicyService
+```
+
+👉 **Uso real**: adaptar sistemas legados de cálculo de prêmio, validação de documentos ou emissão de apólices.
+
+---
+
+## 🌉 2. Bridge – Relatórios de sinistros com múltiplos formatos
+
+### 🧠 Contexto:
+
+Relatórios de sinistros podem variar por tipo (ex: residencial, automóvel, saúde) e precisam ser exportados em diferentes formatos (ex: PDF, CSV, XML).
+
+### 🧱 Exemplo:
+
+```csharp
+// Implementor
+public interface IReportExporter {
+    void Export(string content);
+}
+
+// Concrete Implementors
+public class PdfExporter : IReportExporter {
+    public void Export(string content) => Console.WriteLine($"Exportando PDF: {content}");
+}
+
+public class CsvExporter : IReportExporter {
+    public void Export(string content) => Console.WriteLine($"Exportando CSV: {content}");
+}
+
+// Abstraction
+public abstract class ClaimReport {
+    protected IReportExporter _exporter;
+    public ClaimReport(IReportExporter exporter) => _exporter = exporter;
+    public abstract void Generate();
+}
+
+// Refined Abstraction
+public class AutoClaimReport : ClaimReport {
+    public AutoClaimReport(IReportExporter exporter) : base(exporter) { }
+
+    public override void Generate() {
+        var content = "Relatório de sinistro automóvel";
+        _exporter.Export(content);
+    }
+}
+```
+
+
+
+```mermaid
+classDiagram
+    class IReportExporter {
+        +Export(string content)
+    }
+
+    class PdfExporter {
+        +Export(string content)
+    }
+
+    class CsvExporter {
+        +Export(string content)
+    }
+
+    class ClaimReport {
+        #IReportExporter _exporter
+        +Generate()
+    }
+
+    class AutoClaimReport {
+        +Generate()
+    }
+
+    IReportExporter <|.. PdfExporter
+    IReportExporter <|.. CsvExporter
+    ClaimReport <|-- AutoClaimReport
+    ClaimReport --> IReportExporter : uses
+```
+
+
+👉 **Uso real**: gerar relatórios ou documentos que precisam mudar de tipo ou formato sem acoplamento.
+
+---
+
+## 🌲 3. Composite – Estrutura de coberturas de um seguro
+
+### 🧠 Contexto:
+
+Um plano de seguro pode conter coberturas compostas: por exemplo, “Seguro Auto Completo” é composto por “Danos a Terceiros”, “Roubo”, “Incêndio”, etc.
+
+### 🧱 Exemplo:
+
+```csharp
+// Component
+public abstract class Coverage {
+    public abstract decimal GetPremium();
+}
+
+// Leaf
+public class FireCoverage : Coverage {
+    public override decimal GetPremium() => 50m;
+}
+
+public class TheftCoverage : Coverage {
+    public override decimal GetPremium() => 40m;
+}
+
+// Composite
+public class CompositeCoverage : Coverage {
+    private List<Coverage> _coverages = new();
+
+    public void Add(Coverage coverage) => _coverages.Add(coverage);
+
+    public override decimal GetPremium() =>
+        _coverages.Sum(c => c.GetPremium());
+}
+```
+
+```csharp
+// Uso
+var fullCoverage = new CompositeCoverage();
+fullCoverage.Add(new FireCoverage());
+fullCoverage.Add(new TheftCoverage());
+
+Console.WriteLine($"Prêmio total: {fullCoverage.GetPremium()}"); // 90
+```
+
+
+
+```mermaid
+classDiagram
+    class Coverage {
+        +GetPremium() decimal
+    }
+
+    class FireCoverage {
+        +GetPremium() decimal
+    }
+
+    class TheftCoverage {
+        +GetPremium() decimal
+    }
+
+    class CompositeCoverage {
+        -List~Coverage~ _coverages
+        +Add(Coverage coverage)
+        +GetPremium() decimal
+    }
+
+    Coverage <|-- FireCoverage
+    Coverage <|-- TheftCoverage
+    Coverage <|-- CompositeCoverage
+    CompositeCoverage --> Coverage : contains
+```
+
+
+
+👉 **Uso real**: montar planos personalizáveis de seguros com composição dinâmica de coberturas.
+
+---
+
+## 🔐 4. Private Class Data – Proteção de dados sensíveis da apólice
+
+### 🧠 Contexto:
+
+A seguradora precisa proteger dados sensíveis (ex: valor da apólice, CPF, prêmio mensal) e garantir que esses dados não sejam modificados diretamente.
+
+### 🧱 Exemplo:
+
+```csharp
+// Private class data
+public class PolicyData {
+    public string PolicyHolder { get; }
+    public decimal Premium { get; }
+    public string CPF { get; }
+
+    public PolicyData(string holder, decimal premium, string cpf) {
+        PolicyHolder = holder;
+        Premium = premium;
+        CPF = cpf;
+    }
+}
+
+// Classe principal expõe apenas leitura
+public class InsurancePolicy {
+    private readonly PolicyData _data;
+
+    public InsurancePolicy(string holder, decimal premium, string cpf) {
+        _data = new PolicyData(holder, premium, cpf);
+    }
+
+    public string GetHolder() => _data.PolicyHolder;
+    public decimal GetPremium() => _data.Premium;
+    public string GetCPFMasked() => $"***.***.{_data.CPF[^3..]}";
+}
+```
+
+
+```mermaid
+classDiagram
+    class PolicyData {
+        +PolicyHolder : string
+        +Premium : decimal
+        +CPF : string
+    }
+
+    class InsurancePolicy {
+        -PolicyData _data
+        +InsurancePolicy(string, decimal, string)
+        +GetHolder() string
+        +GetPremium() decimal
+        +GetCPFMasked() string
+    }
+
+    InsurancePolicy --> PolicyData : encapsulates
+```
+
+
+👉 **Uso real**: garantir **imutabilidade**, **encapsulamento forte** e proteger dados sensíveis contra alterações externas.
