@@ -343,3 +343,273 @@ classDiagram
 
 ---
 
+Aqui estão **exemplos para os padrões Decorator, Facade, Flyweight e Proxy**, todos adaptados para **o contexto de uma seguradora**, com **código em C#** e **diagramas Mermaid** para visualização.
+
+---
+
+## 🎭 **Decorator** – Adicionando Coberturas Extras a uma Apólice
+
+### 🎯 **Problema**: você quer adicionar coberturas extras a uma apólice de forma flexível, sem criar heranças para cada combinação.
+
+---
+
+### 🏛️ **Exemplo C#**
+
+```csharp
+interface IApólice {
+    string Descricao();
+    decimal CalcularPremio();
+}
+
+class ApoliceBasica : IApólice {
+    public string Descricao() => "Apolice Básica";
+    public decimal CalcularPremio() => 1000;
+}
+
+class CoberturaRoubo : IApólice {
+    private readonly IApólice _apolice;
+    public CoberturaRoubo(IApólice apolice) => _apolice = apolice;
+
+    public string Descricao() => _apolice.Descricao() + " + Cobertura Roubo";
+    public decimal CalcularPremio() => _apolice.CalcularPremio() + 250;
+}
+
+class CoberturaIncendio : IApólice {
+    private readonly IApólice _apolice;
+    public CoberturaIncendio(IApólice apolice) => _apolice = apolice;
+
+    public string Descricao() => _apolice.Descricao() + " + Cobertura Incêndio";
+    public decimal CalcularPremio() => _apolice.CalcularPremio() + 400;
+}
+```
+
+---
+
+### 📐 **Mermaid – Decorator**
+
+```mermaid
+classDiagram
+    class IApólice {
+        <<interface>>
+        +Descricao()
+        +CalcularPremio()
+    }
+
+    class ApoliceBasica
+    class CoberturaRoubo
+    class CoberturaIncendio
+
+    IApólice <|.. ApoliceBasica
+    IApólice <|.. CoberturaRoubo
+    IApólice <|.. CoberturaIncendio
+    CoberturaRoubo --> IApólice
+    CoberturaIncendio --> IApólice
+```
+
+---
+
+## 🚪 **Facade** – Subscrição de Apólice com Vários Sistemas
+
+### 🎯 **Problema**: subscrever uma apólice exige interação com múltiplos sistemas (validação, cálculo de risco, geração de contrato).
+
+---
+
+### 🏛️ **Exemplo C#**
+
+```csharp
+class ValidadorDados {
+    public void Validar(string cpf) => Console.WriteLine($"Validação de CPF: {cpf}");
+}
+
+class AvaliadorRisco {
+    public int Avaliar(string cpf) => 85;
+}
+
+class GeradorContrato {
+    public void Gerar(string cpf, int risco) =>
+        Console.WriteLine($"Contrato gerado para {cpf} com risco {risco}");
+}
+
+// Facade
+class SubscricaoFacade {
+    private ValidadorDados _validador = new();
+    private AvaliadorRisco _avaliador = new();
+    private GeradorContrato _gerador = new();
+
+    public void SubscricaoCompleta(string cpf) {
+        _validador.Validar(cpf);
+        int risco = _avaliador.Avaliar(cpf);
+        _gerador.Gerar(cpf, risco);
+    }
+}
+```
+
+---
+
+### 📐 **Mermaid – Facade**
+
+```mermaid
+classDiagram
+    class ValidadorDados {
+        +Validar(cpf)
+    }
+
+    class AvaliadorRisco {
+        +Avaliar(cpf)
+    }
+
+    class GeradorContrato {
+        +Gerar(cpf, risco)
+    }
+
+    class SubscricaoFacade {
+        +SubscricaoCompleta(cpf)
+    }
+
+    SubscricaoFacade --> ValidadorDados
+    SubscricaoFacade --> AvaliadorRisco
+    SubscricaoFacade --> GeradorContrato
+```
+
+---
+
+## 🪶 **Flyweight** – Compartilhando Tabelas de Cálculo
+
+### 🎯 **Problema**: várias apólices usam as **mesmas tabelas de risco**, ocupando muita memória se duplicadas.
+
+---
+
+### 🏛️ **Exemplo C#**
+
+```csharp
+class TabelaRisco {
+    public string Tipo { get; }
+    public decimal Fator { get; }
+
+    public TabelaRisco(string tipo, decimal fator) {
+        Tipo = tipo;
+        Fator = fator;
+    }
+}
+
+class TabelaRiscoFactory {
+    private Dictionary<string, TabelaRisco> _cache = new();
+
+    public TabelaRisco GetTabela(string tipo) {
+        if (!_cache.ContainsKey(tipo))
+            _cache[tipo] = new TabelaRisco(tipo, tipo == "Alta" ? 1.5m : 1.0m);
+        return _cache[tipo];
+    }
+}
+
+class Apolice {
+    public string Cliente { get; }
+    public TabelaRisco Risco { get; }
+
+    public Apolice(string cliente, TabelaRisco risco) {
+        Cliente = cliente;
+        Risco = risco;
+    }
+
+    public void Imprimir() =>
+        Console.WriteLine($"{Cliente} usa tabela {Risco.Tipo} (fator {Risco.Fator})");
+}
+```
+
+---
+
+### 📐 **Mermaid – Flyweight**
+
+```mermaid
+classDiagram
+    class TabelaRisco {
+        +Tipo
+        +Fator
+    }
+
+    class TabelaRiscoFactory {
+        -cache : Dictionary~string, TabelaRisco~
+        +GetTabela(tipo)
+    }
+
+    class Apolice {
+        +Cliente
+        +Risco
+    }
+
+    Apolice --> TabelaRisco
+    TabelaRiscoFactory --> TabelaRisco
+```
+
+---
+
+## 🛡️ **Proxy** – Controle de Acesso a Documentos de Apólice
+
+### 🎯 **Problema**: só usuários autorizados podem visualizar documentos confidenciais (como PDF da apólice).
+
+---
+
+### 🏛️ **Exemplo C#**
+
+```csharp
+interface IApresentadorDocumento {
+    void Mostrar();
+}
+
+class DocumentoReal : IApresentadorDocumento {
+    private readonly string _arquivo;
+
+    public DocumentoReal(string arquivo) {
+        _arquivo = arquivo;
+        Console.WriteLine($"Carregando documento: {_arquivo}");
+    }
+
+    public void Mostrar() => Console.WriteLine($"Mostrando: {_arquivo}");
+}
+
+class ProxyDocumento : IApresentadorDocumento {
+    private DocumentoReal _real;
+    private readonly string _arquivo;
+    private readonly string _usuario;
+
+    public ProxyDocumento(string arquivo, string usuario) {
+        _arquivo = arquivo;
+        _usuario = usuario;
+    }
+
+    public void Mostrar() {
+        if (_usuario != "corretor")
+            Console.WriteLine("Acesso negado.");
+        else {
+            _real ??= new DocumentoReal(_arquivo);
+            _real.Mostrar();
+        }
+    }
+}
+```
+
+---
+
+### 📐 **Mermaid – Proxy**
+
+```mermaid
+classDiagram
+    class IApresentadorDocumento {
+        <<interface>>
+        +Mostrar()
+    }
+
+    class DocumentoReal {
+        +Mostrar()
+    }
+
+    class ProxyDocumento {
+        -arquivo
+        -usuario
+        +Mostrar()
+    }
+
+    IApresentadorDocumento <|.. DocumentoReal
+    IApresentadorDocumento <|.. ProxyDocumento
+    ProxyDocumento --> DocumentoReal
+```
