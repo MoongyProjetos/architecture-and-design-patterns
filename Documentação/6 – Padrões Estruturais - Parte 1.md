@@ -50,6 +50,7 @@ Permitir que classes com interfaces incompatíveis trabalhem juntas.
 
 ![alt text](image-7.png)
 
+![alt text](image-8.png)
 ### 📚 Exemplo conceitual:
 
 ```csharp
