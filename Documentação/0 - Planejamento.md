@@ -30,7 +30,7 @@
 
 ---
 
-### 🔹 **Sessão 5 – Padrões Criacionais: Parte 1**
+### 🔹 **Sessão 4 – Padrões Criacionais: Parte 1**
 
 * Singleton
 * Factory Method
@@ -38,7 +38,7 @@
 
 ---
 
-### 🔹 **Sessão 6 – Padrões Criacionais: Parte 2**
+### 🔹 **Sessão 5 – Padrões Criacionais: Parte 2**
 
 * Builder
 * Prototype
@@ -46,7 +46,7 @@
 
 ---
 
-### 🔹 **Sessão 7 – Padrões Estruturais: Parte 1**
+### 🔹 **Sessão 6 – Padrões Estruturais: Parte 1**
 
 * Adapter
 * Bridge
@@ -54,7 +54,7 @@
 
 ---
 
-### 🔹 **Sessão 8 – Padrões Estruturais: Parte 2**
+### 🔹 **Sessão 7 – Padrões Estruturais: Parte 2**
 
 * Decorator
 * Facade
@@ -63,7 +63,7 @@
 
 ---
 
-### 🔹 **Sessão 9 – Padrões Comportamentais: Parte 1**
+### 🔹 **Sessão 8 – Padrões Comportamentais: Parte 1**
 
 * Observer
 * Strategy
@@ -71,7 +71,7 @@
 
 ---
 
-### 🔹 **Sessão 10 – Padrões Comportamentais: Parte 2**
+### 🔹 **Sessão 9 – Padrões Comportamentais: Parte 2**
 
 * Chain of Responsibility
 * State
@@ -80,7 +80,7 @@
 
 ---
 
-### 🔹 **Sessão 11 – Padrões Arquiteturais em Sistemas Modernos**
+### 🔹 **Sessão 10 – Padrões Arquiteturais em Sistemas Modernos**
 
 * DDD – Domain-Driven Design
 * Camadas (Layered Architecture)
@@ -88,7 +88,7 @@
 
 ---
 
-### 🔹 **Sessão 12 – Arquiteturas Assíncronas e Event-Driven**
+### 🔹 **Sessão 11 – Arquiteturas Assíncronas e Event-Driven**
 
 * Event-Driven Architecture
 * Patterns para sistemas distribuídos
@@ -96,7 +96,7 @@
 
 ---
 
-### 🔹 **Sessão 13 – Preparação para Projeto Final**
+### 🔹 **Sessão 12 – Preparação para Projeto Final**
 
 * Apresentação dos desafios
 * Escolha dos temas e tecnologias
@@ -105,14 +105,14 @@
 
 ---
 
-### 🔹 **Sessão 14 – Desenvolvimento Assistido do Projeto Final**
+### 🔹 **Sessão 13 – Desenvolvimento Assistido do Projeto Final**
 
 * Hands-on supervisionado
 * Dúvidas e refinamento da aplicação dos padrões
 
 ---
 
-### 🔹 **Sessão 15 – Apresentação dos Projetos Finais**
+### 🔹 **Sessão 14 – Apresentação dos Projetos Finais**
 
 * Apresentações por grupo/aluno
 * Feedback e discussões
