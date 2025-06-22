@@ -92,6 +92,31 @@ class ComLeite : ICafe {
 }
 ```
 
+
+```mermaid
+classDiagram
+    class ICafe {
+        <<interface>>
+        +Descricao() string
+        +Custo() double
+    }
+
+    class CafeSimples {
+        +Descricao() string
+        +Custo() double
+    }
+
+    class ComLeite {
+        -ICafe cafe
+        +Descricao() string
+        +Custo() double
+    }
+
+    ICafe <|.. CafeSimples
+    ICafe <|.. ComLeite
+    ComLeite --> ICafe
+```
+
 ### ✅ **Vantagens**
 
 * Adição flexível de comportamentos
@@ -129,6 +154,28 @@ class HomeTheaterFacade {
     }
 }
 ```
+
+
+```mermaid
+classDiagram
+    class SistemaVideo {
+        +Ligar()
+    }
+
+    class SistemaSom {
+        +Ligar()
+    }
+
+    class HomeTheaterFacade {
+        -SistemaVideo video
+        -SistemaSom som
+        +AssistirFilme()
+    }
+
+    HomeTheaterFacade --> SistemaVideo
+    HomeTheaterFacade --> SistemaSom
+```
+
 
 ### ✅ **Vantagens**
 
@@ -177,6 +224,28 @@ class CarroModeloFactory {
     }
 }
 ```
+
+
+```mermaid
+classDiagram
+    class CarroModelo {
+        +Modelo : string
+    }
+
+    class Carro {
+        +Modelo : CarroModelo
+        +Cor : string
+    }
+
+    class CarroModeloFactory {
+        -cache : Dictionary~string, CarroModelo~
+        +GetModelo(string) CarroModelo
+    }
+
+    Carro --> CarroModelo
+    CarroModeloFactory --> CarroModelo
+```
+
 
 ### ✅ **Vantagens**
 
@@ -228,6 +297,31 @@ class ProxyImagem : IImagem {
     }
 }
 ```
+
+
+```mermaid
+classDiagram
+    class IImagem {
+        <<interface>>
+        +Mostrar()
+    }
+
+    class ImagemReal {
+        -arquivo : string
+        +Mostrar()
+    }
+
+    class ProxyImagem {
+        -imagem : ImagemReal
+        -arquivo : string
+        +Mostrar()
+    }
+
+    IImagem <|.. ImagemReal
+    IImagem <|.. ProxyImagem
+    ProxyImagem --> ImagemReal
+```
+
 
 ### ✅ **Vantagens**
 
