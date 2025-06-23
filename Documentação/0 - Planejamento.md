@@ -1,6 +1,6 @@
 ## 📆 Planejamento das Sessões – 30h / 15 Encontros (2h cada)
 
-### 🔹 **Sessão 1 – Introdução ao Curso e Arquitetura de Software** 
+### 🔹 **Sessão 1 – Introdução ao Curso e Arquitetura de Software**  - 02/06/2025
 
 * Apresentação do curso, objetivos e metodologia
 * O que é Arquitetura de Software
@@ -9,7 +9,7 @@
 
 ---
 
-### 🔹 **Sessão 2 – Estilos e Padrões Arquiteturais**
+### 🔹 **Sessão 2 – Estilos e Padrões Arquiteturais** - 04/06/2025
 
 * Padrões arquiteturais: MVC, MVP, MVVM
 * Comparação entre estilos e aplicações
@@ -17,7 +17,7 @@
 
 ---
 
-### 🔹 **Sessão 3 – Princípios de Design: Visão Geral** 
+### 🔹 **Sessão 3 – Princípios de Design: Visão Geral** - 11/06/2025
 
 * Introdução aos princípios SOLID
 * SRP – Single Responsibility Principle
@@ -30,7 +30,7 @@
 
 ---
 
-### 🔹 **Sessão 4 – Padrões Criacionais: Parte 1**
+### 🔹 **Sessão 4 – Padrões Criacionais: Parte 1** - 16/06/2025
 
 * Singleton
 * Factory Method
@@ -38,7 +38,7 @@
 
 ---
 
-### 🔹 **Sessão 5 – Padrões Criacionais: Parte 2**
+### 🔹 **Sessão 5 – Padrões Criacionais: Parte 2** - 18/06/2025
 
 * Builder
 * Prototype
@@ -46,7 +46,7 @@
 
 ---
 
-### 🔹 **Sessão 6 – Padrões Estruturais: Parte 1**
+### 🔹 **Sessão 6 – Padrões Estruturais: Parte 1** - 25/06/2025
 
 * Adapter
 * Bridge
@@ -54,7 +54,7 @@
 
 ---
 
-### 🔹 **Sessão 7 – Padrões Estruturais: Parte 2**
+### 🔹 **Sessão 7 – Padrões Estruturais: Parte 2** - 30/06/2025
 
 * Decorator
 * Facade
@@ -63,7 +63,7 @@
 
 ---
 
-### 🔹 **Sessão 8 – Padrões Comportamentais: Parte 1**
+### 🔹 **Sessão 8 – Padrões Comportamentais: Parte 1** - 04/07/2025
 
 * Observer
 * Strategy
@@ -71,7 +71,7 @@
 
 ---
 
-### 🔹 **Sessão 9 – Padrões Comportamentais: Parte 2**
+### 🔹 **Sessão 9 – Padrões Comportamentais: Parte 2** - 07/07/2025
 
 * Chain of Responsibility
 * State
@@ -80,7 +80,7 @@
 
 ---
 
-### 🔹 **Sessão 10 – Padrões Arquiteturais em Sistemas Modernos**
+### 🔹 **Sessão 10 – Padrões Arquiteturais em Sistemas Modernos** - 09/07/2025
 
 * DDD – Domain-Driven Design
 * Camadas (Layered Architecture)
@@ -88,7 +88,7 @@
 
 ---
 
-### 🔹 **Sessão 11 – Arquiteturas Assíncronas e Event-Driven**
+### 🔹 **Sessão 11 – Arquiteturas Assíncronas e Event-Driven** - 14/07/2025
 
 * Event-Driven Architecture
 * Patterns para sistemas distribuídos
@@ -96,7 +96,7 @@
 
 ---
 
-### 🔹 **Sessão 12 – Preparação para Projeto Final**
+### 🔹 **Sessão 12 – Preparação para Projeto Final** - 16/07/2025
 
 * Apresentação dos desafios
 * Escolha dos temas e tecnologias
@@ -105,18 +105,22 @@
 
 ---
 
-### 🔹 **Sessão 13 – Desenvolvimento Assistido do Projeto Final**
+### 🔹 **Sessão 13 – Desenvolvimento Assistido do Projeto Final** - 21/07/2025
 
 * Hands-on supervisionado
 * Dúvidas e refinamento da aplicação dos padrões
 
 ---
 
-### 🔹 **Sessão 14 – Apresentação dos Projetos Finais**
+### 🔹 **Sessão 14 – Apresentação dos Projetos Finais** - 23/07/2025
 
 * Apresentações por grupo/aluno
 * Feedback e discussões
 * Conclusões e próximos passos
+
+### 🔹 **Sessão 15 – A definir** - 28/07/2025
+
+* ...
 
 
 ---
