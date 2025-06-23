@@ -30,7 +30,7 @@ Apresentar os princípios de design SOLID, com foco nos dois primeiros (SRP e OC
 * **Objetivo comum:** escrever código **mais legível, reutilizável e de fácil manutenção**
 
 
-![alt text](image-2.png)
+![alt text](Imagens/image-2.png)
 
 >Exemplos em .NET C# 
 >https://github.com/SyncfusionExamples/solid-principle-in-Csharp/tree/master
@@ -181,6 +181,6 @@ dotnet run
 ```
 
 
-![alt text](image-3.png)
+![alt text](Imagens/image-3.png)
 
 >Estrutura base da aplicação

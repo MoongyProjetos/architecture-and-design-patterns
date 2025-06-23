@@ -34,7 +34,7 @@ A **MeuSeguro.Com** destaca-se pelo seu compromisso com a responsabilidade socia
 
 
 
-![alt text](image-1.png)
+![alt text](Imagens/image-1.png)
 
 
 
@@ -133,7 +133,7 @@ A **MeuSeguro.Com** destaca-se pelo seu compromisso com a responsabilidade socia
 * Simplicidade é amiga da manutenibilidade.
 
 
-![alt text](image.png)
+![alt text](Imagens/image.png)
 
 
 ## 🏛️ **Estilos e Padrões Arquiteturais**

@@ -462,7 +462,7 @@ O padrão **Object Pool**, é menos famoso que os outros padrões criacionais, m
 
 O **Object Pool** (ou **pool de objetos**) é um padrão criacional que **mantém um conjunto de objetos prontos para uso**, reaproveitando instâncias em vez de criar e destruir objetos repetidamente.
 
-![alt text](image-6.png)
+![alt text](Imagens/image-6.png)
 
 ---
 
@@ -593,7 +593,7 @@ classDiagram
 
 O **Object Pool** é um padrão de criação que **mantém um conjunto de objetos prontos para uso**, evitando o custo de criação e destruição repetida de instâncias (muito útil para objetos "caros", como conexões de banco, threads ou conexões de rede).
 
-![alt text](image-5.png)
+![alt text](Imagens/image-5.png)
 
 Essa imagem mostra a estrutura de funcionamento de uma **pilha (stack)** com operações básicas de `push` (inserção) e `pop` (remoção). No contexto de **design patterns**, mais especificamente do padrão **Object Pool**, ela pode ser usada para **ilustrar como objetos são gerenciados de forma reutilizável**.
 

@@ -105,9 +105,9 @@ Pense numa **cafeteira** com cápsulas. Você escolhe **o sabor** (relatório) e
 
 Permitir que classes com interfaces incompatíveis trabalhem juntas.
 
-![alt text](image-7.png)
+![alt text](Imagens/image-7.png)
 
-![alt text](image-8.png)
+![alt text](Imagens/image-8.png)
 ### 📚 Exemplo conceitual:
 
 ```csharp
