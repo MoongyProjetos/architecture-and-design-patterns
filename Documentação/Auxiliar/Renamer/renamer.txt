@@ -1,0 +1,11 @@
+## PowerShell.ps1
+
+
+Get-ChildItem -Recurse -File | 
+Sort-Object FullName -Descending |  # Garante que pastas internas sejam renomeadas antes das externas
+ForEach-Object {
+    if ($_.Name -like "AccountEventsParser.*") {
+        $novoNome = $_.Name -replace "^AccountEventsParser\.", "PartyEventsParser."
+        Rename-Item -Path $_.FullName -NewName $novoNome
+    }
+}
