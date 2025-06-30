@@ -1007,3 +1007,4 @@ classDiagram
 
 ## Boas Práticas
 [Exemplo uso de quality rules com .editorconfig](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/)
+[Library para trabalhar com Office](https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk)

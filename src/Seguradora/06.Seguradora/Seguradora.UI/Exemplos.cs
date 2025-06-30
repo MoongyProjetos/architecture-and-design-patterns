@@ -193,4 +193,24 @@ public static class Exemplos
         Console.WriteLine($"Data de Início: {policyDetails.StartDate}");
         Console.WriteLine($"Data de Término: {policyDetails.EndDate}");
     }
+
+    public static void ExemploUsoBridge()
+    {
+        Console.WriteLine("Exemplo de uso do Bridge:");
+
+        // Usando o relatório de apólice de automóvel com exportação em PDF
+        IReportExporter pdfExporter = new PdfExporter();
+        RelatorioApolice relatorioAutomovel = new RelatorioApoliceAutomovel(pdfExporter);
+        relatorioAutomovel.Gerar();
+
+        // Usando o relatório de apólice de vida com exportação em Word
+        IReportExporter wordExporter = new WordExporter();
+        RelatorioApolice relatorioVida = new RelatorioApoliceVida(wordExporter);
+        relatorioVida.Gerar();
+
+        // Usando o relatório de apólice de automóvel com exportação em CSV
+        IReportExporter csvExporter = new CsvExporter();
+        RelatorioApolice relatorioAutomovelCsv = new RelatorioApoliceAutomovel(csvExporter);
+        relatorioAutomovelCsv.Gerar();
+    }
 }

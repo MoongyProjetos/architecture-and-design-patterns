@@ -71,3 +71,7 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoAdapter();
 Console.WriteLine(separador);
+
+
+Exemplos.ExemploUsoBridge();
+Console.WriteLine(separador);
