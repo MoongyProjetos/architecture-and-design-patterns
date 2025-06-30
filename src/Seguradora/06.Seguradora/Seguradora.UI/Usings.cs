@@ -14,3 +14,5 @@ global using Seguradora.Logica.PadroesEstruturais.Bridge.Reports;
 
 
 global using Seguradora.Logica.PadroesEstruturais.Composite;
+
+global using Seguradora.Logica.PadroesEstruturais.PrivateClassData;

@@ -601,11 +601,6 @@ Usar os padrões discutidos para:
 
 ## Bônus - Private Class Data
 
-
-Claro! Aqui está a tradução para o português do texto que você enviou sobre o padrão **Private Class Data**:
-
----
-
 ### Dados Privados da Classe (Private Class Data)
 
 **Intenção**

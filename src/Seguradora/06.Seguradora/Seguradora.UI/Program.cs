@@ -82,3 +82,6 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoComposite();
 Console.WriteLine(separador);
+
+Exemplos.ExemploUsoPrivateDataClass();
+Console.WriteLine(separador);

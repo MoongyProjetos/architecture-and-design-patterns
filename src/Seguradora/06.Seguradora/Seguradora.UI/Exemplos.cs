@@ -237,4 +237,17 @@ public static class Exemplos
         Console.WriteLine("Exemplo de uso do Composite:");
         Console.WriteLine($"Valor total da cobertura do José: {seguroDoJose.CalcularValor()}");
     }
+
+    public static void ExemploUsoPrivateDataClass()
+    {
+        Console.WriteLine("Exemplo de uso do Private Data Class:");
+
+        // Criando uma apólice de seguro
+        var apoliceSeguro = new Logica.PadroesEstruturais.PrivateClassData.ApoliceSeguro("João da Silva", 1500.00m, "123.456.789-00");
+
+        // Obtendo informações da apólice
+        Console.WriteLine($"Segurado: {apoliceSeguro.ObterSegurado()}");
+        Console.WriteLine($"Prêmio: {apoliceSeguro.ObterPremio()}");
+        Console.WriteLine($"CPF Mascarado: {apoliceSeguro.ObterCPFMascarado()}");
+    }
 }
