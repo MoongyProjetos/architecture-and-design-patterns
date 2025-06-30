@@ -1,3 +1,6 @@
+using Seguradora.Modelo.Repositorios;
+using Seguradora.UI;
+
 Console.WriteLine("Hello, World!");
 
 const string separador = "#####################################################################################";

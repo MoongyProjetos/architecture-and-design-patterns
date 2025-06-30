@@ -1,5 +1,7 @@
 namespace Seguradora.Logica.PadroesCriacionais.FactoryMethod.Seguros;
 
+using Seguradora.Logica.PadroesCriacionais.Interfaces;
+
 public class SeguroAutomovel : ISeguro
 {
     public string EmitirApolice()

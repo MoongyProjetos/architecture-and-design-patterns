@@ -1,4 +1,7 @@
 namespace Seguradora.Logica.PadroesCriacionais.FactoryMethod.Seguros;
+
+using Seguradora.Logica.PadroesCriacionais.Interfaces;
+
 public class SeguroPet : ISeguro
 {
     public string EmitirApolice()

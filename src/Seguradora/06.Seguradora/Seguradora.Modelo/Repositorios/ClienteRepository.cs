@@ -1,5 +1,7 @@
 using Seguradora.Modelo.Entidades;
 
+namespace Seguradora.Modelo.Repositorios;
+
 public class ClienteRepository : IRepository<Cliente, Guid>
 {
     public bool Apagar(Guid chave)

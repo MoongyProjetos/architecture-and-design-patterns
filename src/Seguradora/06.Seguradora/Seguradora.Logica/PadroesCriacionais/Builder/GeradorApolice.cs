@@ -1,7 +1,7 @@
 namespace Seguradora.Logica.PadroesCriacionais.Builder;
 public class GeradorApolice
 {
-    public ApolicePersonalizada CriarSimples(IApoliceBuilder builder)
+    public static ApolicePersonalizada CriarSimples(IApoliceBuilder builder)
     {
         builder.DefinirTipo("Auto Simples");
         builder.AdicionarAssistencia24h();
@@ -9,7 +9,7 @@ public class GeradorApolice
         return builder.Construir();
     }
 
-    public ApolicePersonalizada CriarCompleta(IApoliceBuilder builder)
+    public static ApolicePersonalizada CriarCompleta(IApoliceBuilder builder)
     {
         builder.DefinirTipo("Auto Completa");
         builder.AdicionarAssistencia24h();

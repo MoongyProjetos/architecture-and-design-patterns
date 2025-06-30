@@ -14,7 +14,7 @@ public class LegacyPolicyAdapter : IPolicyService
 
     public PolicyDetails GetPolicy(string policyId)
     {
-        var json = _legacyService.GetPolicyData(policyId);
+        var json = LegacyPolicyService.GetPolicyData(policyId);
         return JsonSerializer.Deserialize<PolicyDetails>(json);
     }
 }

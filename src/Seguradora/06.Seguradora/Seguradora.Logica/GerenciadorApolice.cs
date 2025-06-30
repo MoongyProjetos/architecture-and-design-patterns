@@ -1,8 +1,12 @@
 ﻿namespace Seguradora.Logica;
 
+using Seguradora.Logica.PadroesCriacionais.Interfaces;
+using Seguradora.Modelo.Entidades;
+using Seguradora.Modelo.Repositorios;
+
 public class GerenciadorApolice : ICalcular
 {
-    public readonly IRepository<Apolice,Guid> _repository;
+    public readonly IRepository<Apolice, Guid> _repository;
     public readonly Apolice _apolice;
 
 

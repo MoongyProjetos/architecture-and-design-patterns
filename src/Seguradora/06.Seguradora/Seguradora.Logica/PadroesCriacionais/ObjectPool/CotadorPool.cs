@@ -4,7 +4,7 @@ public class CotadorPool
 {
     private readonly Stack<Cotador> _disponiveis = new();
     private readonly int _maximo;
-    private int _emUso = 0;
+    private int _emUso;
 
     // Exemplo .net 6.0
     // public CotadorPool(int maximo) => _maximo = maximo;

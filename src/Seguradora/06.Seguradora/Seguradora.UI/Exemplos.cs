@@ -1,3 +1,5 @@
+namespace Seguradora.UI;
+
 public static class Exemplos
 {
     /// <summary>
@@ -85,10 +87,10 @@ public static class Exemplos
         // Console.WriteLine(apolice);
 
         var geradorApolice = new GeradorApolice();
-        var apoliceSimples = geradorApolice.CriarSimples(new ApoliceAutoBuilder());
+        var apoliceSimples = GeradorApolice.CriarSimples(new ApoliceAutoBuilder());
         Console.WriteLine(apoliceSimples);
 
-        var apoliceCompleta = geradorApolice.CriarCompleta(new ApoliceAutoBuilder());
+        var apoliceCompleta = GeradorApolice.CriarCompleta(new ApoliceAutoBuilder());
         Console.WriteLine(apoliceCompleta);
     }
 
@@ -100,7 +102,7 @@ public static class Exemplos
         // Exemplo: var apolice = new Apolice().Clone();
         // Console.WriteLine(apolice);
 
-        var apoliceOriginal = new Seguradora.Logica.PadroesCriacionais.Prototype.Apolice
+        var apoliceOriginal = new Logica.PadroesCriacionais.Prototype.Apolice
         {
             Id = Guid.NewGuid(),
             Tipo = "Auto",
@@ -129,24 +131,24 @@ public static class Exemplos
         try
         {
             var cotador1 = pool.ObterCotador();
-            cotador1.RealizarCotacao("123.456.789-00");
+            Cotador.RealizarCotacao("123.456.789-00");
             pool.DevolverCotador(cotador1); //Devolvendo para o pool sempre funciona
-            Console.WriteLine(cotador1.Id);
+            Console.WriteLine(Cotador.Id);
 
             var cotador2 = pool.ObterCotador();
-            cotador2.RealizarCotacao("111.222.333-44");
+            Cotador.RealizarCotacao("111.222.333-44");
             pool.DevolverCotador(cotador2);
-            Console.WriteLine(cotador2.Id);
+            Console.WriteLine(Cotador.Id);
 
             var cotador3 = pool.ObterCotador();
-            cotador3.RealizarCotacao("111.222.333-44");
+            Cotador.RealizarCotacao("111.222.333-44");
             pool.DevolverCotador(cotador3);
-            Console.WriteLine(cotador3.Id);
+            Console.WriteLine(Cotador.Id);
 
             var cotador4 = pool.ObterCotador();
-            cotador4.RealizarCotacao("111.222.333-44");
+            Cotador.RealizarCotacao("111.222.333-44");
             pool.DevolverCotador(cotador4);
-            Console.WriteLine(cotador4.Id);
+            Console.WriteLine(Cotador.Id);
         }
         catch (Exception ex)
         {
@@ -160,18 +162,18 @@ public static class Exemplos
         try
         {
             var cotador21 = pool2.ObterCotador();
-            cotador21.RealizarCotacao("123.456.789-00");
+            Cotador.RealizarCotacao("123.456.789-00");
             // pool.DevolverCotador(cotador1); //Deixei de devolver, vou ter erro no terceiro
-            Console.WriteLine(cotador21.Id);
+            Console.WriteLine(Cotador.Id);
 
             var cotador22 = pool2.ObterCotador();
-            cotador22.RealizarCotacao("111.222.333-44");
+            Cotador.RealizarCotacao("111.222.333-44");
             // pool.DevolverCotador(cotador2); //Deixei de devolver, vou ter erro no terceiro
-            Console.WriteLine(cotador22.Id);
+            Console.WriteLine(Cotador.Id);
 
             var cotador23 = pool2.ObterCotador();
-            cotador23.RealizarCotacao("111.222.333-44");
-            Console.WriteLine(cotador23.Id);
+            Cotador.RealizarCotacao("111.222.333-44");
+            Console.WriteLine(Cotador.Id);
         }
         catch (Exception ex)
         {
@@ -185,7 +187,7 @@ public static class Exemplos
         Console.WriteLine("Exemplo de uso do Adapter:");
 
         // Usando o serviço legado através do adaptador
-        IPolicyService policyService = new LegacyPolicyAdapter(new LegacyPolicyService());
+        var policyService = new LegacyPolicyAdapter(new LegacyPolicyService());
         var policyDetails = policyService.GetPolicy("ABC123");
 
         Console.WriteLine($"Número da Apólice: {policyDetails.PolicyNumber}");

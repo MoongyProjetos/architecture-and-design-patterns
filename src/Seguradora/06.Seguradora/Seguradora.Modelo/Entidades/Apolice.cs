@@ -1,5 +1,6 @@
 using System.Text;
-using Seguradora.Modelo.Entidades;
+
+namespace Seguradora.Modelo.Entidades;
 
 public class Apolice
 {

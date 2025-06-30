@@ -1,3 +1,6 @@
+using Seguradora.Modelo.Entidades;
+using Seguradora.Modelo.Repositorios;
+
 public class ApoliceRepository : IRepository<Apolice, Guid>
 {
     public bool Apagar(Guid chave)
