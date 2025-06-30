@@ -28,6 +28,99 @@
 | 115–120 min | Encerramento e dúvidas                            |
 
 ---
+## 🏗️ Parte 0: Explicando para leigos
+
+### 🏗️ O que são padrões estruturais?
+
+Padrões estruturais são como **jeitos esperto de montar as peças do seu código**, para deixá-lo mais forte, flexível e fácil de trocar partes se precisar.
+
+A página cita esses padrões: **Adapter**, **Bridge**, **Composite**, **Decorator**, **Facade**, **Flyweight**, **Proxy** ([sourcemaking.com][1]).
+
+---
+
+### 1. Adapter (Adaptador)
+
+**O que faz:** conecta duas coisas que não falam a mesma “língua”.
+
+**Analogia:** você tem um brinquedo que só funciona com pilhas redondas, mas só tem pilhas quadradas. Use um adaptador pra encaixar.
+
+**No código:** um objeto com formato A entra num aparelho que espera formato B — o Adapter faz a “tradução” .
+
+---
+
+### 2. Bridge (Ponte)
+
+**O que faz:** separa a parte que as pessoas usam da parte que faz o trabalho de verdade, pra poder mudar cada uma sem bagunçar a outra.
+
+**Analogia:** controle remoto de TV. O controle (interface) é separado da TV (implementação). Você pode trocar a TV e usar o mesmo controle.
+
+**No código:** você tem uma “interface” e várias “versões reais”. O bridge conecta os dois, separando responsabilidades .
+
+---
+
+### 3. Composite (Composto)
+
+**O que faz:** trata objetos simples e grupos de objetos do mesmo jeito.
+
+**Analogia:** no seu time de futebol, um jogador ou um grupo de jogadores pode correr juntos. Você dá o mesmo comando pra um único ou pro grupo.
+
+**No código:** tanto um objeto sozinho (folha) quanto um grupo de objetos (composto) respondem de forma parecida .
+
+---
+
+### 4. Decorator (Decorador)
+
+**O que faz:** adiciona funcionalidades extras sem mudar o objeto original.
+
+**Analogia:** um hambúrguer simples. Se você coloca queijo, bacon e alface, você “decorou” o hambúrguer. O hambúrguer ainda é hambúrguer.
+
+**No código:** você empilha camadas que acrescentam funções ao objeto original .
+
+---
+
+### 5. Facade (Fachada)
+
+**O que faz:** esconde a bagunça interna por trás de uma interface simples.
+
+**Analogia:** pra ligar sua TV, você aperta apenas um botão “Power”, sem se preocupar com como a energia passa pela TV, caixas, som, etc.
+
+**No código:** um objeto só controla todo um sistema complexo por trás .
+
+---
+
+### 6. Flyweight (Puxa‑puxa)
+
+**O que faz:** evita guardar respostas iguais várias vezes — compartilha entre vários objetos.
+
+**Analogia:** você tem vários bonequinhos iguais, mas só um traje. Vários bonecos emprestam o mesmo traje, em vez de comprar vários.
+
+**No código:** quando vários objetos são parecidos, eles usam o mesmo pedaço de memória para não desperdiçar .
+
+---
+
+### 7. Proxy (Procuração)
+
+**O que faz:** é um substituto que controla o acesso a outro objeto.
+
+**Analogia:** quando você quer conversar com uma pessoa muito ocupada, fala com o assistente dela primeiro. O assistente decide se passa a mensagem.
+
+**No código:** o proxy implementa a mesma interface, mas pode bloquear, guardar logs ou atrasar o acesso ao objeto real .
+
+---
+
+#### 🧩 Resumo tabelado
+
+| Padrão        | Faz...                                | Analogia                        |
+| ------------- | ------------------------------------- | ------------------------------- |
+| **Adapter**   | Traduz interfaces diferentes          | Transformador de pilhas         |
+| **Bridge**    | Separa controle e implementação       | Controle remoto de TV           |
+| **Composite** | Trata objetos únicos ou grupos igual  | Jogador solo ou time            |
+| **Decorator** | Adiciona funções sem mudar o original | Queijo e bacon no hambúrguer    |
+| **Facade**    | Simplifica sistemas complexos         | Botão Power da TV               |
+| **Flyweight** | Compartilha coisas repetidas          | Traje usado por vários bonecos  |
+| **Proxy**     | Controla acesso a algo                | Assistente da pessoa importante |
+
+
 
 ## 🧩 Parte 1: Introdução aos Padrões Estruturais (10 min)
 
