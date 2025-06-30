@@ -11,3 +11,6 @@ global using Seguradora.Modelo.Entidades;
 global using Seguradora.Logica.PadroesEstruturais.Adapter;
 global using Seguradora.Logica.PadroesEstruturais.Bridge.Exporters;
 global using Seguradora.Logica.PadroesEstruturais.Bridge.Reports;
+
+
+global using Seguradora.Logica.PadroesEstruturais.Composite;

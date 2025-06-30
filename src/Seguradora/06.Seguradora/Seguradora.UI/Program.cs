@@ -75,3 +75,7 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoBridge();
 Console.WriteLine(separador);
+
+
+Exemplos.ExemploUsoComposite();
+Console.WriteLine(separador);

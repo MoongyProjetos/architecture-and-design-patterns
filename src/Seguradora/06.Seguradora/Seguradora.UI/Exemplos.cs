@@ -213,4 +213,26 @@ public static class Exemplos
         RelatorioApolice relatorioAutomovelCsv = new RelatorioApoliceAutomovel(csvExporter);
         relatorioAutomovelCsv.Gerar();
     }
+
+    public static void ExemploUsoComposite()
+    {
+        // Exemplo de uso do Composite para gerenciar coberturas de seguro
+        var coberturaCompleta = new CompositeCobertura();
+        coberturaCompleta.AdicionarCobertura(new CoberturaIncendio());
+        coberturaCompleta.AdicionarCobertura(new CoberturaRoubo());
+        coberturaCompleta.AdicionarCobertura(new CoberturaDanosTerceiros());
+
+        Console.WriteLine("Exemplo de uso do Composite:");
+        Console.WriteLine($"Valor total da cobertura completa: {coberturaCompleta.CalcularValor()}");
+
+
+        // Exemplo de uso do Composite para gerenciar coberturas de seguro de um cliente específico
+        Console.WriteLine("Exemplo de uso do Composite para o seguro do José:");
+        var seguroDoJose = new CompositeCobertura();
+        seguroDoJose.AdicionarCobertura(new CoberturaIncendio());
+        seguroDoJose.AdicionarCobertura(new CoberturaRoubo());
+
+        Console.WriteLine("Exemplo de uso do Composite:");
+        Console.WriteLine($"Valor total da cobertura do José: {seguroDoJose.CalcularValor()}");
+    }
 }
