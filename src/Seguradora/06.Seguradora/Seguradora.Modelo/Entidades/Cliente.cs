@@ -1,4 +1,4 @@
-﻿namespace Seguradora.Modelo;
+﻿namespace Seguradora.Modelo.Entidades;
 
 public class Cliente
 {

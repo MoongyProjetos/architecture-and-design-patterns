@@ -157,7 +157,7 @@ Imagine que sua seguradora acabou de comprar uma empresa menor que tem um **sist
 Os dois sistemas **não se entendem**. Um pede "CPF do cliente", o outro responde "Identificador Pessoal". Um quer XML, o outro fala JSON.
 
 ✅ Como o Adapter ajuda?
-Ele é como um **intérprete** que fica no meio dos dois sistemas. Quando o sistema novo pede uma apólice, o Adapter traduz o pedido para o formato do sistema antigo, pega a resposta e **tradu-la de volta** para o novo.
+Ele é como um **intérprete** que fica no meio dos dois sistemas. Quando o sistema novo pede uma apólice, o Adapter traduz o pedido para o formato do sistema antigo, pega a resposta e **traduz de volta** para o novo.
 
 📌 Exemplo simples:
 O seu sistema moderno diz: “Quero os dados da apólice do João.”
@@ -178,6 +178,7 @@ E você pode querer **exportar** esses relatórios em **formatos diferentes**:
 * PDF para enviar ao cliente
 * CSV para análises internas
 * XML para órgãos reguladores
+* JSON para APIs
 
 💬 O problema:
 Se você tivesse que fazer **um sistema diferente para cada combinação** (carro + PDF, carro + CSV, casa + PDF...), teria que criar um **monte de código duplicado**.

@@ -1,4 +1,4 @@
-using Seguradora.Modelo;
+using Seguradora.Modelo.Entidades;
 
 public class ClienteRepository : IRepository<Cliente, Guid>
 {

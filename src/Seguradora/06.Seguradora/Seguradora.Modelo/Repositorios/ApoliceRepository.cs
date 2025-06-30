@@ -1,5 +1,3 @@
-using Seguradora.Modelo;
-
 public class ApoliceRepository : IRepository<Apolice, Guid>
 {
     public bool Apagar(Guid chave)
@@ -14,7 +12,7 @@ public class ApoliceRepository : IRepository<Apolice, Guid>
 
     public bool Guardar(Apolice entidade)
     {
-        System.Console.WriteLine("Apolice guardada com sucesso");
+        Console.WriteLine("Apolice guardada com sucesso");
         return true;
     }
 

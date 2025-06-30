@@ -1,18 +1,3 @@
-using Seguradora.Logica;
-using Seguradora.Logica.Services;
-using Seguradora.Modelo;
-using Seguradora.Logica.FactoryMethod.Creators;
-using Seguradora.Logica.FactoryMethod.Seguros;
-
-using Seguradora.Logica.AbstractFactory.Services;
-using Seguradora.Logica.AbstractFactory.Interfaces;
-using Seguradora.Logica.AbstractFactory.PessoaFisica;
-using Seguradora.Logica.AbstractFactory.PessoaJuridica;
-using Seguradora.Logica.AbstractFactory.ConcreteFactory;
-using Seguradora.Logica.Builder;
-using Seguradora.Logica.Prototype;
-using Seguradora.Logica.ObjectPool;
-
 public static class Exemplos
 {
     /// <summary>
@@ -20,7 +5,7 @@ public static class Exemplos
     /// </summary>
     public static void ExemploUsoSingleton()
     {
-        System.Console.WriteLine("Exemplo de uso do Singleton SystemConfiguration:");
+        Console.WriteLine("Exemplo de uso do Singleton SystemConfiguration:");
 
         //Exemplo de uso do Singleton
         var config = SystemConfiguration.Instance;
@@ -101,10 +86,10 @@ public static class Exemplos
 
         var geradorApolice = new GeradorApolice();
         var apoliceSimples = geradorApolice.CriarSimples(new ApoliceAutoBuilder());
-        System.Console.WriteLine(apoliceSimples);
+        Console.WriteLine(apoliceSimples);
 
         var apoliceCompleta = geradorApolice.CriarCompleta(new ApoliceAutoBuilder());
-        System.Console.WriteLine(apoliceCompleta);
+        Console.WriteLine(apoliceCompleta);
     }
 
     public static void ExemploUsoPrototype()
@@ -115,7 +100,7 @@ public static class Exemplos
         // Exemplo: var apolice = new Apolice().Clone();
         // Console.WriteLine(apolice);
 
-        var apoliceOriginal = new Seguradora.Logica.Prototype.Apolice
+        var apoliceOriginal = new Seguradora.Logica.PadroesCriacionais.Prototype.Apolice
         {
             Id = Guid.NewGuid(),
             Tipo = "Auto",
@@ -128,9 +113,9 @@ public static class Exemplos
 
         var apoliceCloneSimples = apoliceOriginal.SimpleClone(); // Usando o método SimpleClone
 
-        System.Console.WriteLine($"Apolice Original: {apoliceOriginal.Tipo}, {apoliceOriginal.Cobertura}, {apoliceOriginal.ValorMensal}, {apoliceOriginal.Id}");
-        System.Console.WriteLine($"Apolice Clone: {apoliceClone.Tipo}, {apoliceClone.Cobertura}, {apoliceClone.ValorMensal}, {apoliceClone.Id}");
-        System.Console.WriteLine($"Apolice Clone Simples: {apoliceCloneSimples.Tipo}, {apoliceCloneSimples.Cobertura}, {apoliceCloneSimples.ValorMensal}, {apoliceCloneSimples.Id}");
+        Console.WriteLine($"Apolice Original: {apoliceOriginal.Tipo}, {apoliceOriginal.Cobertura}, {apoliceOriginal.ValorMensal}, {apoliceOriginal.Id}");
+        Console.WriteLine($"Apolice Clone: {apoliceClone.Tipo}, {apoliceClone.Cobertura}, {apoliceClone.ValorMensal}, {apoliceClone.Id}");
+        Console.WriteLine($"Apolice Clone Simples: {apoliceCloneSimples.Tipo}, {apoliceCloneSimples.Cobertura}, {apoliceCloneSimples.ValorMensal}, {apoliceCloneSimples.Id}");
     }
 
     /// <summary>
@@ -146,22 +131,22 @@ public static class Exemplos
             var cotador1 = pool.ObterCotador();
             cotador1.RealizarCotacao("123.456.789-00");
             pool.DevolverCotador(cotador1); //Devolvendo para o pool sempre funciona
-            System.Console.WriteLine(cotador1.Id);
+            Console.WriteLine(cotador1.Id);
 
             var cotador2 = pool.ObterCotador();
             cotador2.RealizarCotacao("111.222.333-44");
             pool.DevolverCotador(cotador2);
-            System.Console.WriteLine(cotador2.Id);
+            Console.WriteLine(cotador2.Id);
 
             var cotador3 = pool.ObterCotador();
             cotador3.RealizarCotacao("111.222.333-44");
             pool.DevolverCotador(cotador3);
-            System.Console.WriteLine(cotador3.Id);
+            Console.WriteLine(cotador3.Id);
 
             var cotador4 = pool.ObterCotador();
             cotador4.RealizarCotacao("111.222.333-44");
             pool.DevolverCotador(cotador4);
-            System.Console.WriteLine(cotador4.Id);
+            Console.WriteLine(cotador4.Id);
         }
         catch (Exception ex)
         {
@@ -177,16 +162,16 @@ public static class Exemplos
             var cotador21 = pool2.ObterCotador();
             cotador21.RealizarCotacao("123.456.789-00");
             // pool.DevolverCotador(cotador1); //Deixei de devolver, vou ter erro no terceiro
-            System.Console.WriteLine(cotador21.Id);
+            Console.WriteLine(cotador21.Id);
 
             var cotador22 = pool2.ObterCotador();
             cotador22.RealizarCotacao("111.222.333-44");
             // pool.DevolverCotador(cotador2); //Deixei de devolver, vou ter erro no terceiro
-            System.Console.WriteLine(cotador22.Id);
+            Console.WriteLine(cotador22.Id);
 
             var cotador23 = pool2.ObterCotador();
             cotador23.RealizarCotacao("111.222.333-44");
-            System.Console.WriteLine(cotador23.Id);
+            Console.WriteLine(cotador23.Id);
         }
         catch (Exception ex)
         {
