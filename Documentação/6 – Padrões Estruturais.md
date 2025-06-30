@@ -1001,3 +1001,9 @@ classDiagram
 
 
 👉 **Uso real**: garantir **imutabilidade**, **encapsulamento forte** e proteger dados sensíveis contra alterações externas.
+
+---
+## Referências
+
+## Boas Práticas
+[Exemplo uso de quality rules com .editorconfig](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/)

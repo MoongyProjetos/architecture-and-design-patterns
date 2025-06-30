@@ -7,3 +7,5 @@ global using Seguradora.Logica.PadroesCriacionais.ObjectPool;
 global using Seguradora.Logica.PadroesCriacionais.FactoryMethod.Creators;
 global using Seguradora.Logica;
 global using Seguradora.Modelo.Entidades;
+
+global using Seguradora.Logica.PadroesEstruturais.Adapter;

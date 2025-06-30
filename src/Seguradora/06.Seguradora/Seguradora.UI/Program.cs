@@ -67,3 +67,7 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoObjectPoolSemLiberarPool();
 Console.WriteLine(separador);
+
+
+Exemplos.ExemploUsoAdapter();
+Console.WriteLine(separador);

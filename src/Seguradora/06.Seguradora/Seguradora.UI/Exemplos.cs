@@ -179,4 +179,18 @@ public static class Exemplos
             Console.WriteLine(ex.Message);
         }
     }
+
+    public static void ExemploUsoAdapter()
+    {
+        Console.WriteLine("Exemplo de uso do Adapter:");
+
+        // Usando o serviço legado através do adaptador
+        IPolicyService policyService = new LegacyPolicyAdapter(new LegacyPolicyService());
+        var policyDetails = policyService.GetPolicy("ABC123");
+
+        Console.WriteLine($"Número da Apólice: {policyDetails.PolicyNumber}");
+        Console.WriteLine($"Nome do Titular: {policyDetails.PolicyHolderName}");
+        Console.WriteLine($"Data de Início: {policyDetails.StartDate}");
+        Console.WriteLine($"Data de Término: {policyDetails.EndDate}");
+    }
 }
