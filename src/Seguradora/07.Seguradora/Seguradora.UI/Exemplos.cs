@@ -1,7 +1,7 @@
 namespace Seguradora.UI;
 
-using decorator = Seguradora.Logica.PadroesEstruturais.Decorator;
-using composite = Seguradora.Logica.PadroesEstruturais.Composite;
+using Decorator = Seguradora.Logica.PadroesEstruturais.Decorator;
+using Composite = Seguradora.Logica.PadroesEstruturais.Composite;
 
 public static class Exemplos
 {
@@ -288,18 +288,32 @@ public static class Exemplos
         Console.WriteLine("Exemplo de uso do Decorator:");
 
         // Criando uma apólice básica
-        decorator.IApolice apolice = new decorator.ApoliceBasica();
+        Decorator.IApolice apolice = new Decorator.ApoliceBasica();
         Console.WriteLine($"Descrição: {apolice.Descricao()}");
         Console.WriteLine($"Prêmio: {apolice.CalcularPremio()}");
 
         // Adicionando cobertura de roubo
-        apolice = new decorator.CoberturaRoubo(apolice);
+        apolice = new Decorator.CoberturaRoubo(apolice);
         Console.WriteLine($"Descrição com Cobertura de Roubo: {apolice.Descricao()}");
         Console.WriteLine($"Prêmio com Cobertura de Roubo: {apolice.CalcularPremio()}");
 
         // Adicionando cobertura de incêndio
-        apolice = new decorator.CoberturaIncendio(apolice);
+        apolice = new Decorator.CoberturaIncendio(apolice);
         Console.WriteLine($"Descrição com Cobertura de Incêndio: {apolice.Descricao()}");
         Console.WriteLine($"Prêmio com Cobertura de Incêndio: {apolice.CalcularPremio()}");
+    }
+
+
+    /// <summary>
+    /// Exemplo de uso do Facade para subscrição de seguro.
+    /// O Facade simplifica a interação com subsistemas complexos, como validação de dados
+    /// </summary>
+    public static void ExemploUsoFacade()
+    {
+        Console.WriteLine("Exemplo de uso do Facade:");
+
+        // Usando a fachada para subscrição de seguro
+        var subscricao = new Seguradora.Logica.PadroesEstruturais.Facade.SubscricaoFacade();
+        subscricao.SubscricaoCompleta("123.456.789-00");
     }
 }

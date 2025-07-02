@@ -13,7 +13,7 @@ public class CoberturaIncendio : IApolice
     /// Este método simula uma lógica complexa que poderia ser aplicada
     /// </summary>
     /// <returns></returns>
-    private string ExemploComplexo()
+    private static string ExemploComplexo()
     {
         //Buscar dados do banco de dados
         // Validar dados
