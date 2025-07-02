@@ -17,3 +17,4 @@ global using Seguradora.Logica.PadroesEstruturais.PrivateClassData;
 global using Seguradora.Logica.PadroesEstruturais.Decorator;
 global using Seguradora.Logica.PadroesEstruturais.Facade;
 global using Seguradora.Logica.PadroesEstruturais.Flyweight;
+global using Seguradora.Logica.PadroesEstruturais.Proxy;

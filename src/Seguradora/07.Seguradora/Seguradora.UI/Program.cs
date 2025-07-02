@@ -92,6 +92,8 @@ Console.WriteLine(separador);
 Exemplos.ExemploUsoFacade();
 Console.WriteLine(separador);
 
-
 Exemplos.ExemploUsoFlyweight();
+Console.WriteLine(separador);
+
+Exemplos.ExemploUsoProxy();
 Console.WriteLine(separador);

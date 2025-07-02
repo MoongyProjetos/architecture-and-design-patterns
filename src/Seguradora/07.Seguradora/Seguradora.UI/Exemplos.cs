@@ -344,4 +344,17 @@ public static class Exemplos
         apolice2.Imprimir();
         apolice3.Imprimir();
     }
+
+    public static void ExemploUsoProxy()
+    {
+        Console.WriteLine("Exemplo de uso do Proxy:");
+
+        // Usando o proxy para apresentar um documento
+        IApresentadorDocumento apresentador = new ProxyDocumento("documento.pdf", "corretor");
+        apresentador.Mostrar();
+
+        // Tentando acessar com um usuário sem permissão
+        apresentador = new ProxyDocumento("documento.pdf", "cliente");
+        apresentador.Mostrar();
+    }
 }
