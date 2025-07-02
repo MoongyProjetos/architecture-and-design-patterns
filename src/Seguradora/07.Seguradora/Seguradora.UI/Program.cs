@@ -85,3 +85,9 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoPrivateDataClass();
 Console.WriteLine(separador);
+
+
+Exemplos.ExemploUsoDecorator();
+Console.WriteLine(separador);
+
+

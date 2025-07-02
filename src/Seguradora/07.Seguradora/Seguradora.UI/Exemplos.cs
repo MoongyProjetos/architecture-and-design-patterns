@@ -1,5 +1,8 @@
 namespace Seguradora.UI;
 
+using decorator = Seguradora.Logica.PadroesEstruturais.Decorator;
+using composite = Seguradora.Logica.PadroesEstruturais.Composite;
+
 public static class Exemplos
 {
     /// <summary>
@@ -220,9 +223,9 @@ public static class Exemplos
     {
         // Exemplo de uso do Composite para gerenciar coberturas de seguro
         var coberturaCompleta = new CompositeCobertura();
-        coberturaCompleta.AdicionarCobertura(new CoberturaIncendio());
-        coberturaCompleta.AdicionarCobertura(new CoberturaRoubo());
-        coberturaCompleta.AdicionarCobertura(new CoberturaDanosTerceiros());
+        coberturaCompleta.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaIncendio());
+        coberturaCompleta.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaRoubo());
+        coberturaCompleta.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaDanosTerceiros());
 
         Console.WriteLine("Exemplo de uso do Composite:");
         Console.WriteLine($"Valor total da cobertura completa: {coberturaCompleta.CalcularValor()}");
@@ -230,9 +233,9 @@ public static class Exemplos
 
         // Exemplo de uso do Composite para gerenciar coberturas de seguro de um cliente específico
         Console.WriteLine("Exemplo de uso do Composite para o seguro do José:");
-        var seguroDoJose = new CompositeCobertura();
-        seguroDoJose.AdicionarCobertura(new CoberturaIncendio());
-        seguroDoJose.AdicionarCobertura(new CoberturaRoubo());
+        var seguroDoJose = new Seguradora.Logica.PadroesEstruturais.Composite.CompositeCobertura();
+        seguroDoJose.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaIncendio());
+        seguroDoJose.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaRoubo());
 
         Console.WriteLine("Exemplo de uso do Composite:");
         Console.WriteLine($"Valor total da cobertura do José: {seguroDoJose.CalcularValor()}");
@@ -249,5 +252,54 @@ public static class Exemplos
         Console.WriteLine($"Segurado: {apoliceSeguro.ObterSegurado()}");
         Console.WriteLine($"Prêmio: {apoliceSeguro.ObterPremio()}");
         Console.WriteLine($"CPF Mascarado: {apoliceSeguro.ObterCPFMascarado()}");
+    }
+
+    /// <summary>
+    /// Exemplo de uso do Decorator para adicionar coberturas a uma apólice.
+    /// O Decorator permite adicionar funcionalidades a objetos de forma dinâmica.
+    /// </summary>
+    public static void ExemploUsoDecorator()
+    {
+        Console.WriteLine("Exemplo de uso do Decorator:");
+
+        // Criando uma apólice básica
+        Seguradora.Logica.PadroesEstruturais.Decorator.IApolice apolice = new Seguradora.Logica.PadroesEstruturais.Decorator.ApoliceBasica();
+        Console.WriteLine($"Descrição: {apolice.Descricao()}");
+        Console.WriteLine($"Prêmio: {apolice.CalcularPremio()}");
+
+        // Adicionando cobertura de roubo
+        apolice = new Seguradora.Logica.PadroesEstruturais.Decorator.CoberturaRoubo(apolice);
+        Console.WriteLine($"Descrição com Cobertura de Roubo: {apolice.Descricao()}");
+        Console.WriteLine($"Prêmio com Cobertura de Roubo: {apolice.CalcularPremio()}");
+
+        // Adicionando cobertura de incêndio
+        apolice = new Seguradora.Logica.PadroesEstruturais.Decorator.CoberturaIncendio(apolice);
+        Console.WriteLine($"Descrição com Cobertura de Incêndio: {apolice.Descricao()}");
+        Console.WriteLine($"Prêmio com Cobertura de Incêndio: {apolice.CalcularPremio()}");
+    }
+
+
+    /// <summary>
+    /// Código de exemplo para uso do Decorator com alias.
+    /// Cópia do método ExemploUsoDecorator, mas com alias para o namespace.
+    /// </summary>
+    public static void ExemploUsoDecoratorComAlias()
+    {
+        Console.WriteLine("Exemplo de uso do Decorator:");
+
+        // Criando uma apólice básica
+        decorator.IApolice apolice = new decorator.ApoliceBasica();
+        Console.WriteLine($"Descrição: {apolice.Descricao()}");
+        Console.WriteLine($"Prêmio: {apolice.CalcularPremio()}");
+
+        // Adicionando cobertura de roubo
+        apolice = new decorator.CoberturaRoubo(apolice);
+        Console.WriteLine($"Descrição com Cobertura de Roubo: {apolice.Descricao()}");
+        Console.WriteLine($"Prêmio com Cobertura de Roubo: {apolice.CalcularPremio()}");
+
+        // Adicionando cobertura de incêndio
+        apolice = new decorator.CoberturaIncendio(apolice);
+        Console.WriteLine($"Descrição com Cobertura de Incêndio: {apolice.Descricao()}");
+        Console.WriteLine($"Prêmio com Cobertura de Incêndio: {apolice.CalcularPremio()}");
     }
 }
