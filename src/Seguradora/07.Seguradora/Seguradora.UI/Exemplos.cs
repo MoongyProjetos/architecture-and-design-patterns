@@ -2,6 +2,7 @@ namespace Seguradora.UI;
 
 using Decorator = Seguradora.Logica.PadroesEstruturais.Decorator;
 using Composite = Seguradora.Logica.PadroesEstruturais.Composite;
+using Flyweight = Seguradora.Logica.PadroesEstruturais.Flyweight;
 
 public static class Exemplos
 {
@@ -315,5 +316,32 @@ public static class Exemplos
         // Usando a fachada para subscrição de seguro
         var subscricao = new Seguradora.Logica.PadroesEstruturais.Facade.SubscricaoFacade();
         subscricao.SubscricaoCompleta("123.456.789-00");
+    }
+
+    /// <summary>
+    /// Exemplo de uso do Flyweight para gerenciar tabelas de risco.
+    /// O Flyweight é útil para economizar memória ao compartilhar objetos imutáveis.
+    /// </summary>
+    public static void ExemploUsoFlyweight()
+    {
+        Console.WriteLine("Exemplo de uso do Flyweight:");
+
+        // Criando a fábrica de tabelas de risco
+        var tabelaRiscoFactory = new TabelaRiscoFactory();
+
+        // Obtendo tabelas de risco
+        var tabelaAlta = tabelaRiscoFactory.GetTabela("Alta");
+        var tabelaMedia = tabelaRiscoFactory.GetTabela("Média");
+        var tabelaBaixa = tabelaRiscoFactory.GetTabela("Baixa");
+
+        // Criando apólices com as tabelas de risco
+        var apolice1 = new Flyweight.Apolice("Cliente 1", tabelaAlta);
+        var apolice2 = new Flyweight.Apolice("Cliente 2", tabelaMedia);
+        var apolice3 = new Flyweight.Apolice("Cliente 3", tabelaBaixa);
+
+        // Imprimindo as apólices
+        apolice1.Imprimir();
+        apolice2.Imprimir();
+        apolice3.Imprimir();
     }
 }

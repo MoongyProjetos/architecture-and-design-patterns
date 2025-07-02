@@ -13,7 +13,7 @@ var cliente = new Cliente
 };
 Console.WriteLine(separador);
 
-var apolice = new Apolice
+var apolice = new Seguradora.Modelo.Entidades.Apolice
 {
     Id = Guid.NewGuid(),
     DataEfetivacao = DateTime.Today,
@@ -22,7 +22,7 @@ var apolice = new Apolice
 };
 Console.WriteLine(separador);
 
-IRepository<Apolice, Guid> repository = new ApoliceRepository();
+IRepository<Seguradora.Modelo.Entidades.Apolice, Guid> repository = new ApoliceRepository();
 
 //Fake DependencyInjector
 var gerenciadorApolice = new GerenciadorApolice(repository, apolice);
@@ -90,4 +90,8 @@ Exemplos.ExemploUsoDecorator();
 Console.WriteLine(separador);
 
 Exemplos.ExemploUsoFacade();
+Console.WriteLine(separador);
+
+
+Exemplos.ExemploUsoFlyweight();
 Console.WriteLine(separador);
