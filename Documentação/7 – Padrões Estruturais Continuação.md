@@ -1,4 +1,4 @@
-## 🎓 Aula: Padrões de Projeto Estruturais Continuação – Adapter, Bridge e Composite
+## 🎓 Aula: Padrões de Projeto Estruturais Continuação – Decorator, Facade, Flyweight e Proxy
 
 **Público-alvo**: Desenvolvedores júnior/intermediários
 **Duração**: 2 horas
