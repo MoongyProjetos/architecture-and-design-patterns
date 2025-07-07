@@ -46,7 +46,7 @@
 
 ---
 
-### 🔹 **Sessão 6 – Padrões Estruturais: Parte 1** - 25/06/2025
+### 🔹 **Sessão 6 – Padrões Estruturais: Parte 1** - 30/06/2025
 
 * Adapter
 * Bridge
@@ -54,7 +54,7 @@
 
 ---
 
-### 🔹 **Sessão 7 – Padrões Estruturais: Parte 2** - 30/06/2025
+### 🔹 **Sessão 7 – Padrões Estruturais: Parte 2** - 02/06/2025
 
 * Decorator
 * Facade
@@ -63,7 +63,7 @@
 
 ---
 
-### 🔹 **Sessão 8 – Padrões Comportamentais: Parte 1** - 04/07/2025
+### 🔹 **Sessão 8 – Padrões Comportamentais: Parte 1** - 07/07/2025
 
 * Observer: A way of notifying change to a number of classes
 * Strategy: Encapsulates an algorithm inside a class
@@ -71,7 +71,7 @@
 
 ---
 
-### 🔹 **Sessão 9 – Padrões Comportamentais: Parte 2** - 07/07/2025
+### 🔹 **Sessão 9 – Padrões Comportamentais: Parte 2** - 09/07/2025
 
 * Chain of Responsibility: A way of passing a request between a chain of objects
 * State: Alter an object's behavior when its state changes
@@ -81,7 +81,7 @@
 ---
 
 
-### 🔹 **Sessão 10 – Padrões Comportamentais: Parte 3** - 09/07/2025
+### 🔹 **Sessão 10 – Padrões Comportamentais: Parte 3** - 14/07/2025
 
 * Iterator: Sequentially access the elements of a collection
 * Mediator: Defines simplified communication between classes
@@ -90,7 +90,7 @@
 * Template Method: Defer the exact steps of an algorithm to a subclass
 
 
-### 🔹 **Sessão 11 – Padrões Arquiteturais em Sistemas Modernos** - 14/07/2025
+### 🔹 **Sessão 11 – Padrões Arquiteturais em Sistemas Modernos** - 16/07/2025
 
 * DDD – Domain-Driven Design
 * Camadas (Layered Architecture)
@@ -98,7 +98,7 @@
 
 ---
 
-### 🔹 **Sessão 12 – Arquiteturas Assíncronas e Event-Driven** - 16/07/2025
+### 🔹 **Sessão 12 – Arquiteturas Assíncronas e Event-Driven** - 21/07/2025
 
 * Event-Driven Architecture
 * Patterns para sistemas distribuídos
@@ -106,7 +106,7 @@
 
 ---
 
-### 🔹 **Sessão 13 – Preparação para Projeto Final** - 21/07/2025
+### 🔹 **Sessão 13 – Preparação para Projeto Final** - 23/07/2025
 
 * Apresentação dos desafios
 * Escolha dos temas e tecnologias
