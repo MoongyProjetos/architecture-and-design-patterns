@@ -65,22 +65,32 @@
 
 ### 🔹 **Sessão 8 – Padrões Comportamentais: Parte 1** - 04/07/2025
 
-* Observer
-* Strategy
-* Command
+* Observer: A way of notifying change to a number of classes
+* Strategy: Encapsulates an algorithm inside a class
+* Command: Encapsulate a command request as an object
 
 ---
 
 ### 🔹 **Sessão 9 – Padrões Comportamentais: Parte 2** - 07/07/2025
 
-* Chain of Responsibility
-* State
-* Visitor
-* Interpreter
+* Chain of Responsibility: A way of passing a request between a chain of objects
+* State: Alter an object's behavior when its state changes
+* Visitor: Defines a new operation to a class without change
+* Interpreter: A way to include language elements in a program
 
 ---
 
-### 🔹 **Sessão 10 – Padrões Arquiteturais em Sistemas Modernos** - 09/07/2025
+
+### 🔹 **Sessão 10 – Padrões Comportamentais: Parte 3** - 09/07/2025
+
+* Iterator: Sequentially access the elements of a collection
+* Mediator: Defines simplified communication between classes
+* Memento: Capture and restore an object's internal state
+* Null Object: Designed to act as a default value of an object
+* Template Method: Defer the exact steps of an algorithm to a subclass
+
+
+### 🔹 **Sessão 11 – Padrões Arquiteturais em Sistemas Modernos** - 14/07/2025
 
 * DDD – Domain-Driven Design
 * Camadas (Layered Architecture)
@@ -88,7 +98,7 @@
 
 ---
 
-### 🔹 **Sessão 11 – Arquiteturas Assíncronas e Event-Driven** - 14/07/2025
+### 🔹 **Sessão 12 – Arquiteturas Assíncronas e Event-Driven** - 16/07/2025
 
 * Event-Driven Architecture
 * Patterns para sistemas distribuídos
@@ -96,7 +106,7 @@
 
 ---
 
-### 🔹 **Sessão 12 – Preparação para Projeto Final** - 16/07/2025
+### 🔹 **Sessão 13 – Preparação para Projeto Final** - 21/07/2025
 
 * Apresentação dos desafios
 * Escolha dos temas e tecnologias
@@ -105,24 +115,18 @@
 
 ---
 
-### 🔹 **Sessão 13 – Desenvolvimento Assistido do Projeto Final** - 21/07/2025
+### 🔹 **Sessão 14 – Desenvolvimento Assistido do Projeto Final** - 23/07/2025
 
 * Hands-on supervisionado
 * Dúvidas e refinamento da aplicação dos padrões
 
 ---
 
-### 🔹 **Sessão 14 – Apresentação dos Projetos Finais** - 23/07/2025
+### 🔹 **Sessão 15 – Apresentação dos Projetos Finais** - 28/07/2025
 
 * Apresentações por grupo/aluno
 * Feedback e discussões
 * Conclusões e próximos passos
 
-### 🔹 **Sessão 15 – A definir** - 28/07/2025
-
-* ...
-
-
----
 
 > © MoOngy | Este repositório é parte do programa de formação contínua em Engenharia de Software.
