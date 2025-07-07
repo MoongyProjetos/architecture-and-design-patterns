@@ -11,6 +11,8 @@
 
 ---
 
+![alt text](image.png)
+
 ### 1. Abertura e Contextualização (10 min)
 
 **Objetivo:** Apresentar o tema e engajar os participantes.
@@ -150,5 +152,9 @@
 * Ambiente com `docker-compose` (Kafka, RabbitMQ, etc.)
 * Demos online: [Confluent Cloud](https://developer.confluent.io/)
 * Simuladores ou flows usando Temporal, Camunda ou AWS Step Functions (se desejar aprofundar em workflow)
+
+
+https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/event-driven
+
 
 ---
