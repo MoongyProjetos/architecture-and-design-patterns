@@ -1,216 +1,154 @@
-## 🧠 Aula: Arquiteturas Assíncronas e Event-Driven
+# 🧠 Aula: Arquiteturas Assíncronas e Event-Driven
 
 📅 **Data**: 21/07/2025
 ⏱️ **Duração**: 2 horas
 🎯 **Público-alvo**: Desenvolvedores, arquitetos de software, estudantes avançados
-📌 **Objetivo**: Entender os conceitos, padrões e práticas de arquiteturas baseadas em eventos e assíncronas, com foco em escalabilidade e resiliência.
+📌 **Objetivo**: Compreender os conceitos, padrões e práticas de arquiteturas baseadas em eventos e assíncronas, com foco em **escalabilidade**, **resiliência** e **casos aplicados a seguradoras**.
 
 ---
 
 ## 📋 Estrutura da Aula
 
-### 1. Abertura e Contextualização (10 min)
-
-**Objetivo:** Situar os alunos no tema da aula e motivar o aprendizado.
-**Conteúdo:**
-
-* Diferença entre arquiteturas síncronas e assíncronas
-* Cenários onde arquiteturas event-driven são ideais (ex: e-commerce, IoT, microserviços)
-
-**Atividade:**
-
-* Pergunta disparadora: "Você já trabalhou com sistemas onde a comunicação entre serviços era feita via mensagens ou eventos? Como foi a experiência?"
-
 ---
-
-### 2. Event-Driven Architecture (30 min)
-
-**Objetivo:** Entender os componentes principais e as formas de modelar uma arquitetura orientada a eventos.
-**Conteúdo:**
-
-* O que é EDA (Event-Driven Architecture)
-* Componentes: Producers, Consumers, Event Bus/Broker, Event Store
-* Tipos de eventos: Evento de fato, comando, evento de integração
-* Modelos de comunicação: Pub/Sub, Event Sourcing, CQRS
-
-**Exemplo prático:**
-
-* Diagrama de um sistema de pedidos com produtor (serviço de pedidos), consumidor (serviço de estoque), e broker (Kafka ou RabbitMQ)
-
-**Atividade:**
-
-* Em grupos, desenhar uma arquitetura simples de EDA com base em um caso dado (ex: sistema de reservas de voos)
-
----
-
-### 3. Patterns para Sistemas Distribuídos (30 min)
-
-**Objetivo:** Explorar padrões arquiteturais que ajudam a lidar com sistemas distribuídos e assíncronos.
-**Conteúdo:**
-
-* Message Broker (ex: Kafka, RabbitMQ, SQS)
-* Message Queue vs Event Stream
-* Retry, Dead Letter Queue (DLQ)
-* Idempotência
-* Saga Pattern (orquestração vs coreografia)
-* Circuit Breaker e Bulkhead
-* Eventual Consistency
-
-**Demonstração rápida (opcional):**
-
-* Exemplo de fluxo Saga com 3 microserviços usando coreografia
-
-**Atividade:**
-
-* Debate orientado: "Quando faz mais sentido usar orquestração e quando usar coreografia?"
-
----
-
-### 4. Escalabilidade e Resiliência (30 min)
-
-**Objetivo:** Analisar como arquiteturas assíncronas contribuem para a escalabilidade e resiliência dos sistemas.
-**Conteúdo:**
-
-* Horizontal scalability e desacoplamento
-* Backpressure e gerenciamento de fila
-* Auto-scaling com base em consumo de mensagens
-* Failover e tolerância a falhas
-* Observabilidade: tracing distribuído e logs centralizados
-
-**Estudo de caso:**
-
-* Como o Netflix usa EDA para escalar e se manter resiliente (breve explicação ou vídeo curto)
-
-**Atividade:**
-
-* Desafio relâmpago: "Quais estratégias você adotaria para garantir resiliência num sistema bancário orientado a eventos?"
-
----
-
-### 5. Encerramento e Discussão (20 min)
-
-**Objetivo:** Fixar os conceitos, tirar dúvidas e encorajar aprofundamento.
-**Atividades:**
-
-* Quiz rápido (Kahoot ou similar) com perguntas sobre os tópicos abordados
-* Espaço para perguntas
-* Sugestão de leitura e ferramentas:
-
-  * Kafka, RabbitMQ, NATS
-  * “Designing Event-Driven Systems” - Ben Stopford
-  * "The Art of Scalability"
-  * "Microservices Patterns" - Chris Richardson
-
----
-
-## 🧰 Recursos e Materiais Sugeridos
-
-* Slides com diagramas e fluxos de eventos
-* Ferramentas: draw\.io ou Miro para desenhos em grupo
-* Ambiente com docker-compose para Kafka ou RabbitMQ, se quiser demo prática
-* Link para Playground online de sistemas de filas/eventos (como [Confluent Cloud demos](https://developer.confluent.io/))
-
----
-
-
-Perfeito! Vamos ajustar os exemplos e atividades da sua aula de 2h sobre **Arquiteturas Assíncronas e Event-Driven** para o **contexto de uma seguradora**, que é um ótimo cenário para esse tipo de arquitetura (processos longos, múltiplos serviços, orquestrações, integração com terceiros, etc.).
-
----
-
-## 📋 Estrutura da Aula (Adaptada para Seguradora)
 
 ### 1. Abertura e Contextualização (10 min)
 
+**Objetivo:** Apresentar o tema e engajar os participantes.
 **Contexto:**
-Introduza os desafios de sistemas de seguros:
 
-* Processos assíncronos por natureza (cotação, emissão, sinistro, análise de risco, antifraude, etc.)
-* Integração com legados e terceiros (SUSEP, Detran, Corretores, Assinatura Digital)
+* Processos típicos de uma seguradora são **naturalmente assíncronos** (cotação, sinistro, antifraude, emissão).
+* Forte necessidade de **integração com terceiros** (SUSEP, Detran, Corretores, Assinatura Digital).
 
-**Pergunta disparadora:**
-*"Quais etapas de um processo de seguro (auto, saúde, residencial) você acredita que poderiam ser executadas de forma assíncrona ou por eventos?"*
+**Tópicos abordados:**
+
+* Diferença entre arquitetura **síncrona vs assíncrona**
+* Onde **arquiteturas orientadas a eventos** se aplicam bem
+
+**🎯 Pergunta disparadora:**
+
+> "Quais etapas de um processo de seguro (auto, saúde, residencial) você acredita que poderiam ser executadas de forma assíncrona ou por eventos?"
 
 ---
 
 ### 2. Event-Driven Architecture (30 min)
 
-**Exemplo aplicado:**
-📦 *Processo de cotação e emissão de apólice de seguro auto*
+**Objetivo:** Entender os principais conceitos e componentes de EDA.
+**Tópicos:**
 
-* Produtor: Portal Web → envia pedido de cotação
-* Broker: Kafka (cotação.request)
-* Consumidores:
+* O que é Event-Driven Architecture (EDA)
+* Componentes: Producers, Consumers, Event Bus/Broker, Event Store
+* Tipos de eventos: **evento de fato**, **comando**, **evento de integração**
+* Modelos: **Pub/Sub**, **Event Sourcing**, **CQRS**
 
-  * Módulo de cálculo de prêmio
-  * Módulo de análise de perfil
-  * Módulo de antifraude
-* Event Bus publica `cotacao.gerada` → dispara outros consumidores (ex: envio de proposta para cliente)
+**🔍 Exemplo aplicado (Seguradora - Cotação Auto):**
 
-**Atividade em grupo:**
-🛠️ *Desenhar arquitetura orientada a eventos para a emissão de um seguro de vida ou residencial*, com:
+* **Produtor:** Portal Web → envia `cotacao.solicitada`
+* **Broker:** Kafka (tópico `cotacao.request`)
+* **Consumidores:**
 
-* Eventos relevantes (ex: `proposta.recebida`, `validacao.sucesso`, `assinatura.finalizada`)
-* Serviços consumidores e produtores
+  * Cálculo de prêmio
+  * Análise de perfil
+  * Módulo antifraude
+* Geração do evento `cotacao.gerada` → envia proposta
+
+**🛠️ Atividade em grupo:**
+
+> Desenhar uma arquitetura EDA para emissão de **seguro de vida ou residencial**, com:
+>
+> * Eventos: `proposta.recebida`, `validacao.sucesso`, `assinatura.finalizada`
+> * Serviços produtores e consumidores
 
 ---
 
-### 3. Patterns para Sistemas Distribuídos (30 min)
+### 3. Padrões para Sistemas Distribuídos (30 min)
 
-**Aplicações típicas na seguradora:**
+**Objetivo:** Apresentar padrões que ajudam no design de sistemas assíncronos.
+**Tópicos:**
 
-* **Message Broker:** Kafka entre módulos (ex: antifraude, precificação, assinatura)
-* **Idempotência:** Evitar múltiplas análises de risco em duplicidade
-* **Retry & DLQ:** Integração com Detran pode falhar, mas reprocessar mais tarde
-* **Saga Pattern:**
+* Message Broker (Kafka, RabbitMQ, SQS)
+* **Message Queue vs Event Stream**
+* **Retry & Dead Letter Queue (DLQ)**
+* **Idempotência**
+* **Saga Pattern**: Orquestração vs Coreografia
+* **Circuit Breaker & Bulkhead**
+* **Consistência eventual**
 
-  * *Exemplo:* Cancelamento de apólice
+**📘 Exemplo aplicado (Seguradora - Cancelamento de Apólice):**
 
-    * Passo 1: Registrar cancelamento
-    * Passo 2: Notificar contabilidade
-    * Passo 3: Estornar comissão do corretor
-    * Usar coreografia: cada etapa escuta um evento anterior
+* Etapas:
 
-**Atividade:**
-⚖️ *Debate orientado:* "Se um cliente inicia uma proposta de seguro, mas não conclui a assinatura digital, como lidamos com esse processo assíncrono? Usamos orquestração ou coreografia?"
+  1. Registro do cancelamento
+  2. Notificação à contabilidade
+  3. Estorno da comissão
+* Cada serviço escuta o evento anterior (**coreografia**)
+
+**⚖️ Atividade - Debate orientado:**
+
+> "Se um cliente inicia uma proposta de seguro, mas não conclui a assinatura digital, como lidamos com esse processo assíncrono? Orquestração ou coreografia?"
 
 ---
 
 ### 4. Escalabilidade e Resiliência (30 min)
 
-**Exemplos aplicados à seguradora:**
+**Objetivo:** Discutir como EDA ajuda a escalar e manter a resiliência do sistema.
+**Tópicos:**
 
-* **Escalabilidade:**
+* **Escalabilidade horizontal** e desacoplamento
+* **Backpressure** e gerenciamento de fila
+* **Auto-scaling** com base no consumo de mensagens
+* **Failover** e tolerância a falhas
+* **Observabilidade**: tracing distribuído, logs centralizados
 
-  * Fluxos como *campanhas de cotação em massa* podem sobrecarregar serviços → usar filas/eventos com auto-scaling
-* **Resiliência:**
+**🔍 Exemplo aplicado (Seguradora):**
 
-  * Se o sistema de assinatura digital ficar offline, eventos ficam na fila (retentiva) e são processados quando o serviço volta
-  * Retry + DLQ para envio de SMS ou email
-* **Observabilidade:**
+* Campanhas de cotação em massa → filas com auto-scaling
+* Sistema de assinatura digital fora do ar → eventos ficam na fila
+* Retry & DLQ para envio de SMS, email, integrações externas
+* Tracing do fluxo: `sinistro.avisado` → `vistoria.concluida` → `indenizacao.paga`
 
-  * Correlacionar evento `sinistro.avisado` com `vistoria.concluida` e `indenizacao.paga` via tracing
+**🧪 Estudo de caso sugerido:**
 
-**Estudo de caso sugerido:**
-🧪 *"Como uma seguradora pode usar arquitetura event-driven para processar sinistros de forma escalável e resiliente?"*
+> "Como uma seguradora pode usar EDA para processar **sinistros** de forma **escalável e resiliente**?"
 
 ---
 
 ### 5. Encerramento e Discussão (20 min)
 
-**Quiz e Discussão:**
+**Objetivo:** Reforçar o aprendizado, tirar dúvidas e incentivar aprofundamento.
 
-* "Qual o papel de um broker em uma arquitetura orientada a eventos?"
-* "Quando um fluxo assíncrono pode prejudicar a experiência do usuário?"
-* "Qual a diferença entre evento de fato e comando?"
+**📊 Atividades:**
 
-**Indicações específicas para Seguradoras:**
+* **Quiz rápido** (via Kahoot ou similar)
+  Exemplos de perguntas:
 
-* “Enterprise Integration Patterns” – Gregor Hohpe
-* “Event-Driven Microservices” – Chris Richardson
-* Ferramentas:
+  * Qual a diferença entre evento e comando?
+  * Quando o assíncrono pode prejudicar a experiência do usuário?
+  * Papel do broker em EDA?
 
-  * Kafka + Kafka Streams
-  * AWS SNS/SQS (para integração com serviços legados)
-  * Temporal (para workflows de sinistro ou emissão)
+* **Espaço para perguntas**
+
+**📚 Leituras e ferramentas recomendadas (Seguradoras):**
+
+* Livros:
+
+  * “Enterprise Integration Patterns” – Gregor Hohpe
+  * “Event-Driven Microservices” – Chris Richardson
+  * “Microservices Patterns” – Chris Richardson
+
+* Ferramentas úteis:
+
+  * Kafka, Kafka Streams
+  * AWS SNS/SQS
+  * **Temporal.io** (workflow de sinistro, emissão, renovação)
+
+---
+
+## 🧰 Recursos e Materiais
+
+* Slides com diagramas e exemplos
+* Ferramentas: [draw.io](https://draw.io), [Miro](https://miro.com) para atividades visuais em grupo
+* Ambiente com `docker-compose` (Kafka, RabbitMQ, etc.)
+* Demos online: [Confluent Cloud](https://developer.confluent.io/)
+* Simuladores ou flows usando Temporal, Camunda ou AWS Step Functions (se desejar aprofundar em workflow)
 
 ---
