@@ -46,6 +46,10 @@
 
 ---
 
+### 🔹 ~~**Sessão 6 – Padrões Estruturais: Parte 1**~~ - 25/06/2025
+>Nota: Sessão cancelada a ser reposta mais tarde
+--- 
+
 ### 🔹 **Sessão 6 – Padrões Estruturais: Parte 1** - 30/06/2025
 
 * Adapter
@@ -54,7 +58,7 @@
 
 ---
 
-### 🔹 **Sessão 7 – Padrões Estruturais: Parte 2** - 02/06/2025
+### 🔹 **Sessão 7 – Padrões Estruturais: Parte 2** - 02/07/2025
 
 * Decorator
 * Facade
@@ -115,14 +119,14 @@
 
 ---
 
-### 🔹 **Sessão 14 – Desenvolvimento Assistido do Projeto Final** - 23/07/2025
+### 🔹 **Sessão 14 – Desenvolvimento Assistido do Projeto Final** - 28/07/2025
 
 * Hands-on supervisionado
 * Dúvidas e refinamento da aplicação dos padrões
 
 ---
 
-### 🔹 **Sessão 15 – Apresentação dos Projetos Finais** - 28/07/2025
+### 🔹 **Sessão 15 – Apresentação dos Projetos Finais** - 30/07/2025
 
 * Apresentações por grupo/aluno
 * Feedback e discussões
