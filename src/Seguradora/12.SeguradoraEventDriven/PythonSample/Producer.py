@@ -3,8 +3,7 @@ import asyncio
 from azure.eventhub import EventData
 from azure.eventhub.aio import EventHubProducerClient
 
-EVENT_HUB_CONNECTION_STR = "...your_event_hub_connection_string_here..."
-EVENT_HUB_NAME = "...your_event_hub_name_here..."
+# Replace with your Event Hub connection string and event hub name.
 
 async def run():
     # Create a producer client to send messages to the event hub.
