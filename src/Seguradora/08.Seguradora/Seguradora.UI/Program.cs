@@ -31,6 +31,8 @@ const string separador = "######################################################
 // gerenciadorApolice.CriarNovoSeguro();
 // Console.WriteLine(separador);
 
+Console.WriteLine("Creational patterns");
+
 // Exemplos.ExemploUsoSingleton();
 // Console.WriteLine(separador);
 
@@ -72,6 +74,8 @@ const string separador = "######################################################
 // Console.WriteLine(separador);
 
 
+Console.WriteLine("Structural patterns");
+
 // Exemplos.ExemploUsoAdapter();
 // Console.WriteLine(separador);
 
@@ -98,9 +102,13 @@ const string separador = "######################################################
 // Exemplos.ExemploUsoProxy();
 // Console.WriteLine(separador);
 
-// Exemplos.ExemploUsoObserver();
-// Console.WriteLine(separador);
+Console.WriteLine("Behavioral patterns");
 
+Exemplos.ExemploUsoObserver();
+Console.WriteLine(separador);
 
 Exemplos.ExemploUsoStrategy();
+Console.WriteLine(separador);
+
+Exemplos.ExemploUsoCommand();
 Console.WriteLine(separador);

@@ -5,7 +5,7 @@ using Composite = Logica.PadroesEstruturais.Composite;
 using Flyweight = Logica.PadroesEstruturais.Flyweight;
 using Observer = Logica.PadroesComportamentais.Observer;
 using Strategy = Logica.PadroesComportamentais.Strategy;
-
+using Command = Logica.PadroesComportamentais.Command;
 
 public static class Exemplos
 {
@@ -227,9 +227,9 @@ public static class Exemplos
     {
         // Exemplo de uso do Composite para gerenciar coberturas de seguro
         var coberturaCompleta = new CompositeCobertura();
-        coberturaCompleta.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaIncendio());
-        coberturaCompleta.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaRoubo());
-        coberturaCompleta.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaDanosTerceiros());
+        coberturaCompleta.AdicionarCobertura(new Composite.CoberturaIncendio());
+        coberturaCompleta.AdicionarCobertura(new Composite.CoberturaRoubo());
+        coberturaCompleta.AdicionarCobertura(new CoberturaDanosTerceiros());
 
         Console.WriteLine("Exemplo de uso do Composite:");
         Console.WriteLine($"Valor total da cobertura completa: {coberturaCompleta.CalcularValor()}");
@@ -237,9 +237,9 @@ public static class Exemplos
 
         // Exemplo de uso do Composite para gerenciar coberturas de seguro de um cliente específico
         Console.WriteLine("Exemplo de uso do Composite para o seguro do José:");
-        var seguroDoJose = new Seguradora.Logica.PadroesEstruturais.Composite.CompositeCobertura();
-        seguroDoJose.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaIncendio());
-        seguroDoJose.AdicionarCobertura(new Seguradora.Logica.PadroesEstruturais.Composite.CoberturaRoubo());
+        var seguroDoJose = new CompositeCobertura();
+        seguroDoJose.AdicionarCobertura(new Composite.CoberturaIncendio());
+        seguroDoJose.AdicionarCobertura(new Composite.CoberturaRoubo());
 
         Console.WriteLine("Exemplo de uso do Composite:");
         Console.WriteLine($"Valor total da cobertura do José: {seguroDoJose.CalcularValor()}");
@@ -250,7 +250,7 @@ public static class Exemplos
         Console.WriteLine("Exemplo de uso do Private Data Class:");
 
         // Criando uma apólice de seguro
-        var apoliceSeguro = new Logica.PadroesEstruturais.PrivateClassData.ApoliceSeguro("João da Silva", 1500.00m, "123.456.789-00");
+        var apoliceSeguro = new ApoliceSeguro("João da Silva", 1500.00m, "123.456.789-00");
 
         // Obtendo informações da apólice
         Console.WriteLine($"Segurado: {apoliceSeguro.ObterSegurado()}");
@@ -267,17 +267,17 @@ public static class Exemplos
         Console.WriteLine("Exemplo de uso do Decorator:");
 
         // Criando uma apólice básica
-        Seguradora.Logica.PadroesEstruturais.Decorator.IApolice apolice = new Seguradora.Logica.PadroesEstruturais.Decorator.ApoliceBasica();
+        Decorator.IApolice apolice = new ApoliceBasica();
         Console.WriteLine($"Descrição: {apolice.Descricao()}");
         Console.WriteLine($"Prêmio: {apolice.CalcularPremio()}");
 
         // Adicionando cobertura de roubo
-        apolice = new Seguradora.Logica.PadroesEstruturais.Decorator.CoberturaRoubo(apolice);
+        apolice = new Decorator.CoberturaRoubo(apolice);
         Console.WriteLine($"Descrição com Cobertura de Roubo: {apolice.Descricao()}");
         Console.WriteLine($"Prêmio com Cobertura de Roubo: {apolice.CalcularPremio()}");
 
         // Adicionando cobertura de incêndio
-        apolice = new Seguradora.Logica.PadroesEstruturais.Decorator.CoberturaIncendio(apolice);
+        apolice = new Decorator.CoberturaIncendio(apolice);
         Console.WriteLine($"Descrição com Cobertura de Incêndio: {apolice.Descricao()}");
         Console.WriteLine($"Prêmio com Cobertura de Incêndio: {apolice.CalcularPremio()}");
     }
@@ -292,7 +292,7 @@ public static class Exemplos
         Console.WriteLine("Exemplo de uso do Decorator:");
 
         // Criando uma apólice básica
-        Decorator.IApolice apolice = new Decorator.ApoliceBasica();
+        Decorator.IApolice apolice = new ApoliceBasica();
         Console.WriteLine($"Descrição: {apolice.Descricao()}");
         Console.WriteLine($"Prêmio: {apolice.CalcularPremio()}");
 
@@ -317,7 +317,7 @@ public static class Exemplos
         Console.WriteLine("Exemplo de uso do Facade:");
 
         // Usando a fachada para subscrição de seguro
-        var subscricao = new Seguradora.Logica.PadroesEstruturais.Facade.SubscricaoFacade();
+        var subscricao = new SubscricaoFacade();
         subscricao.SubscricaoCompleta("123.456.789-00");
     }
 
@@ -399,5 +399,16 @@ public static class Exemplos
         var seguroEletronicos = new Strategy.Seguro(new Strategy.CalculoSeguroEletronicos());
         var premioEletronicos = seguroEletronicos.Calcular(50000, 24);
         Console.WriteLine("Prêmio Seguro Eletrônicos: R$" + premioEletronicos);
+    }
+
+    public static void ExemploUsoCommand()
+    {
+        var gestor = new Command.GestorApolices();
+        var emitirCmd = new Command.EmitirApoliceCommand(gestor, "POL78910");
+        var cancelarCmd = new Command.CancelarApoliceCommand(gestor, "POL78910");
+
+        var central = new Command.CentralComandos();
+        central.ExecutarComando(emitirCmd);
+        central.ExecutarComando(cancelarCmd);
     }
 }
