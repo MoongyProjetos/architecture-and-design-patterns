@@ -3,6 +3,7 @@ namespace Seguradora.UI;
 using Decorator = Seguradora.Logica.PadroesEstruturais.Decorator;
 using Composite = Seguradora.Logica.PadroesEstruturais.Composite;
 using Flyweight = Seguradora.Logica.PadroesEstruturais.Flyweight;
+using Observer =  Seguradora.Logica.PadroesComportamentais.Observer;
 
 public static class Exemplos
 {
@@ -356,5 +357,25 @@ public static class Exemplos
         // Tentando acessar com um usuário sem permissão
         apresentador = new ProxyDocumento("documento.pdf", "cliente");
         apresentador.Mostrar();
+    }
+
+
+    public static void ExemploUsoObserver()
+    {
+        Console.WriteLine("Exemplo de uso do Observer:");
+
+        // Criando uma apólice
+        var apolice = new Observer.Apolice("APOLICE-123");
+
+        // Criando clientes observadores
+        var cliente1 = new Observer.ClienteObserver("João");
+        var cliente2 = new Observer.ClienteObserver("Maria");
+
+        // Adicionando clientes à apólice
+        apolice.AdicionarCliente(cliente1);
+        apolice.AdicionarCliente(cliente2);
+
+        // Atualizando a apólice e notificando os clientes
+        apolice.AtualizarApolice("Cobertura de incêndio adicionada.");
     }
 }

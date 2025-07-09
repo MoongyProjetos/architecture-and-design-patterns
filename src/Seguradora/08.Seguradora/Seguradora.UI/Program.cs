@@ -97,3 +97,8 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoProxy();
 Console.WriteLine(separador);
+
+
+
+Exemplos.ExemploUsoObserver();
+Console.WriteLine(separador);
