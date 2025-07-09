@@ -1,9 +1,11 @@
 namespace Seguradora.UI;
 
-using Decorator = Seguradora.Logica.PadroesEstruturais.Decorator;
-using Composite = Seguradora.Logica.PadroesEstruturais.Composite;
-using Flyweight = Seguradora.Logica.PadroesEstruturais.Flyweight;
-using Observer =  Seguradora.Logica.PadroesComportamentais.Observer;
+using Decorator = Logica.PadroesEstruturais.Decorator;
+using Composite = Logica.PadroesEstruturais.Composite;
+using Flyweight = Logica.PadroesEstruturais.Flyweight;
+using Observer = Logica.PadroesComportamentais.Observer;
+using Strategy = Logica.PadroesComportamentais.Strategy;
+
 
 public static class Exemplos
 {
@@ -377,5 +379,25 @@ public static class Exemplos
 
         // Atualizando a apólice e notificando os clientes
         apolice.AtualizarApolice("Cobertura de incêndio adicionada.");
+    }
+
+
+    public static void ExemploUsoStrategy()
+    {
+        var seguroVeiculo = new Strategy.Seguro(new Strategy.CalculoSeguroVeiculo());
+        var premioVeiculo = seguroVeiculo.Calcular(50000, 24);
+        Console.WriteLine("Prêmio Seguro Veículo: R$" + premioVeiculo);
+
+        var seguroVida = new Strategy.Seguro(new Strategy.CalculoSeguroVida());
+        var premioVida = seguroVida.Calcular(50000, 24);
+        Console.WriteLine("Prêmio Seguro Vida: R$" + premioVida);
+
+        var seguroResidencial = new Strategy.Seguro(new Strategy.CalculoSeguroResidencial());
+        var premioResidencial = seguroResidencial.Calcular(50000, 24);
+        Console.WriteLine("Prêmio Seguro Residencial: R$" + premioResidencial);
+
+        var seguroEletronicos = new Strategy.Seguro(new Strategy.CalculoSeguroEletronicos());
+        var premioEletronicos = seguroEletronicos.Calcular(50000, 24);
+        Console.WriteLine("Prêmio Seguro Eletrônicos: R$" + premioEletronicos);
     }
 }
