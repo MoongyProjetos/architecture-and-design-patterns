@@ -40,8 +40,63 @@ Claro! Aqui está uma sugestão de **aula de 2h de duração** para a **Sessão 
 ### 🔹 0–10min: Introdução aos Padrões Comportamentais
 
 * O que são padrões comportamentais?
+
+Padrões comportamentais (behavioral patterns) em design patterns são um grupo de padrões de projeto que focam em **como os objetos interagem e se comunicam entre si** para realizar tarefas e distribuir responsabilidades. Ou seja, eles descrevem **a forma de comunicação e colaboração entre objetos**, definindo como eles trocam mensagens, controlam o fluxo e reagem a eventos.
+
+Esses padrões ajudam a organizar a interação, facilitando a flexibilidade, a reutilização e a manutenção do código, evitando acoplamento forte entre componentes.
+
+### Exemplos comuns de padrões comportamentais:
+
+* **Observer** — Define uma dependência um-para-muitos, onde quando um objeto muda de estado, todos os seus dependentes são notificados automaticamente.
+* **Strategy** — Permite alterar o algoritmo usado por um objeto em tempo de execução, encapsulando-os em classes separadas.
+* **Command** — Encapsula uma solicitação como um objeto, permitindo parametrizar clientes com diferentes solicitações, enfileirar ou registrar comandos.
+* **Iterator** — Fornece uma maneira de acessar elementos de uma coleção sequencialmente, sem expor sua representação interna.
+* **Mediator** — Centraliza a comunicação entre objetos, reduzindo o acoplamento entre eles.
+* **State** — Permite que um objeto altere seu comportamento quando seu estado interno muda.
+
+### Resumindo:
+
+* **Padrões comportamentais são sobre o "comportamento" e a "interação" entre objetos.**
+* Eles ajudam a definir quem faz o quê, quando e como, e a forma como objetos colaboram sem ficarem fortemente acoplados.
+
 * Qual o foco: **comunicação entre objetos**.
 * Quando aplicar esses padrões?
+
+
+Aplicar padrões comportamentais faz sentido quando você quer resolver problemas específicos relacionados à **interação, comunicação e flexibilidade do comportamento entre objetos** no seu sistema.
+
+---
+
+### Quando aplicar padrões comportamentais
+
+1. **Quer organizar e controlar a comunicação entre objetos para evitar acoplamento forte**
+   Exemplo: você tem muitos objetos que se comunicam diretamente e o código está ficando difícil de manter. Usar o **Mediator** pode ajudar a centralizar essa comunicação.
+
+2. **Precisa permitir variações no comportamento do objeto em tempo de execução**
+   Exemplo: seu objeto deve alterar sua estratégia ou algoritmo conforme o contexto. O padrão **Strategy** é ideal para encapsular essas variações e trocar o comportamento dinamicamente.
+
+3. **Quer notificar vários objetos sobre mudanças sem criar dependências rígidas**
+   Exemplo: em sistemas que precisam reagir a eventos, como interfaces gráficas ou sistemas reativos, o **Observer** permite que vários objetos acompanhem o estado de um objeto sem acoplamento direto.
+
+4. **Quer encapsular ações como objetos para controlar, adiar ou registrar operações**
+   Exemplo: sistemas que precisam guardar histórico, desfazer operações, ou enviar comandos para execução em fila podem usar o **Command**.
+
+5. **Precisa percorrer coleções sem expor sua estrutura interna**
+   Exemplo: para navegar numa lista, árvore ou conjunto sem que o cliente saiba o funcionamento interno da coleção, o **Iterator** é a escolha certa.
+
+6. **Deseja que um objeto mude seu comportamento conforme seu estado interno**
+   Exemplo: máquinas de estados, onde o comportamento muda conforme o status atual, se beneficiam do padrão **State**.
+
+---
+
+### Em resumo:
+
+* Aplique padrões comportamentais quando seu foco for **flexibilidade, desacoplamento e organização das interações**.
+* Evite comunicação direta demais entre muitos objetos, que gera dependência e código rígido.
+* Use esses padrões para que o sistema seja mais fácil de estender, modificar e manter.
+
+
+
 * Breve visão geral dos 3 padrões do dia:
 
   * **Observer**: eventos e notificações
