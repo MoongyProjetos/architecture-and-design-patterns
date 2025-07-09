@@ -1,6 +1,3 @@
-Claro! Aqui está uma sugestão de **aula de 2h de duração** para a **Sessão 8 – Padrões Comportamentais: Parte 1**, abordando os padrões **Observer**, **Strategy** e **Command**.
-
----
 
 ## 📘 **Plano de Aula – Sessão 8: Padrões Comportamentais – Parte 1**
 
