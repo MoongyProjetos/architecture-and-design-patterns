@@ -73,6 +73,40 @@ Claro! Aqui está uma sugestão de **aula de 2h de duração** para a **Sessão 
 
 #### 💻 Exemplo em código (Java ou Python, 10min)
 
+```mermaid
+classDiagram
+    %% Direção opcional para facilitar leitura
+    direction LR
+
+    %% Interfaces e classes
+    class IObserver {
+        +Update(string mensagem)
+    }
+
+    class Canal {
+        -List~IObserver~ _inscritos
+        +Inscrever(IObserver o)
+        +Notificar(string video)
+    }
+
+    class Usuario {
+        -string Nome
+        +Usuario(string nome)
+        +Update(string video)
+    }
+
+    class Program {
+        +Main()
+    }
+
+    %% Relações
+    IObserver <|.. Usuario          : implementa
+    Canal     o--  "0..*" IObserver : _inscritos
+    Program   --> Canal
+    Program   --> Usuario
+```
+
+
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -162,6 +196,44 @@ class Program
 
 #### 💻 Exemplo em código (Java ou Python, 10min)
 
+```mermaid
+classDiagram
+    direction LR
+
+    %% Interfaces e classes
+    class IOperacao {
+        +Executar(int a, int b) int
+    }
+
+    class Soma {
+        +Executar(int a, int b) int
+    }
+
+    class Subtrai {
+        +Executar(int a, int b) int
+    }
+
+    class Calculadora {
+        -IOperacao _operacao
+        +Calculadora(IOperacao operacao)
+        +DefinirOperacao(IOperacao operacao)
+        +Calcular(int a, int b) int
+    }
+
+    class Program {
+        +Main()
+    }
+
+    %% Relações
+    IOperacao <|.. Soma        : implementa
+    IOperacao <|.. Subtrai     : implementa
+    Calculadora o-- IOperacao  : usa
+    Program --> Calculadora
+    Program --> Soma
+    Program --> Subtrai
+```
+
+
 ```csharp
 using System;
 
@@ -247,6 +319,46 @@ class Program
 ![alt text](/Documentação/Imagens/Command.png)
 
 #### 💻 Exemplo em código (Python, 5min)
+
+```mermaid
+classDiagram
+    direction LR
+
+    %% Interfaces e classes
+    class ICommand {
+        +Executar()
+    }
+
+    class Luz {
+        +Ligar()
+        +Desligar()
+    }
+
+    class LigarLuzCommand {
+        -Luz _luz
+        +LigarLuzCommand(Luz luz)
+        +Executar()
+    }
+
+    class ControleRemoto {
+        -ICommand _comando
+        +DefinirComando(ICommand comando)
+        +PressionarBotao()
+    }
+
+    class Program {
+        +Main()
+    }
+
+    %% Relações
+    ICommand <|.. LigarLuzCommand      : implementa
+    LigarLuzCommand --> Luz            : usa
+    ControleRemoto o-- ICommand        : mantém referência
+    Program --> Luz
+    Program --> LigarLuzCommand
+    Program --> ControleRemoto
+
+```
 
 ```csharp
 using System;
