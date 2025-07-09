@@ -11,7 +11,7 @@
 
 ---
 
-![alt text](image.png)
+![alt text](/Documentação/Imagens/Events.png)
 
 ### 1. Abertura e Contextualização (10 min)
 
