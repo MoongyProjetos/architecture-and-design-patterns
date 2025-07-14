@@ -194,6 +194,84 @@ class Atendente : Aprovador {
 }
 ```
 
+
+### Exemplo completo
+
+```csharp
+using System;
+
+public class Sinistro {
+    public string Descricao { get; set; }
+    public decimal Valor { get; set; }
+
+    public Sinistro(string descricao, decimal valor) {
+        Descricao = descricao;
+        Valor = valor;
+    }
+}
+
+// Classe base
+abstract class Aprovador {
+    protected Aprovador Proximo;
+    public void DefinirProximo(Aprovador proximo) => Proximo = proximo;
+    public abstract void Aprovar(Sinistro sinistro);
+}
+
+// Nível 1
+class Atendente : Aprovador {
+    public override void Aprovar(Sinistro s) {
+        if (s.Valor < 5000)
+            Console.WriteLine($"Atendente aprovou o sinistro: {s.Descricao} (Valor: {s.Valor:C})");
+        else
+            Proximo?.Aprovar(s);
+    }
+}
+
+// Nível 2
+class Gerente : Aprovador {
+    public override void Aprovar(Sinistro s) {
+        if (s.Valor < 15000)
+            Console.WriteLine($"Gerente aprovou o sinistro: {s.Descricao} (Valor: {s.Valor:C})");
+        else
+            Proximo?.Aprovar(s);
+    }
+}
+
+// Nível 3
+class Diretor : Aprovador {
+    public override void Aprovar(Sinistro s) {
+        if (s.Valor < 150000)
+            Console.WriteLine($"Diretor aprovou o sinistro: {s.Descricao} (Valor: {s.Valor:C})");
+        else
+            Console.WriteLine($"Sinistro de valor muito alto! Escalar para conselho: {s.Descricao} (Valor: {s.Valor:C})");
+    }
+}
+
+// Programa de teste
+class Program {
+    static void Main(string[] args) {
+        // Montando a cadeia de responsabilidade
+        var atendente = new Atendente();
+        var gerente = new Gerente();
+        var diretor = new Diretor();
+
+        atendente.DefinirProximo(gerente);
+        gerente.DefinirProximo(diretor);
+
+        // Casos de teste
+        var sinistro1 = new Sinistro("Retrovisor quebrado", 1200);
+        var sinistro2 = new Sinistro("Batida leve", 10000);
+        var sinistro3 = new Sinistro("Perda total", 50000);
+        var sinistro4 = new Sinistro("Incêndio total da frota", 500000);
+
+        atendente.Aprovar(sinistro1);
+        atendente.Aprovar(sinistro2);
+        atendente.Aprovar(sinistro3);
+        atendente.Aprovar(sinistro4);
+    }
+}
+```
+
 ---
 
 ## 🔄 State – Ciclo de Vida da Apólice
@@ -232,6 +310,73 @@ public class Apolice {
     private IEstadoApolice _estado;
     public void DefinirEstado(IEstadoApolice estado) => _estado = estado;
     public void Processar() => _estado.Processar();
+}
+```
+
+### Exemplo completo
+
+```csharp
+using System;
+
+public interface IEstadoApolice {
+    void Processar();
+}
+
+public class Emitida : IEstadoApolice {
+    public void Processar() => Console.WriteLine("🔵 A apólice está EMITIDA e pode ser paga.");
+}
+
+public class Cancelada : IEstadoApolice {
+    public void Processar() => Console.WriteLine("❌ A apólice está CANCELADA. Nenhuma ação permitida.");
+}
+
+public class EmAnalise : IEstadoApolice {
+    public void Processar() => Console.WriteLine("🟡 A apólice está EM ANÁLISE. Aguardando validação.");
+}
+
+public class Expirada : IEstadoApolice {
+    public void Processar() => Console.WriteLine("⚪ A apólice está EXPIRADA. Precisa ser renovada.");
+}
+
+public class Apolice {
+    private IEstadoApolice _estado;
+
+    public void DefinirEstado(IEstadoApolice estado) {
+        _estado = estado;
+        Console.WriteLine($"[Estado atualizado: {estado.GetType().Name}]");
+    }
+
+    public void Processar() {
+        if (_estado == null)
+            Console.WriteLine("⚠️ Nenhum estado definido para a apólice.");
+        else
+            _estado.Processar();
+    }
+}
+
+class Program {
+    static void Main(string[] args) {
+        var apolice = new Apolice();
+
+        // Apólice ainda sem estado
+        apolice.Processar();
+
+        // Estado: Em análise
+        apolice.DefinirEstado(new EmAnalise());
+        apolice.Processar();
+
+        // Estado: Emitida
+        apolice.DefinirEstado(new Emitida());
+        apolice.Processar();
+
+        // Estado: Cancelada
+        apolice.DefinirEstado(new Cancelada());
+        apolice.Processar();
+
+        // Estado: Expirada
+        apolice.DefinirEstado(new Expirada());
+        apolice.Processar();
+    }
 }
 ```
 
@@ -289,6 +434,61 @@ public class RelatorioSimples : IVisitor {
 }
 ```
 
+### Exemplo completo
+
+```csharp
+using System;
+
+// Interface para os elementos que aceitam visitantes
+public interface ISeguro {
+    void Aceitar(IVisitor visitor);
+}
+
+// Seguro de automóvel
+public class SeguroAuto : ISeguro {
+    public string Modelo { get; set; } = "Sedan";
+    public void Aceitar(IVisitor visitor) => visitor.Visitar(this);
+}
+
+// Seguro de vida (opcional — para mostrar múltiplos elementos)
+public class SeguroVida : ISeguro {
+    public string Beneficiario { get; set; } = "João";
+    public void Aceitar(IVisitor visitor) => visitor.Visitar(this);
+}
+
+// Interface do visitante
+public interface IVisitor {
+    void Visitar(SeguroAuto seguro);
+    void Visitar(SeguroVida seguro);
+}
+
+// Um visitante que gera relatórios simples
+public class RelatorioSimples : IVisitor {
+    public void Visitar(SeguroAuto s) =>
+        Console.WriteLine($"🚗 Relatório do Seguro Auto: Modelo = {s.Modelo}");
+
+    public void Visitar(SeguroVida s) =>
+        Console.WriteLine($"🧬 Relatório do Seguro Vida: Beneficiário = {s.Beneficiario}");
+}
+
+// Programa principal para teste
+class Program {
+    static void Main(string[] args) {
+        // Instanciando seguros
+        ISeguro seguroAuto = new SeguroAuto { Modelo = "SUV" };
+        ISeguro seguroVida = new SeguroVida { Beneficiario = "Maria" };
+
+        // Criando o visitante
+        IVisitor relatorio = new RelatorioSimples();
+
+        // Aplicando o visitante
+        seguroAuto.Aceitar(relatorio);
+        seguroVida.Aceitar(relatorio);
+    }
+}
+
+```
+
 ---
 
 ## 🧮 Interpreter – Regras de Aceitação
@@ -328,6 +528,65 @@ public class E : IExpressao {
     private IExpressao _esq, _dir;
     public E(IExpressao e1, IExpressao e2) { _esq = e1; _dir = e2; }
     public bool Interpretar(Contexto c) => _esq.Interpretar(c) && _dir.Interpretar(c);
+}
+```
+
+### Exemplo completo
+
+```csharp
+using System;
+
+// Contexto com os dados de entrada da regra
+public class Contexto {
+    public int Idade { get; set; }
+    public bool TemSeguroAnterior { get; set; }
+}
+
+// Interface de expressão
+public interface IExpressao {
+    bool Interpretar(Contexto contexto);
+}
+
+// Expressão: idade > 25
+public class IdadeMaiorQue25 : IExpressao {
+    public bool Interpretar(Contexto contexto) => contexto.Idade > 25;
+}
+
+// Expressão: possui seguro anterior
+public class PossuiSeguroAnterior : IExpressao {
+    public bool Interpretar(Contexto contexto) => contexto.TemSeguroAnterior;
+}
+
+// Expressão composta: E lógico
+public class E : IExpressao {
+    private readonly IExpressao _esq, _dir;
+    public E(IExpressao esquerda, IExpressao direita) {
+        _esq = esquerda;
+        _dir = direita;
+    }
+
+    public bool Interpretar(Contexto contexto) =>
+        _esq.Interpretar(contexto) && _dir.Interpretar(contexto);
+}
+
+// Programa principal de teste
+class Program {
+    static void Main(string[] args) {
+        // Criar a expressão: idade > 25 AND tem seguro anterior
+        IExpressao regra = new E(new IdadeMaiorQue25(), new PossuiSeguroAnterior());
+
+        // Teste 1
+        var cliente1 = new Contexto { Idade = 30, TemSeguroAnterior = true };
+        Console.WriteLine("Cliente 1 aprovado? " + regra.Interpretar(cliente1)); // true
+
+        // Teste 2
+        var cliente2 = new Contexto { Idade = 22, TemSeguroAnterior = true };
+        Console.WriteLine("Cliente 2 aprovado? " + regra.Interpretar(cliente2)); // false
+
+        // Teste 3
+        var cliente3 = new Contexto { Idade = 28, TemSeguroAnterior = false };
+        Console.WriteLine("Cliente 3 aprovado? " + regra.Interpretar(cliente3)); // false
+    }
 }
 ```
 
