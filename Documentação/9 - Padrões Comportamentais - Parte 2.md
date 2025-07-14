@@ -54,16 +54,7 @@ Você deve considerar aplicar **Chain of Responsibility**, **State**, **Visitor*
 4. 🧮 **Precisa interpretar regras ou linguagens específicas (DSLs)**
    → Use **Interpreter** para montar interpretadores simples com gramática própria.
 
----
 
-## 🧪 Visão Geral Aplicada ao Domínio de uma Seguradora
-
-| Padrão                         | Aplicação prática no sistema de uma seguradora                                                                                   |
-| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| 🔗 **Chain of Responsibility** | Aprovação escalonada de sinistros: Atendente → Analista → Gerente, onde cada um trata o que está sob sua alçada.                 |
-| 🔄 **State**                   | Estados de uma apólice: Em Análise, Emitida, Cancelada, Expirada — o comportamento muda conforme o status atual.                 |
-| 🧭 **Visitor**                 | Relatórios ou exportações para diferentes tipos de seguro (auto, vida, residencial), sem alterar as classes dos seguros.         |
-| 🧮 **Interpreter**             | Regras de aceitação de propostas personalizadas como: `"idade > 25 AND temSeguroAnterior = true"` — interpretadas dinamicamente. |
 
 ---
 
@@ -75,6 +66,19 @@ Você deve considerar aplicar **Chain of Responsibility**, **State**, **Visitor*
 | 🔄 State                   | Altera o comportamento de um objeto com base em seu estado              | Elimina estruturas condicionais complexas |
 | 🧭 Visitor                 | Permite adicionar operações sem mudar as classes dos objetos            | Mantém a lógica separada das estruturas   |
 | 🧮 Interpreter             | Define uma gramática e avalia expressões baseadas em regras específicas | Permite criar linguagens e DSLs simples   |
+
+
+---
+
+
+## 🧪 Visão Geral Aplicada ao Domínio de uma Seguradora
+
+| Padrão                         | Aplicação prática no sistema de uma seguradora                                                                                   |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------- |
+| 🔗 **Chain of Responsibility** | Aprovação escalonada de sinistros: Atendente → Analista → Gerente, onde cada um trata o que está sob sua alçada.                 |
+| 🔄 **State**                   | Estados de uma apólice: Em Análise, Emitida, Cancelada, Expirada — o comportamento muda conforme o status atual.                 |
+| 🧭 **Visitor**                 | Relatórios ou exportações para diferentes tipos de seguro (auto, vida, residencial), sem alterar as classes dos seguros.         |
+| 🧮 **Interpreter**             | Regras de aceitação de propostas personalizadas como: `"idade > 25 AND temSeguroAnterior = true"` — interpretadas dinamicamente. |
 
 ---
 
