@@ -590,6 +590,190 @@ class Program {
 }
 ```
 
+O padrão **Interpreter** e o padrão **Strategy** são **padrões comportamentais** que lidam com **comportamentos flexíveis**, mas têm **propósitos, estruturas e usos bem diferentes**. Abaixo está uma comparação clara e objetiva para você entender **quando e por que usar cada um**:
+
+---
+
+## 🔍 Comparação: Interpreter vs Strategy
+
+| Aspecto                    | 🧮 **Interpreter**                                                  | 🧠 **Strategy**                                                  |
+| -------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| **Objetivo principal**     | Interpretar linguagens ou expressões de forma estruturada           | Permitir a troca dinâmica de algoritmos/comportamentos           |
+| **Foco**                   | Análise e execução de gramáticas (regras/sintaxe personalizadas)    | Substituir algoritmos com base em contexto                       |
+| **Composição**             | Usa árvores de objetos (expressões) que se combinam recursivamente  | Usa encapsulamento de comportamentos em diferentes classes       |
+| **Uso típico**             | Avaliar **regras de negócio**, **expressões booleanas**, DSLs       | Aplicar **estratégias diferentes** de cálculo ou execução        |
+| **Exemplo típico**         | `"idade > 25 AND temSeguroAnterior = true"`                         | Cálculo de prêmio de seguro com estratégia: simples, avançada... |
+| **Flexibilidade**          | Alta para **construir e interpretar** estruturas linguísticas       | Alta para **escolher ou trocar** o algoritmo                     |
+| **Quando usar**            | Quando há necessidade de avaliar regras **combináveis** e dinâmicas | Quando o algoritmo ou política pode variar e precisa ser trocado |
+| **Classe cliente sabe...** | Como montar a árvore de expressões                                  | Apenas qual estratégia usar (sem saber sua lógica interna)       |
+
+---
+
+## 🎯 Exemplos em contexto de seguradora
+
+### ✅ **Interpreter**
+
+* O analista configura uma **regra de aceitação**:
+
+  ```
+  idade > 25 AND possuiSeguroAnterior
+  ```
+* Essa expressão é **interpretada** por objetos (`MaiorQue`, `E`, etc.) no momento da análise da proposta.
+
+### ✅ **Strategy**
+
+* O sistema de cálculo de prêmio de seguro pode usar diferentes **estratégias**:
+
+  * EstratégiaSimples
+  * EstratégiaComDescontos
+  * EstratégiaParaClientesVIP
+
+* A lógica de cálculo pode ser **trocada dinamicamente**, mas **não é construída via linguagem ou árvore de objetos**.
+
+---
+
+## 🧠 Analogia simples
+
+| Situação                                       | Interpreter         | Strategy         |
+| ---------------------------------------------- | ------------------- | ---------------- |
+| Como montar uma frase com palavras e gramática | ✅ Sim — Interpreter | ❌ Não — Strategy |
+| Como trocar uma forma de calcular imposto      | ❌ Não — Interpreter | ✅ Sim — Strategy |
+
+---
+
+## 🧩 Conclusão
+
+| Se você precisa...                                           | Use...         |
+| ------------------------------------------------------------ | -------------- |
+| Avaliar uma **estrutura de regras** que podem ser combinadas | 🧮 Interpreter |
+| Trocar **um algoritmo** com base no contexto ou configuração | 🧠 Strategy    |
+
+
+
+Perfeito! Vamos comparar **Interpreter** e **Strategy** **lado a lado**, usando o mesmo domínio: **cálculo de aceitação de um seguro**.
+
+---
+
+# 🧮 Interpreter vs 🧠 Strategy
+
+**Domínio: Aceitação de proposta de seguro**
+
+---
+
+## 🧮 EXEMPLO: Interpreter
+
+📌 **Objetivo:** Avaliar regras **combinadas** de aceitação configuradas dinamicamente
+📌 **Situação:** Analistas podem criar expressões como `"idade > 25 AND temSeguroAnterior"`
+📌 **Vantagem:** Regras são **flexíveis e montadas dinamicamente**
+
+### 🔧 Código (Interpreter)
+
+```csharp
+public class Contexto {
+    public int Idade { get; set; }
+    public bool TemSeguroAnterior { get; set; }
+}
+
+public interface IExpressao {
+    bool Interpretar(Contexto contexto);
+}
+
+public class MaiorQue25 : IExpressao {
+    public bool Interpretar(Contexto c) => c.Idade > 25;
+}
+
+public class TemSeguroAnterior : IExpressao {
+    public bool Interpretar(Contexto c) => c.TemSeguroAnterior;
+}
+
+public class E : IExpressao {
+    private IExpressao _esq, _dir;
+    public E(IExpressao esq, IExpressao dir) { _esq = esq; _dir = dir; }
+    public bool Interpretar(Contexto c) => _esq.Interpretar(c) && _dir.Interpretar(c);
+}
+```
+
+### 🧪 Uso
+
+```csharp
+var regra = new E(new MaiorQue25(), new TemSeguroAnterior());
+
+var cliente = new Contexto { Idade = 30, TemSeguroAnterior = true };
+Console.WriteLine("Aprovado? " + regra.Interpretar(cliente)); // True
+```
+
+---
+
+## 🧠 EXEMPLO: Strategy
+
+📌 **Objetivo:** Escolher **estratégias diferentes** de aceitação com base em política do sistema
+📌 **Situação:** O sistema pode usar diferentes **estratégias** fixas (cliente jovem, VIP, padrão)
+📌 **Vantagem:** É possível trocar **todo o algoritmo** com facilidade
+
+### 🔧 Código (Strategy)
+
+```csharp
+public class Cliente {
+    public int Idade { get; set; }
+    public bool TemSeguroAnterior { get; set; }
+}
+
+public interface IAceitacaoStrategy {
+    bool Avaliar(Cliente cliente);
+}
+
+public class AceitacaoPadrao : IAceitacaoStrategy {
+    public bool Avaliar(Cliente c) => c.Idade >= 18 && c.TemSeguroAnterior;
+}
+
+public class AceitacaoJovem : IAceitacaoStrategy {
+    public bool Avaliar(Cliente c) => c.Idade >= 21;
+}
+
+public class AceitadorDePropostas {
+    private IAceitacaoStrategy _strategy;
+
+    public AceitadorDePropostas(IAceitacaoStrategy strategy) {
+        _strategy = strategy;
+    }
+
+    public bool Avaliar(Cliente cliente) => _strategy.Avaliar(cliente);
+}
+```
+
+### 🧪 Uso
+
+```csharp
+var cliente = new Cliente { Idade = 30, TemSeguroAnterior = false };
+
+// troca de estratégia:
+var aceito1 = new AceitadorDePropostas(new AceitacaoPadrao());
+Console.WriteLine("Aceito (padrão)? " + aceito1.Avaliar(cliente)); // False
+
+var aceito2 = new AceitadorDePropostas(new AceitacaoJovem());
+Console.WriteLine("Aceito (jovem)? " + aceito2.Avaliar(cliente)); // True
+```
+
+---
+
+## 🎯 Comparação lado a lado
+
+| Aspecto                        | 🧮 Interpreter                                        | 🧠 Strategy                                             |
+| ------------------------------ | ----------------------------------------------------- | ------------------------------------------------------- |
+| Regras compostas dinamicamente | ✅ Sim (`idade > 25 AND temSeguro`)                    | ❌ Não – estratégias são implementadas diretamente       |
+| Flexibilidade para o usuário   | Alta – analista pode criar combinações com operadores | Média – só desenvolvedores criam estratégias            |
+| Troca de comportamento         | Combinando expressões (`E`, `OU`, etc.)               | Trocando a implementação da interface                   |
+| Ideal para                     | Regras configuráveis no sistema                       | Variações de algoritmo conhecidas                       |
+| Montagem em tempo de execução  | ✅ Sim                                                 | ⚠️ Parcial (instância em tempo real, mas lógica é fixa) |
+
+---
+
+## ✅ Conclusão
+
+* Use **Interpreter** quando o sistema precisa **interpretar regras escritas como expressões combinadas**, especialmente quando essas regras podem **ser definidas em tempo de execução**.
+* Use **Strategy** quando você quer **trocar o algoritmo completo**, mas a decisão sobre qual usar pode ser tomada de forma mais simples, sem construir regras com operadores.
+
+
 ---
 
 ## ✅ Resumo Visual
