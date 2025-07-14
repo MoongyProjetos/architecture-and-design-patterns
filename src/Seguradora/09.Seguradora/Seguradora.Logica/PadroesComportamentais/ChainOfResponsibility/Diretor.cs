@@ -3,15 +3,15 @@ namespace Seguradora.Logica.PadroesComportamentais.ChainOfResponsibility;
 // Nível 3
 public class Diretor : Aprovador
 {
-    public override void Aprovar(Sinistro s)
+    public override void Aprovar(Sinistro sinistro)
     {
-        if (s.Valor < 150000)
+        if (sinistro.Valor < 150000)
         {
-            Console.WriteLine($"Diretor aprovou o sinistro: {s.Descricao} (Valor: {s.Valor:C})");
+            Console.WriteLine($"Diretor aprovou o sinistro: {sinistro.Descricao} (Valor: {sinistro.Valor:C})");
         }
         else
         {
-            Console.WriteLine($"Sinistro de valor muito alto! Escalar para conselho: {s.Descricao} (Valor: {s.Valor:C})");
+            Console.WriteLine($"Sinistro de valor muito alto! Escalar para conselho: {sinistro.Descricao} (Valor: {sinistro.Valor:C})");
         }
     }
 }

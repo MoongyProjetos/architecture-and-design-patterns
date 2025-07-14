@@ -5,6 +5,7 @@ using Flyweight = Seguradora.Logica.PadroesEstruturais.Flyweight;
 using Observer = Seguradora.Logica.PadroesComportamentais.Observer;
 using Strategy = Seguradora.Logica.PadroesComportamentais.Strategy;
 using State = Seguradora.Logica.PadroesComportamentais.State;
+using Visitor = Seguradora.Logica.PadroesComportamentais.Visitor;
 
 namespace Seguradora.UI;
 
@@ -474,7 +475,7 @@ public static class Exemplos
     /// Emitida, Cancelada e Expirada.
     /// Cada estado implementa uma interface comum e define seu próprio comportamento.
     /// </summary>
-    public static void ExemploState()
+    public static void ExemploUsoState()
     {
         Console.WriteLine("Exemplo de uso do State:");
 
@@ -498,5 +499,33 @@ public static class Exemplos
         // Estado: Expirada
         apolice.DefinirEstado(new Expirada());
         apolice.Processar();
+    }
+
+
+    /// <summary>
+    /// Exemplo de uso do Visitor para gerar relatórios de seguros.
+    /// O Visitor permite que você adicione novas operações a objetos sem modificar suas classes.
+    /// Neste exemplo, temos diferentes tipos de seguros (SeguroAuto e SeguroVida)
+    /// e dois tipos de relatórios (RelatorioSimples e RelatorioComplexo).
+    /// Cada relatório implementa a interface IVisitor e define como visitar cada tipo de seguro.
+    /// </summary>
+    public static void ExemploUsoVisitor()
+    {
+        Console.WriteLine("Exemplo de uso do Visitor:");
+
+        // Instanciando seguros
+        var seguroAuto = new Visitor.SeguroAuto { Modelo = "SUV" };
+        var seguroVida = new Visitor.SeguroVida { Beneficiario = "Maria" };
+
+        // Criando o visitante
+        Visitor.IVisitor relatorio = new Visitor.RelatorioSimples();
+        Visitor.IVisitor relatorioComplexo = new Visitor.RelatorioComplexo();
+
+        // Visitando os seguros
+        seguroAuto.Aceitar(relatorio);
+        seguroVida.Aceitar(relatorio);
+
+
+        seguroVida.Aceitar(relatorioComplexo);
     }
 }

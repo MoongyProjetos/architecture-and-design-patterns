@@ -116,5 +116,8 @@ Console.WriteLine(separador);
 Exemplos.ExemploUsoChainOfResponsibility();
 Console.WriteLine(separador);
 
-Exemplos.ExemploState();
+Exemplos.ExemploUsoState();
+Console.WriteLine(separador);
+
+Exemplos.ExemploUsoVisitor();
 Console.WriteLine(separador);
