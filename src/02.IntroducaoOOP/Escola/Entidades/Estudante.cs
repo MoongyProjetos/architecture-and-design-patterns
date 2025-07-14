@@ -1,3 +1,5 @@
+namespace Escola.Entidades;
+
 
 /// <summary>
 /// Estudante estende/herda de pessoa

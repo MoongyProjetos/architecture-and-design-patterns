@@ -1,5 +1,7 @@
+namespace Escola.Operacoes;
+
 public interface IEstacionamento
 {
-    void ComprarPasseEstacionamento();
+    public void ComprarPasseEstacionamento();
     //...
 }

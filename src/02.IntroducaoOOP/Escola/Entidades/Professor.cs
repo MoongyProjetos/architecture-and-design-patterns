@@ -1,3 +1,4 @@
+namespace Escola.Entidades;
 
 /// <summary>
 /// Professor estende/herda de pessoa

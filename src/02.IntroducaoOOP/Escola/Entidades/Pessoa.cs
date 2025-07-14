@@ -1,4 +1,4 @@
-using System.Diagnostics.Contracts;
+namespace Escola.Entidades;using System.Diagnostics.Contracts;
 
 public class Pessoa : IEstacionamento
 {

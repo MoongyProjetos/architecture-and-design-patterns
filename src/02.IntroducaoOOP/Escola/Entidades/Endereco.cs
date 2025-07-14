@@ -1,3 +1,5 @@
+namespace Escola.Entidades;
+
 public class Endereco
 {
     #region Propriedades
@@ -22,7 +24,7 @@ public class Endereco
 
     public void GerarEtiqueta()
     {
-        
+
     }
 
     #endregion Metodos
