@@ -3,11 +3,11 @@ namespace Escola.Entidades;
 public class Endereco
 {
     #region Propriedades
-    public string? Rua;
-    public string? Cidade;
-    public string? Estado;
-    public string? CodigoPostal;
-    public string? Pais;
+    public string? Rua { get; set; }
+    public string? Cidade { get; set; }
+    public string? Estado { get; set; }
+    public string? CodigoPostal { get; set; }
+    public string? Pais { get; set; }
     #endregion Propriedades
 
     #region Metodos
@@ -16,13 +16,13 @@ public class Endereco
         var ruaValido = string.IsNullOrEmpty(Rua);
         var cidadeValido = string.IsNullOrEmpty(Cidade);
         var estadoValido = string.IsNullOrEmpty(Estado);
-        var codigoPostalValido = string.IsNullOrEmpty(CodigoPostal) && CodigoPostal.Length >= 4;
+        var codigoPostalValido = string.IsNullOrEmpty(CodigoPostal) && CodigoPostal?.Length >= 4;
         var PaisValido = string.IsNullOrEmpty(Pais);
 
         return ruaValido && cidadeValido && estadoValido && codigoPostalValido && PaisValido;
     }
 
-    public void GerarEtiqueta()
+    public static void GerarEtiqueta()
     {
 
     }

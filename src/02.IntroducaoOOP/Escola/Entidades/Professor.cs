@@ -6,6 +6,6 @@ namespace Escola.Entidades;
 public class Professor : Pessoa
 {
     #region Propriedades
-    public decimal Salario;
+    public decimal Salario { get; set; }
     #endregion Propriedades
 }

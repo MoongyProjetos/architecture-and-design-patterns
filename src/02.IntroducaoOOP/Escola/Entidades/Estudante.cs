@@ -1,5 +1,6 @@
-namespace Escola.Entidades;
+using Escola.Operacoes;
 
+namespace Escola.Entidades;
 
 /// <summary>
 /// Estudante estende/herda de pessoa
@@ -7,8 +8,8 @@ namespace Escola.Entidades;
 public class Estudante : Pessoa, ICalculo
 {
     #region Propriedades
-    public int NumeroEstudante;
-    public float NotaMedia;
+    public int NumeroEstudante { get; set; }
+    public float NotaMedia { get; set; }
 
     public decimal CalcularJurosMensalidade()
     {
