@@ -317,6 +317,32 @@ public class Apolice {
 }
 ```
 
+### Exemplo máquina de estados
+
+```mermaid
+stateDiagram-v2
+    [*] --> EmAnalise : DefinirEstado(EmAnalise)
+    EmAnalise --> Emitida : DefinirEstado(Emitida)
+    Emitida --> Cancelada : DefinirEstado(Cancelada)
+    Cancelada --> Expirada : DefinirEstado(Expirada)
+    
+    state EmAnalise {
+        note right of EmAnalise : 🟡 EM ANÁLISE\nAguardando validação.
+    }
+    
+    state Emitida {
+        note right of Emitida : 🔵 EMITIDA\nPode ser paga.
+    }
+    
+    state Cancelada {
+        note right of Cancelada : ❌ CANCELADA\nNenhuma ação permitida.
+    }
+    
+    state Expirada {
+        note right of Expirada : ⚪ EXPIRADA\nPrecisa ser renovada.
+    }
+```
+
 ### Exemplo completo
 
 ```csharp
