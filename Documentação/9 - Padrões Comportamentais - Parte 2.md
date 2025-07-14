@@ -650,7 +650,7 @@ O padrão **Interpreter** e o padrão **Strategy** são **padrões comportamenta
 
 
 
-Perfeito! Vamos comparar **Interpreter** e **Strategy** **lado a lado**, usando o mesmo domínio: **cálculo de aceitação de um seguro**.
+Vamos comparar **Interpreter** e **Strategy** **lado a lado**, usando o mesmo domínio: **cálculo de aceitação de um seguro**.
 
 ---
 
