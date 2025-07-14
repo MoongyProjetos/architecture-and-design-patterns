@@ -121,3 +121,7 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoVisitor();
 Console.WriteLine(separador);
+
+
+Exemplos.ExemploUsoInterpreter();
+Console.WriteLine(separador);

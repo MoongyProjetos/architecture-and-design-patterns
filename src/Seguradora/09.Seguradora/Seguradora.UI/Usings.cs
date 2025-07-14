@@ -21,3 +21,4 @@ global using Seguradora.Logica.PadroesEstruturais.Proxy;
 
 global using Seguradora.Logica.PadroesComportamentais.ChainOfResponsibility;
 global using Seguradora.Logica.PadroesComportamentais.State;
+global using Seguradora.Logica.PadroesComportamentais.Interpreter;

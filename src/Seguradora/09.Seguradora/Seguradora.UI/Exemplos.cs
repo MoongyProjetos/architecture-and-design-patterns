@@ -6,6 +6,7 @@ using Observer = Seguradora.Logica.PadroesComportamentais.Observer;
 using Strategy = Seguradora.Logica.PadroesComportamentais.Strategy;
 using State = Seguradora.Logica.PadroesComportamentais.State;
 using Visitor = Seguradora.Logica.PadroesComportamentais.Visitor;
+using Interpreter = Seguradora.Logica.PadroesComportamentais.Interpreter;
 
 namespace Seguradora.UI;
 
@@ -527,5 +528,25 @@ public static class Exemplos
 
 
         seguroVida.Aceitar(relatorioComplexo);
+    }
+
+    public static void ExemploUsoInterpreter()
+    {
+        Console.WriteLine("Exemplo de uso do Interpreter:");
+
+        // Criar a expressão: idade > 25 AND tem seguro anterior
+        var regra = new E(new IdadeMaiorQue25(), new PossuiSeguroAnterior(), new RegraAleatoria());
+
+        // Teste 1
+        var cliente1 = new Contexto { Idade = 30, TemSeguroAnterior = true };
+        Console.WriteLine("Cliente 1 aprovado? " + regra.Interpretar(cliente1)); // true
+
+        // Teste 2
+        var cliente2 = new Contexto { Idade = 22, TemSeguroAnterior = true };
+        Console.WriteLine("Cliente 2 aprovado? " + regra.Interpretar(cliente2)); // false
+
+        // Teste 3
+        var cliente3 = new Contexto { Idade = 28, TemSeguroAnterior = false };
+        Console.WriteLine("Cliente 3 aprovado? " + regra.Interpretar(cliente3)); // false
     }
 }
