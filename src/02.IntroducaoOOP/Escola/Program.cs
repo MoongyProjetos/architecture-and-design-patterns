@@ -1,22 +1,20 @@
 ﻿using Escola.Entidades;
 
-// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
 
 
-var joao = new Pessoa();
-joao.Nome = "Joao da Silva";
-joao.NumeroTelefone = "12345678";
-joao.EmailAddress = "joao@email.com";
-
-
-var enderecoDoJoao = new Endereco();
-enderecoDoJoao.Cidade = "Lisboa";
-enderecoDoJoao.Pais = "Portugal";
-enderecoDoJoao.CodigoPostal = "2800000";
-enderecoDoJoao.Estado = "Lisboa";
-
-joao.endereco = enderecoDoJoao;
-
+var joao = new Pessoa
+{
+    Nome = "Joao da Silva",
+    NumeroTelefone = "12345678",
+    EmailAddress = "joao@email.com",
+    Endereco = new Endereco
+    {
+        Cidade = "Lisboa",
+        Pais = "Portugal",
+        CodigoPostal = "2800000",
+        Estado = "Lisboa"
+    }
+};
 
 joao.ComprarPasseEstacionamento();
