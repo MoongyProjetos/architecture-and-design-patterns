@@ -27,10 +27,6 @@
 
 ---
 
-Claro! Aqui está a **versão adaptada da introdução** para os padrões comportamentais **Chain of Responsibility**, **State**, **Visitor** e **Interpreter**, seguindo o mesmo estilo claro e didático aplicado anteriormente, com foco também no **contexto de uma seguradora**.
-
----
-
 ## 🔄 Chain of Responsibility, State, Visitor e Interpreter
 
 **(Padrões Comportamentais – Parte 2)**
