@@ -1,5 +1,5 @@
 using Seguradora.Infrastructure;
-using Seguradora.Domain;
+using Seguradora.Domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 

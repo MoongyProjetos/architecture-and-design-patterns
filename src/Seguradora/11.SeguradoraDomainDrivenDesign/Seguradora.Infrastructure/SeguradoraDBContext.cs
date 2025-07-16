@@ -1,7 +1,7 @@
 ﻿namespace Seguradora.Infrastructure;
 
 using Microsoft.EntityFrameworkCore;
-using Seguradora.Domain;
+using Seguradora.Domain.Entities;
 
 public class SeguradoraDBContext : DbContext
 {

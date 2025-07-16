@@ -1,4 +1,4 @@
-namespace Seguradora.Domain;
+namespace Seguradora.Domain.Entities;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +9,7 @@ public class Segurado
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
 
-    [MaxLength(100,ErrorMessage = "Nome deve ter entre 3 e 100 caracteres."), MinLength(3, ErrorMessage = "Nome deve ter entre 3 e 100 caracteres.")]
+    [MaxLength(100, ErrorMessage = "Nome deve ter entre 3 e 100 caracteres."), MinLength(3, ErrorMessage = "Nome deve ter entre 3 e 100 caracteres.")]
     [Required(ErrorMessage = "Nome é obrigatório.")]
     public string? Nome { get; set; }
 

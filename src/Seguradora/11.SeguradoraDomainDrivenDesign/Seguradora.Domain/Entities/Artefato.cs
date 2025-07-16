@@ -1,21 +1,19 @@
-namespace Seguradora.Domain;
+namespace Seguradora.Domain.Entities;
 
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
 
-public class Apolice
+
+public class Artefato
 {
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
-    public DateTime DataInicio { get; set; }
-    public DateTime DataFim { get; set; }
+
+    [Required(ErrorMessage = "Descrição é obrigatória."), MaxLength(200), MinLength(3)]
+    public string? Descricao { get; set; }
 
     [Range(0, 1000000, ErrorMessage = "Valor deve ser entre 0 e 1.000.000.")]
     public decimal Valor { get; set; }
-    public virtual Segurado? Segurado { get; set; }
-
-    public virtual List<Artefato> Artefatos { get; set; } = new List<Artefato>();
-
-    public bool Ativa { get; set; } = true;
+    public virtual Apolice? Apolice { get; set; }
 }
