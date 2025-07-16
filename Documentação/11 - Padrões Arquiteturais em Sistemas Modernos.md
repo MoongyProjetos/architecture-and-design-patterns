@@ -29,4 +29,4 @@ Compreender os princípios e aplicações práticas dos principais padrões arqu
 * https://learn.microsoft.com/pt-br/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/ddd-oriented-microservice
 * https://learn.microsoft.com/en-us/azure/architecture/patterns/
 * https://learn.microsoft.com/en-us/assessments/
-
+* https://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx
