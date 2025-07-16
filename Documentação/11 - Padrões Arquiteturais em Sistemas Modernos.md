@@ -30,3 +30,6 @@ Compreender os princípios e aplicações práticas dos principais padrões arqu
 * https://learn.microsoft.com/en-us/azure/architecture/patterns/
 * https://learn.microsoft.com/en-us/assessments/
 * https://www.entityframeworktutorial.net/efcore/entity-framework-core.aspx
+
+
+![alt text](image.png)

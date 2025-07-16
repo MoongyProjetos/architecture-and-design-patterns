@@ -70,4 +70,16 @@ app.MapGet("/api/segurados", () =>
 })
 .WithName("GetSegurados");
 
+
+///Método simplificado, utilizando o padrão generic repository
+app.MapGet("/api/apolices", () =>
+{
+    var contexto = new SeguradoraDBContext();
+    var repository = new Repository<Apolice>(contexto);
+    return repository.ListarAsync();
+})
+.WithName("GetApolices");
+
+
+
 app.Run();

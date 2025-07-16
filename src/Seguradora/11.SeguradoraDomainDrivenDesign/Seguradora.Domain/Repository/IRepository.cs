@@ -1,11 +1,10 @@
 ﻿namespace Seguradora.Domain.Repository;
 
-public interface IRepository<T, K> where T : class
+public interface IRepository<T> where T : class
 {
-    T Obter(K chave);
-    K Criar(T entidade);
-    K Atualizar(T entidade, K chave);
-    List<T> Listar();
-    bool Apagar(K chave);
+    Task<T> ObterPorId(Guid id);
+    Task<IEnumerable<T>> ListarAsync();
+    Task CriarAsync(T entity);
+    void Atualizar(T entity);
+    void Apagar(T entity);
 }
-
