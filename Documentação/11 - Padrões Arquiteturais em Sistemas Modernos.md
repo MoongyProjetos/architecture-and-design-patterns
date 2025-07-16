@@ -20,15 +20,6 @@ Compreender os princípios e aplicações práticas dos principais padrões arqu
 
 ---
 
-## 🎓 Recursos Didáticos
-
-* Slides com ilustrações dos padrões
-* Ferramenta de colaboração visual (Miro ou FigJam)
-* Trechos de código (C# ou Java) para visualizar camadas
-* Plataforma de quiz: [Kahoot](https://kahoot.com) ou [Mentimeter](https://www.mentimeter.com)
-
----
-
 ## 📎 Material Complementar
 
 * Livro: *Domain-Driven Design* – Eric Evans (ou versão light: *Implementing DDD* – Vaughn Vernon)
