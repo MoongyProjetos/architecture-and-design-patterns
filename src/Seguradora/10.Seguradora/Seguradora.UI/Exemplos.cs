@@ -549,4 +549,32 @@ public static class Exemplos
         var cliente3 = new Contexto { Idade = 28, TemSeguroAnterior = false };
         Console.WriteLine("Cliente 3 aprovado? " + regra.Interpretar(cliente3)); // false
     }
+
+
+    /// <summary>
+    /// Exemplo de uso do Iterator para iterar sobre propostas.
+    /// O Iterator permite percorrer uma coleção de objetos sem expor sua representação interna.
+    /// Neste exemplo, temos uma coleção de propostas de seguros e um iterador que permite percorrer essas propostas.
+    /// O iterador implementa a interface IIteradorProposta e fornece métodos para obter a
+    /// primeira proposta, a próxima proposta e verificar se há mais propostas.
+    /// </summary>
+    public static void ExemploUsoIterator()
+    {
+        Console.WriteLine("Exemplo de uso do Iterator:");
+
+        //Criar a coleção de propostas
+        var colecao = new ColecaoPropostas();
+        colecao.Adicionar(new Proposta { NomeCliente = "João", TipoSeguro = "Auto" });
+        colecao.Adicionar(new Proposta { NomeCliente = "Maria", TipoSeguro = "Vida" });
+        colecao.Adicionar(new Proposta { NomeCliente = "Pedro", TipoSeguro = "Residencial" });
+
+        //Criar o iterador
+        var iterador = colecao.CriarIterador();
+        Console.WriteLine("Iterando sobre as propostas:");
+        while (iterador.TemProximo())
+        {
+            var proposta = iterador.Proximo();
+            Console.WriteLine($"Nome do Cliente: {proposta.NomeCliente}, Tipo de Seguro: {proposta.TipoSeguro}");
+        }
+    }
 }
