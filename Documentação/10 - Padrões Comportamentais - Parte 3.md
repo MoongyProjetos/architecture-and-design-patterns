@@ -736,9 +736,9 @@ public class ClienteNull : ICliente
 
 ```mermaid
 classDiagram
-    interface ICliente {
-        +ObterNome()
-    }
+    %% interface ICliente {
+    %%     +ObterNome()
+    %% }
 
     class ClienteReal {
         -string nome
