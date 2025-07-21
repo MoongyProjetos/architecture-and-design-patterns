@@ -1,5 +1,3 @@
-global using Seguradora.Logica;
-global using Seguradora.Modelo.Entidades;
 global using Seguradora.Logica.Services;
 
 global using Seguradora.Logica.PadroesCriacionais.AbstractFactory.Interfaces;
@@ -23,5 +21,5 @@ global using Seguradora.Logica.PadroesComportamentais.ChainOfResponsibility;
 global using Seguradora.Logica.PadroesComportamentais.State;
 global using Seguradora.Logica.PadroesComportamentais.Interpreter;
 global using Seguradora.Logica.PadroesComportamentais.Iterator;
- global using Seguradora.Logica.PadroesComportamentais.Mediator;
-// global using Seguradora.Logica.PadroesComportamentais.Memento;
+global using Seguradora.Logica.PadroesComportamentais.Mediator;
+global using Seguradora.Logica.PadroesComportamentais.Memento;

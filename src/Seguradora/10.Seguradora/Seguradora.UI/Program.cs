@@ -1,4 +1,3 @@
-using Seguradora.Modelo.Repositorios;
 using Seguradora.UI;
 
 Console.WriteLine("Hello, World!");
@@ -130,4 +129,7 @@ Exemplos.ExemploUsoIterator();
 Console.WriteLine(separador);
 
 Exemplos.ExemploUsoMediator();
+Console.WriteLine(separador);
+
+Exemplos.ExemploUsoMemento();
 Console.WriteLine(separador);

@@ -6,7 +6,6 @@ using Observer = Seguradora.Logica.PadroesComportamentais.Observer;
 using Strategy = Seguradora.Logica.PadroesComportamentais.Strategy;
 using State = Seguradora.Logica.PadroesComportamentais.State;
 using Visitor = Seguradora.Logica.PadroesComportamentais.Visitor;
-using Interpreter = Seguradora.Logica.PadroesComportamentais.Interpreter;
 
 namespace Seguradora.UI;
 
@@ -583,9 +582,9 @@ public static class Exemplos
         //     Console.WriteLine($"Nome do Cliente: {item.NomeCliente}, Tipo de Seguro: {item.TipoSeguro}");
         // }            
     }
-    
 
-/// <summary>
+
+    /// <summary>
     /// Exemplo de uso do Mediator para comunicação entre departamentos.
     /// O Mediator centraliza a comunicação entre diferentes departamentos, como Avaliação e Emissão.
     /// O Mediator permite que os departamentos se comuniquem sem depender diretamente uns dos outros,
@@ -609,5 +608,39 @@ public static class Exemplos
         // Enviando mensagens entre os departamentos
         avaliacao.EnviarMensagem("Solicitação de avaliação de apólice");
         emissao.Receber("Aprovação de apólice para emissão");
+    }
+
+
+    /// <summary>
+    /// Exemplo de uso do Memento para salvar e restaurar o estado de uma proposta.
+    /// O Memento permite capturar e armazenar o estado interno de um objeto sem expor
+    /// sua representação interna.
+    /// Neste exemplo, temos uma classe MementoProposta que armazena o estado de uma proposta,
+    /// incluindo o cliente e a cobertura.
+    /// </summary>
+    public static void ExemploUsoMemento()
+    {
+        Console.WriteLine("Exemplo de uso do Memento:");
+
+        var historico = new Historico();
+
+        // Criando um memento para uma proposta
+        var propostaSeguro = new PropostaSeguro
+        {
+            Cliente = "João da Silva",
+            Cobertura = "Cobertura Total"
+        };
+
+        historico.Salvar(propostaSeguro.CriarMemento()); //Primeiro momento
+
+        // Simulando alterações na proposta
+        propostaSeguro.Cliente = "Maria da Silva";
+        propostaSeguro.Cobertura = "Cobertura Parcial";
+        historico.Salvar(propostaSeguro.CriarMemento()); //Segundo momento
+
+
+        // Restaurando o estado anterior da proposta
+        var mementoAnterior = historico.Desfazer();
+        propostaSeguro.Restaurar(mementoAnterior);
     }
 }
