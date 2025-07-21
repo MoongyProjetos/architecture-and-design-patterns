@@ -23,4 +23,5 @@ global using Seguradora.Logica.PadroesComportamentais.ChainOfResponsibility;
 global using Seguradora.Logica.PadroesComportamentais.State;
 global using Seguradora.Logica.PadroesComportamentais.Interpreter;
 global using Seguradora.Logica.PadroesComportamentais.Iterator;
+ global using Seguradora.Logica.PadroesComportamentais.Mediator;
 // global using Seguradora.Logica.PadroesComportamentais.Memento;

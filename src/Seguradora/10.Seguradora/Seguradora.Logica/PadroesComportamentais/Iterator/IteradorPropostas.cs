@@ -10,8 +10,8 @@ public class IteradorPropostas : IIteradorProposta
         _propostas = propostas;
     }
 
-    public bool TemProxima() => _indiceAtual < _propostas.Count;
-    public Proposta Proxima() => _propostas[_indiceAtual++];
+    public bool TemProximo() => _indiceAtual < _propostas.Count;
+    public Proposta Proximo() => _propostas[_indiceAtual++];
     public Proposta Primeiro()
     {
         _indiceAtual = 0;

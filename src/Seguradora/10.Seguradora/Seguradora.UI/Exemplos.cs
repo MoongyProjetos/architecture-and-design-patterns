@@ -360,7 +360,7 @@ public static class Exemplos
         Console.WriteLine("Exemplo de uso do Proxy:");
 
         // Usando o proxy para apresentar um documento
-        IApresentadorDocumento apresentador = new ProxyDocumento("documento.pdf", "corretor");
+        var apresentador = new ProxyDocumento("documento.pdf", "corretor");
         apresentador.Mostrar();
 
         // Tentando acessar com um usuário sem permissão
@@ -576,5 +576,38 @@ public static class Exemplos
             var proposta = iterador.Proximo();
             Console.WriteLine($"Nome do Cliente: {proposta.NomeCliente}, Tipo de Seguro: {proposta.TipoSeguro}");
         }
+
+        //Posso reescrever o exemplo de forma mais simples, com o foreach
+        // foreach (var item in colecao)
+        // {
+        //     Console.WriteLine($"Nome do Cliente: {item.NomeCliente}, Tipo de Seguro: {item.TipoSeguro}");
+        // }            
+    }
+    
+
+/// <summary>
+    /// Exemplo de uso do Mediator para comunicação entre departamentos.
+    /// O Mediator centraliza a comunicação entre diferentes departamentos, como Avaliação e Emissão.
+    /// O Mediator permite que os departamentos se comuniquem sem depender diretamente uns dos outros,
+    /// facilitando a manutenção e a extensibilidade do sistema.
+    /// </summary>
+    public static void ExemploUsoMediator()
+    {
+        Console.WriteLine("Exemplo de uso do Mediator:");
+
+        // Criando o mediador
+        var mediador = new MediadorCentral();
+
+        // Criando os departamentos
+        var avaliacao = new Avaliacao(mediador);
+        var emissao = new Emissao(mediador);
+
+        // Registrando os departamentos no mediador
+        mediador.RegistrarDepartamento(avaliacao);
+        mediador.RegistrarDepartamento(emissao);
+
+        // Enviando mensagens entre os departamentos
+        avaliacao.EnviarMensagem("Solicitação de avaliação de apólice");
+        emissao.Receber("Aprovação de apólice para emissão");
     }
 }

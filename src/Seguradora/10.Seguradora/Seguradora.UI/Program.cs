@@ -128,3 +128,6 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoIterator();
 Console.WriteLine(separador);
+
+Exemplos.ExemploUsoMediator();
+Console.WriteLine(separador);
