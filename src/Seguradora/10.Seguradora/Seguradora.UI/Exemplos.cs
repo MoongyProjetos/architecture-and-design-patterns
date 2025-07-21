@@ -667,4 +667,16 @@ public static class Exemplos
         }
     }
 
+    public static void ExemploUsoTemplateMethod()
+    {
+        Console.WriteLine("Exemplo de uso do Template Method:");
+
+        // Criando uma avaliação de risco para seguro de vida
+        var avaliacaoVida = new AvaliacaoVida();
+        avaliacaoVida.RealizarAvaliacao();
+
+        // Criando uma avaliação de risco para seguro de automóvel
+        var avaliacaoAuto = new AvaliacaoAuto();
+        avaliacaoAuto.RealizarAvaliacao();
+    }
 }

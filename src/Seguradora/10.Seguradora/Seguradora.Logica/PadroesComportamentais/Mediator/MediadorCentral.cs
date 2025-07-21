@@ -18,7 +18,7 @@ public class MediadorCentral : IMediador
         else if (departamento is Emissao emissao)
         {
             _emissao = emissao;
-        }    
+        }
     }
 
 

@@ -136,3 +136,6 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoNullObject();
 Console.WriteLine(separador);
+
+Exemplos.ExemploUsoTemplateMethod();
+Console.WriteLine(separador);
