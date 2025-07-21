@@ -23,3 +23,4 @@ global using Seguradora.Logica.PadroesComportamentais.Interpreter;
 global using Seguradora.Logica.PadroesComportamentais.Iterator;
 global using Seguradora.Logica.PadroesComportamentais.Mediator;
 global using Seguradora.Logica.PadroesComportamentais.Memento;
+global using Seguradora.Logica.PadroesComportamentais.NullObject;

@@ -643,4 +643,28 @@ public static class Exemplos
         var mementoAnterior = historico.Desfazer();
         propostaSeguro.Restaurar(mementoAnterior);
     }
+
+
+    /// <summary>
+    /// Exemplo de uso do Null Object para representar um cliente inexistente.
+    /// O Null Object é um padrão de design que utiliza um objeto nulo para evitar verificações
+    /// </summary>
+    public static void ExemploUsoNullObject()
+    {
+        Console.WriteLine("Exemplo de uso do Null Object:");
+
+        var cliente = new ClienteReal("João da Silva", "123.456.789-00");
+        var clienteInexistente = new ClienteNull();
+
+        // Exibindo informações do cliente
+        Console.WriteLine("Informações do Cliente:");
+        var colecao = new List<ICliente> { cliente, clienteInexistente };
+
+        foreach (var c in colecao)
+        {
+            Console.WriteLine($"Nome: {c.ObterNome()}");
+            Console.WriteLine($"CPF: {c.ObterCodigoFiscal()}");
+        }
+    }
+
 }

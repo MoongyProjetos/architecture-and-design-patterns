@@ -133,3 +133,6 @@ Console.WriteLine(separador);
 
 Exemplos.ExemploUsoMemento();
 Console.WriteLine(separador);
+
+Exemplos.ExemploUsoNullObject();
+Console.WriteLine(separador);
