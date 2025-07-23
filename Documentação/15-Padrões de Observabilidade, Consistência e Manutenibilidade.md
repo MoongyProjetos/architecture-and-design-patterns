@@ -554,15 +554,6 @@ flowchart TD
 
 ---
 
-Se quiser, posso:
-
-* Exportar os diagramas para imagem SVG/PDF
-* Integrar todos em um único diagrama mestre de arquitetura
-* Adicionar **notas explicativas** para usar em aula
-
-Gostaria de algum desses próximos passos?
-
-
 
 
 
