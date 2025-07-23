@@ -539,7 +539,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A[Usuário] --> B[API Gateway / Reverse Proxy]
+    A[Usuário] --> B[API Gateway ou Reverse Proxy]
     
     subgraph Sistemas
         C1[Sistema Legado (.NET Framework)]
