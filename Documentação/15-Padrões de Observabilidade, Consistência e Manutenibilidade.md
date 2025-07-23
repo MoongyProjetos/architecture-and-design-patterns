@@ -542,8 +542,8 @@ flowchart TD
     A[Usuário] --> B[API Gateway ou Reverse Proxy]
     
     subgraph Sistemas
-        C1[Sistema Legado (.NET Framework)]
-        C2[Novo Sistema (.NET 8)]
+        C1[Sistema Legado]
+        C2[Novo Sistema]
     end
 
     B -->|/api/apolice/nova| C2
