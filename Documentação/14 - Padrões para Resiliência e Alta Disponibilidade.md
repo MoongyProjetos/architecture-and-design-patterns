@@ -354,6 +354,8 @@ public async Task Run(
 * **Dados**: Azure SQL Database + Health Checks
 * **Monitoramento**: Application Insights + Log Analytics
 
+![alt text](Imagens/aula14.png)
+
 
 ---
 > © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.
