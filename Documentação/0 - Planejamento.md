@@ -110,27 +110,64 @@
 
 ---
 
-### 🔹 **Sessão 13 – Preparação para Projeto Final** - 23/07/2025
 
-* Apresentação dos desafios
-* Escolha dos temas e tecnologias
-* Planejamento das entregas
-* Formação dos grupos (se houver)
+
+## **Cloud Design Patterns** 
 
 ---
 
-### 🔹 **Sessão 14 – Desenvolvimento Assistido do Projeto Final** - 28/07/2025
+### 🔹 **Sessão 13 – Padrões para Escalabilidade e Performance** – 23/07/2025
 
-* Hands-on supervisionado
-* Dúvidas e refinamento da aplicação dos padrões
+* **Padrões para alta escalabilidade**:
+
+  * **CQRS (Command and Query Responsibility Segregation)**
+  * **Cache-Aside / Cache-Through / Write-Through**
+  * **Sharding / Partitioning**
+  * **Compensating Transaction**
+
+* **Considerações de performance e throughput**
+
+  * Minimização de latência com padrões como **Content Delivery Network (CDN)** e **Queue-based Load Leveling**
+  * Estratégias de **auto-escalabilidade horizontal e vertical**
+
+* **Aplicação prática em microsserviços e APIs distribuídas**
 
 ---
 
-### 🔹 **Sessão 15 – Apresentação dos Projetos Finais** - 30/07/2025
+### 🔹 **Sessão 14 – Padrões para Resiliência e Alta Disponibilidade** – 28/07/2025
 
-* Apresentações por grupo/aluno
-* Feedback e discussões
-* Conclusões e próximos passos
+* **Padrões para tolerância a falhas**
+
+  * **Retry**, **Circuit Breaker**, **Timeout**, **Bulkhead**, **Failover**
+  * **Health Endpoint Monitoring**
+  * **Throttling** e **Backpressure**
+
+* **Modelagem para resiliência em ambientes imprevisíveis**
+
+  * Estratégias para lidar com intermitência de serviços e instabilidades
+
+* **Cenários com Azure App Services, Azure Functions e APIs resilientes**
+
+---
+
+### 🔹 **Sessão 15 – Padrões de Observabilidade, Consistência e Manutenibilidade** – 30/07/2025
+
+* **Padrões de observabilidade e diagnósticos**
+
+  * **Log Aggregation**, **Telemetry**, **Audit Logging**, **Correlation ID**
+  * Integração com Azure Monitor, Application Insights, Dynatrace
+
+* **Consistência eventual vs. forte**
+
+  * **Event Sourcing**, **Saga**, **Transaction Log Tailing**
+  * Discussão sobre trade-offs em bancos distribuídos (Cosmos DB, Event Hub)
+
+* **Manutenibilidade e evolução arquitetural**
+
+  * **Sidecar**, **Gateway Aggregation**, **Strangler Fig Application**
+
+---
+
 
 
 > © MoOngy | Este repositório é parte do programa de formação contínua em Engenharia de Software.
