@@ -552,10 +552,6 @@ flowchart TD
 
 🪴 As rotas novas são interceptadas e encaminhadas ao novo backend, enquanto o legado continua funcionando.
 
----
-
-
-
 
 ---
 > © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.
