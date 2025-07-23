@@ -157,4 +157,6 @@
 https://learn.microsoft.com/en-us/azure/architecture/guide/architecture-styles/event-driven
 
 
+
 ---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

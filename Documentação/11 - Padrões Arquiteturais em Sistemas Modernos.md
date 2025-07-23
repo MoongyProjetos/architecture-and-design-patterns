@@ -33,3 +33,7 @@ Compreender os princípios e aplicações práticas dos principais padrões arqu
 
 
 ![alt text](image.png)
+
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

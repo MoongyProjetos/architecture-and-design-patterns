@@ -627,3 +627,7 @@ Essa imagem, embora represente uma **estrutura de dados stack**, serve bem como 
 * Operações de `push` representam **devolver objetos ao pool**.
 * Operações de `pop` representam **obter objetos do pool**.
 * Isso ajuda a **otimizar o desempenho**, especialmente em sistemas com alta demanda de instanciamento de objetos.
+
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

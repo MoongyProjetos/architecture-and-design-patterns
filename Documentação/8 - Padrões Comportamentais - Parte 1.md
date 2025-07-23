@@ -745,3 +745,7 @@ Esses exemplos demonstram como **padrões de projeto podem ser aplicados diretam
 * **Strategy:** Cálculos flexíveis de prêmios.
 * **Command:** Fluxo controlado de ações administrativas.
 
+
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

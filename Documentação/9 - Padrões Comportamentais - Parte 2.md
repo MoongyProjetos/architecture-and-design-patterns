@@ -825,3 +825,7 @@ Console.WriteLine("Aceito (jovem)? " + aceito2.Avaliar(cliente)); // True
 
 * *Design Patterns – GoF*
 * Refactoring.guru
+
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

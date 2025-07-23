@@ -81,3 +81,7 @@ Nesta primeira sessão, entendemos:
 * Os principais estilos arquiteturais e suas características.
 
 Na próxima sessão, vamos aprofundar nos **princípios da boa arquitetura de software**, como coesão, acoplamento, separação de responsabilidades, e mais.
+
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

@@ -805,3 +805,7 @@ classDiagram
 
     AvaliacaoRisco <|-- AvaliacaoVida
 ```
+
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

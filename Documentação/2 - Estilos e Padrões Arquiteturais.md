@@ -192,3 +192,6 @@ A **MeuSeguro.Com** destaca-se pelo seu compromisso com a responsabilidade socia
 * **MVC** ainda é padrão sólido pra APIs e apps web server-side.
 * **MVP** funciona bem em aplicações mais antigas ou com UIs complexas, onde você quer isolar a lógica de apresentação.
 
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

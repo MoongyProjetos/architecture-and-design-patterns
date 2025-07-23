@@ -738,3 +738,7 @@ class Program
 ### 7. Referências:
 
 * https://sourcemaking.com/design_patterns/creational_patterns
+
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

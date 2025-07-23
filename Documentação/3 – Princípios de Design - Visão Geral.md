@@ -184,3 +184,7 @@ dotnet run
 ![alt text](Imagens/image-3.png)
 
 >Estrutura base da aplicação
+
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.

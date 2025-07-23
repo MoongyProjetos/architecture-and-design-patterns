@@ -1007,3 +1007,6 @@ classDiagram
 - Exemplo uso de quality rules com .editorconfig: https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/quality-rules/
 
 - Library para trabalhar com Office: https://learn.microsoft.com/en-us/office/open-xml/open-xml-sdk
+
+---
+> © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.
