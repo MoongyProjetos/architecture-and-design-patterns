@@ -1,7 +1,3 @@
-Claro! Abaixo está o **conteúdo teórico completo para uma aula de 2h** sobre **Padrões para Escalabilidade e Performance**, estruturado para manter um ritmo dinâmico e compreensível, com explicações claras, exemplos práticos e conexões com microsserviços e APIs distribuídas.
-
----
-
 ## 🎓 Sessão 13 – Padrões para Escalabilidade e Performance
 
 📅 **Data:** 23/07/2025
@@ -45,6 +41,20 @@ Claro! Abaixo está o **conteúdo teórico completo para uma aula de 2h** sobre 
 * **Command (escrita)** → altera o estado.
 * **Query (leitura)** → retorna dados, sem efeitos colaterais.
 
+```mermaid
+graph LR
+  User[Usuário]
+  Command[Command Handler]
+  Query[Query Handler]
+  WriteModel[Modelo de Escrita - Write DB]
+  ReadModel[Modelo de Leitura - Read DB]
+
+  User -->|Comando| Command --> WriteModel
+  User -->|Consulta| Query --> ReadModel
+
+  WriteModel -->|Atualiza| ReadModel
+```
+
 **Benefícios:**
 
 * Alta escalabilidade (leitura e escrita independentes).
@@ -66,15 +76,56 @@ Claro! Abaixo está o **conteúdo teórico completo para uma aula de 2h** sobre 
 * A aplicação busca no cache → se não encontrar, busca no banco e popula o cache.
 * Mais controle, mas risco de *cache miss* alto.
 
+```mermaid
+sequenceDiagram
+  participant App
+  participant Cache
+  participant DB
+
+  App->>Cache: Consulta dados
+  alt Cache hit
+    Cache-->>App: Retorna dados
+  else Cache miss
+    App->>DB: Consulta dados
+    DB-->>App: Retorna dados
+    App->>Cache: Atualiza cache
+  end
+```
+
 #### 2. **Cache-Through**
 
 * Cache gerencia acesso ao banco.
 * A aplicação consulta apenas o cache (que carrega dados do banco, se necessário).
 
+```mermaid
+sequenceDiagram
+  participant App
+  participant Cache
+  participant DB
+
+  App->>Cache: Consulta dados
+  Cache->>DB: Busca dados (se necessário)
+  DB-->>Cache: Retorna dados
+  Cache-->>App: Retorna dados
+
+  App->>Cache: Escreve dados
+  Cache->>DB: Propaga para DB
+```
+
 #### 3. **Write-Through**
 
 * Toda escrita é feita simultaneamente no cache e no banco.
 * Menos risco de inconsistência, mas mais lento.
+
+```mermaid
+sequenceDiagram
+  participant App
+  participant Cache
+  participant DB
+
+  App->>Cache: Escreve dados
+  Cache->>DB: Escreve dados (sincronamente)
+```
 
 **Uso típico em APIs:**
 → Caching de dados lidos com frequência, como catálogos de produtos, configurações, etc.
@@ -85,6 +136,21 @@ Claro! Abaixo está o **conteúdo teórico completo para uma aula de 2h** sobre 
 
 * **Partitioning**: Divisão lógica de dados em blocos menores.
 * **Sharding**: Tipo de partitioning horizontal com múltiplos nós.
+
+```mermaid
+graph TB
+  App[Aplicação]
+  Router[Shard Router]
+  Shard1[Shard 1 - por cliente A-M]
+  Shard2[Shard 2 - por cliente N-Z]
+  Shard3[Shard 3 - por região]
+
+  App --> Router
+  Router --> Shard1
+  Router --> Shard2
+  Router --> Shard3
+
+```
 
 **Exemplo:**
 
@@ -102,6 +168,19 @@ Claro! Abaixo está o **conteúdo teórico completo para uma aula de 2h** sobre 
 
 * Estratégia para lidar com **operações falhadas em sistemas distribuídos** (quando rollback não é possível).
 * Aplica-se em sistemas **eventualmente consistentes** (ex: Sagas).
+
+```mermaid
+sequenceDiagram
+  participant S1 as Serviço 1
+  participant S2 as Serviço 2
+  participant S3 as Serviço 3
+
+  S1->>S2: Operação A
+  S2-->>S1: OK
+  S1->>S3: Operação B
+  S3-->>S1: Falha
+  S1->>S2: Executa transação compensatória de A (rollback)
+```
 
 **Exemplo prático:**
 
@@ -125,11 +204,46 @@ Claro! Abaixo está o **conteúdo teórico completo para uma aula de 2h** sobre 
 * Distribuição de conteúdo estático (imagens, JS, CSS, arquivos) por servidores geograficamente distribuídos.
 * Reduz latência geográfica.
 
+```mermaid
+graph TD
+  User[Usuário -Browser]
+  CDN[CDN -Edge Server]
+  Origin[Servidor de Origem]
+
+  User -->|Solicita conteúdo estático| CDN
+  CDN -->|Miss -se não tiver| Origin
+  Origin -->|Envia conteúdo| CDN
+  CDN -->|Envia ao usuário| User
+```
+> ✅ Explicação rápida:
+>- O usuário requisita um conteúdo (ex: imagem, JS).
+>- Se estiver na CDN (cache), retorna direto.
+>- Se não, a CDN busca no servidor de origem, armazena e entrega.
+
 #### 2. **Queue-based Load Leveling**
 
 * Uso de **filas (queues)** para desacoplar componentes.
 * Evita picos de carga: o consumidor processa em ritmo constante.
 * Exemplo: API de upload → envia para uma fila → worker processa.
+
+
+```mermaid
+sequenceDiagram
+  participant Client as Cliente / API
+  participant Queue as Fila
+  participant Worker as Worker / Consumidor
+
+  Client->>Queue: Envia tarefa (mensagem)
+  Note right of Queue: Armazena até estar pronto para processar
+  Worker->>Queue: Lê próxima tarefa
+  Queue-->>Worker: Entrega tarefa
+  Worker->>Worker: Processa tarefa
+```
+
+>✅ Explicação rápida:
+>- A API (ou outro produtor) envia mensagens para uma fila.
+>- Os workers processam essas mensagens em ritmo controlado.
+>- Isso desacopla a produção do consumo, nivelando picos de carga.
 
 ---
 
