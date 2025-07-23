@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Seguradora.Data.CacheService;
 using Seguradora.Data;
 using Seguradora.Data.CQRS;
+using MediatR;
 
 namespace Seguradora.Controllers
 {

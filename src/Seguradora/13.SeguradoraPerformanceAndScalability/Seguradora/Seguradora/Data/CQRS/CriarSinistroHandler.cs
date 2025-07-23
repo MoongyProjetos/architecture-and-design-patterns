@@ -1,4 +1,6 @@
-﻿using Seguradora.Domain;
+﻿using MediatR;
+using Seguradora.Data.QueueService;
+using Seguradora.Domain;
 
 namespace Seguradora.Data.CQRS
 {
