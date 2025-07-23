@@ -92,6 +92,10 @@ sequenceDiagram
   end
 ```
 
+***Referência:***
+- https://learn.microsoft.com/en-us/azure/architecture/patterns/cache-aside
+- 
+
 #### 2. **Cache-Through**
 
 * Cache gerencia acesso ao banco.
@@ -162,6 +166,11 @@ graph TB
 * Reduz gargalo de leitura/escrita.
 * Facilita paralelismo e distribuição geográfica.
 
+
+**Referências:**
+- https://learn.microsoft.com/en-us/azure/architecture/best-practices/data-partitioning
+- https://learn.microsoft.com/en-us/sql/relational-databases/partitions/create-partitioned-tables-and-indexes?view=sql-server-ver17
+
 ---
 
 ### 🔹 Compensating Transaction
@@ -226,6 +235,7 @@ graph TD
 * Evita picos de carga: o consumidor processa em ritmo constante.
 * Exemplo: API de upload → envia para uma fila → worker processa.
 
+![alt text](Imagens/queue.png)
 
 ```mermaid
 sequenceDiagram
@@ -244,6 +254,10 @@ sequenceDiagram
 >- A API (ou outro produtor) envia mensagens para uma fila.
 >- Os workers processam essas mensagens em ritmo controlado.
 >- Isso desacopla a produção do consumo, nivelando picos de carga.
+
+
+**Referências:**
+- https://learn.microsoft.com/en-us/azure/architecture/patterns/priority-queue
 
 ---
 
