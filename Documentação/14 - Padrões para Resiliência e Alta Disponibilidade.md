@@ -22,7 +22,9 @@ RetryPolicy = Policy
   .Handle<HttpRequestException>()
   .WaitAndRetry(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
 ```
+![alt text](imagens/aula14/image.png)
 
+https://learn.microsoft.com/en-us/azure/storage/blobs/storage-retry-policy
 ---
 
 ### ⛔ **Circuit Breaker**
@@ -34,6 +36,13 @@ Impede que chamadas contínuas sejam feitas para um serviço instável.
 * 🔧 Azure: Integrável com serviços externos via Polly ou API Management.
 
 ---
+
+![alt text](imagens/aula14/image-1.png)
+
+![alt text](imagens/aula14/image-2.png)
+
+
+https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker
 
 ### ⌛ **Timeout**
 
@@ -51,6 +60,9 @@ Isola recursos para limitar o impacto de falhas.
 * 🎯 Exemplo: Limitar threads de processamento por tipo de operação.
 * 💡 Inspirado no design de navios.
 
+![alt text](imagens/aula14/image-3.png)
+
+![alt text](imagens/aula14/image-4.png)
 ---
 
 ### 🔄 **Failover**
@@ -70,6 +82,8 @@ Exposição de endpoint para status de saúde da aplicação.
 * 🔧 Azure: Application Gateway pode verificar `/health` para rotear tráfego.
 * Libs: `AspNetCore.Diagnostics.HealthChecks`
 
+
+![alt text](imagens/aula14/image-5.png)
 ---
 
 ### 🚦 **Throttling e Backpressure**
@@ -118,6 +132,8 @@ Limitação de chamadas para proteger sistemas.
 * Retry policies em **triggers de fila/eventos**.
 * Durable Functions para orquestração com resiliência embutida.
 
+https://learn.microsoft.com/en-us/azure/azure-functions/durable/durable-functions-overview?tabs=in-process%2Cnodejs-v3%2Cv1-model&pivots=csharp
+
 ---
 
 ### 🔐 **APIs resilientes com API Management**
@@ -125,17 +141,6 @@ Limitação de chamadas para proteger sistemas.
 * Retry + Throttling configurável por política.
 * Backends monitorados com Health Checks.
 * Rate limits por subscription/chave.
-
----
-
-### 💡 **Exemplo de Arquitetura Resiliente no Azure**
-
-**Cenário**: API pública consumindo Azure Functions com Event Hubs
-
-1. API exposta via API Management com Retry + Throttling
-2. Backend com Azure Functions + Event Hubs
-3. Event Grid com fallback via Logic Apps
-4. App Insights + Health Check + Dashboard
 
 ---
 
