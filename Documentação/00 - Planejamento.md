@@ -120,10 +120,10 @@
 
 * **Padrões para alta escalabilidade**:
 
-  * **CQRS (Command and Query Responsibility Segregation)**
-  * **Cache-Aside / Cache-Through / Write-Through**
-  * **Sharding / Partitioning**
-  * **Compensating Transaction**
+  * CQRS (Command and Query Responsibility Segregation)
+  * Cache-Aside / Cache-Through / Write-Through
+  * Sharding / Partitioning
+  * Compensating Transaction
 
 * **Considerações de performance e throughput**
 
@@ -138,9 +138,9 @@
 
 * **Padrões para tolerância a falhas**
 
-  * **Retry**, **Circuit Breaker**, **Timeout**, **Bulkhead**, **Failover**
-  * **Health Endpoint Monitoring**
-  * **Throttling** e **Backpressure**
+  * Retry, Circuit Breaker, Timeout, Bulkhead, Failover
+  * Health Endpoint Monitoring
+  * Throttling** e Backpressure
 
 * **Modelagem para resiliência em ambientes imprevisíveis**
 
@@ -154,7 +154,7 @@
 
 * **Padrões de observabilidade e diagnósticos**
 
-  * **Log Aggregation**, **Telemetry**, **Audit Logging**, **Correlation ID**
+  * Log Aggregation, Telemetry, Audit Logging, Correlation ID
   * Integração com Azure Monitor, Application Insights, Dynatrace
 
 * **Consistência eventual vs. forte**
@@ -164,7 +164,7 @@
 
 * **Manutenibilidade e evolução arquitetural**
 
-  * **Sidecar**, **Gateway Aggregation**, **Strangler Fig Application**
+  * Sidecar, Gateway Aggregation, Strangler Fig Application
 
 ---
 > © MoOngy 2025 | Este repositório é parte do programa de formação contínua em Engenharia de Software.
