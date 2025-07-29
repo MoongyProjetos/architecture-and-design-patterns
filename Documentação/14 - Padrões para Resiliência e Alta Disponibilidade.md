@@ -22,7 +22,7 @@ RetryPolicy = Policy
   .Handle<HttpRequestException>()
   .WaitAndRetry(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
 ```
-![alt text](imagens/aula14/image.png)
+![alt text](Imagens/aula14/image.png)
 
 https://learn.microsoft.com/en-us/azure/storage/blobs/storage-retry-policy
 ---
@@ -37,9 +37,9 @@ Impede que chamadas contínuas sejam feitas para um serviço instável.
 
 ---
 
-![alt text](imagens/aula14/image-1.png)
+![alt text](Imagens/aula14/image-1.png)
 
-![alt text](imagens/aula14/image-2.png)
+![alt text](Imagens/aula14/image-2.png)
 
 
 https://learn.microsoft.com/en-us/azure/architecture/patterns/circuit-breaker
@@ -60,9 +60,9 @@ Isola recursos para limitar o impacto de falhas.
 * 🎯 Exemplo: Limitar threads de processamento por tipo de operação.
 * 💡 Inspirado no design de navios.
 
-![alt text](imagens/aula14/image-3.png)
+![alt text](Imagens/aula14/image-3.png)
 
-![alt text](imagens/aula14/image-4.png)
+![alt text](Imagens/aula14/image-4.png)
 ---
 
 ### 🔄 **Failover**
@@ -83,7 +83,7 @@ Exposição de endpoint para status de saúde da aplicação.
 * Libs: `AspNetCore.Diagnostics.HealthChecks`
 
 
-![alt text](imagens/aula14/image-5.png)
+![alt text](Imagens/aula14/image-5.png)
 ---
 
 ### 🚦 **Throttling e Backpressure**
