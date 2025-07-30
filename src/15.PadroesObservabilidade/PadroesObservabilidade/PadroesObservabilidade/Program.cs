@@ -75,6 +75,24 @@ app.MapGet("/", () =>
     return $"Hello World! OpenTelemetry Trace: {Activity.Current?.Id}";
 });
 
+
+
+app.MapGet("/fazTudo", () =>
+{
+    var clientWarning = new HttpClient();
+    var request = new HttpRequestMessage(HttpMethod.Get, "/warning");
+    var responseWarning = clientWarning.SendAsync(request);
+
+    var requestLocal = new HttpRequestMessage(HttpMethod.Get, "/");
+    var responseLocal = clientWarning.SendAsync(requestLocal);
+
+    //
+
+
+
+    return $"Operacoes efetuadas com sucesso";
+});
+
 app.Run();
 
 internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)

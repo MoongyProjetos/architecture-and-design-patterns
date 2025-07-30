@@ -415,7 +415,7 @@ Esses exemplos mostram como usar **Azure + C#** para aplicar padrões modernos e
 
 ---
 
-Perfeito! Abaixo estão os **diagramas de arquitetura em MermaidJS** para os principais padrões aplicados no cenário da seguradora:
+**diagramas de arquitetura em MermaidJS** para os principais padrões aplicados no cenário da seguradora:
 
 ---
 
