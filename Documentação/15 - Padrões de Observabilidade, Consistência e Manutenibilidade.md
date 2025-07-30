@@ -95,26 +95,6 @@
 
 ---
 
-## ⚔️ Trade-offs em Bancos Distribuídos
-
-### 📚 Exemplos
-
-| Banco/Fila         | Características                                                       |
-| ------------------ | --------------------------------------------------------------------- |
-| **Cosmos DB**      | Multi-modelo, replicação global, níveis configuráveis de consistência |
-| **Event Hub**      | Ingestão massiva de eventos, escalável e eventual                     |
-| **Kafka (menção)** | Log distribuído, replicação baseada em partições                      |
-
-### 🔄 CAP Theorem (Resumido)
-
-* **Consistência**
-* **Disponibilidade**
-* **Tolerância à Partição**
-
-👉 Não é possível maximizar os 3 ao mesmo tempo.
-
----
-
 ## 🛠️ Manutenibilidade e Evolução Arquitetural
 
 ### 📦 Sidecar Pattern
