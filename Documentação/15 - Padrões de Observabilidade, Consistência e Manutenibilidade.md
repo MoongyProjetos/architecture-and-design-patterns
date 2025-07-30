@@ -102,16 +102,22 @@
 * Um contêiner auxiliar que implementa funcionalidades como proxy, logging ou segurança sem acoplar à aplicação principal.
 * Ex: Envoy Proxy em service mesh com Istio.
 
+![alt text](Imagens/aula15/sidecar.png)
+
 ### 🚪 Gateway Aggregation
 
 * Um API Gateway agrega múltiplas chamadas de microserviços em uma única.
 * Reduz latência e complexidade no cliente.
+
+![alt text](Imagens/aula15/gatewayaggregation.png)
 
 ### 🌱 Strangler Fig Application
 
 * Substituição progressiva de uma aplicação legada por novos componentes.
 * O novo sistema "estrangula" o antigo com tempo.
 
+
+![alt text](Imagens/aula15/strangler.png)
 ---
 ## **Exemplos práticos com Azure e C# no contexto de uma seguradora**, integrando os padrões discutidos:
 
