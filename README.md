@@ -26,7 +26,7 @@ Outras curiosidades que ajudam a entender o estilo do formador:
 * Gosta de **metodologias ágeis**, **boas práticas de desenvolvimento**, **cloud computing** e **AI generativa**
 * Valoriza **performance** e **produtividade** em código
 * Prefere explicações **menos formais**, diretas e com sotaque **carioca**
-* Ateu, apreciador de boa argumentação e pensamento técnico
+* Apreciador de boa argumentação e pensamento técnico
 
 O objetivo principal nas formações é **capacitar profissionais para um uso moderno, eficiente e pragmático** das tecnologias da Microsoft — sempre com foco em performance, produtividade e boas práticas.
 
