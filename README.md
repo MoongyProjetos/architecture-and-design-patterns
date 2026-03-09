@@ -43,12 +43,7 @@ Com uma abordagem prática, o curso capacita os participantes a projetar sistema
 - Proficiência em pelo menos uma linguagem de programação (.NET C#, Java, C++, Python etc.)
 - Conhecimento básico de programação orientada a objetos
 - Familiaridade com conceitos de desenvolvimento de software
-- .NET Aspire - https://aspire.dev/get-started/first-app/?lang=csharp 
 
-```bash
-aspire --version
-aspire new aspire-starter -n AspireApp -o AspireApp
-```
 
 
 ## 📦 Conteúdo Programático
